@@ -1,0 +1,12 @@
+C:\Users\Rodrigo\workspace\orleans-main\samples\BankAccount\AccountTransfer.Interfaces\bin\Debug\net5.0\GrainInterfaces.deps.json
+C:\Users\Rodrigo\workspace\orleans-main\samples\BankAccount\AccountTransfer.Interfaces\bin\Debug\net5.0\GrainInterfaces.dll
+C:\Users\Rodrigo\workspace\orleans-main\samples\BankAccount\AccountTransfer.Interfaces\bin\Debug\net5.0\ref\GrainInterfaces.dll
+C:\Users\Rodrigo\workspace\orleans-main\samples\BankAccount\AccountTransfer.Interfaces\obj\Debug\net5.0\GrainInterfaces.csproj.AssemblyReference.cache
+C:\Users\Rodrigo\workspace\orleans-main\samples\BankAccount\AccountTransfer.Interfaces\obj\Debug\net5.0\GrainInterfaces.orleans.g.args.txt
+C:\Users\Rodrigo\workspace\orleans-main\samples\BankAccount\AccountTransfer.Interfaces\obj\Debug\net5.0\GrainInterfaces.orleans.g.cs
+C:\Users\Rodrigo\workspace\orleans-main\samples\BankAccount\AccountTransfer.Interfaces\obj\Debug\net5.0\GrainInterfaces.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Rodrigo\workspace\orleans-main\samples\BankAccount\AccountTransfer.Interfaces\obj\Debug\net5.0\GrainInterfaces.AssemblyInfoInputs.cache
+C:\Users\Rodrigo\workspace\orleans-main\samples\BankAccount\AccountTransfer.Interfaces\obj\Debug\net5.0\GrainInterfaces.AssemblyInfo.cs
+C:\Users\Rodrigo\workspace\orleans-main\samples\BankAccount\AccountTransfer.Interfaces\obj\Debug\net5.0\GrainInterfaces.csproj.CoreCompileInputs.cache
+C:\Users\Rodrigo\workspace\orleans-main\samples\BankAccount\AccountTransfer.Interfaces\obj\Debug\net5.0\GrainInterfaces.dll
+C:\Users\Rodrigo\workspace\orleans-main\samples\BankAccount\AccountTransfer.Interfaces\obj\Debug\net5.0\ref\GrainInterfaces.dll

@@ -1,0 +1,12 @@
+C:\Users\Rodrigo\workspace\orleans-main\samples\BankAccount\AccountTransfer.Interfaces\bin\MCD\Debug\net5.0\AccountTransfer.Interfaces.deps.json
+C:\Users\Rodrigo\workspace\orleans-main\samples\BankAccount\AccountTransfer.Interfaces\bin\MCD\Debug\net5.0\AccountTransfer.Interfaces.dll
+C:\Users\Rodrigo\workspace\orleans-main\samples\BankAccount\AccountTransfer.Interfaces\bin\MCD\Debug\net5.0\ref\AccountTransfer.Interfaces.dll
+C:\Users\Rodrigo\workspace\orleans-main\samples\BankAccount\AccountTransfer.Interfaces\obj\MCD\Debug\net5.0\AccountTransfer.Interfaces.csproj.AssemblyReference.cache
+C:\Users\Rodrigo\workspace\orleans-main\samples\BankAccount\AccountTransfer.Interfaces\obj\MCD\Debug\net5.0\AccountTransfer.Interfaces.orleans.g.args.txt
+C:\Users\Rodrigo\workspace\orleans-main\samples\BankAccount\AccountTransfer.Interfaces\obj\MCD\Debug\net5.0\AccountTransfer.Interfaces.orleans.g.cs
+C:\Users\Rodrigo\workspace\orleans-main\samples\BankAccount\AccountTransfer.Interfaces\obj\MCD\Debug\net5.0\AccountTransfer.Interfaces.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Rodrigo\workspace\orleans-main\samples\BankAccount\AccountTransfer.Interfaces\obj\MCD\Debug\net5.0\AccountTransfer.Interfaces.AssemblyInfoInputs.cache
+C:\Users\Rodrigo\workspace\orleans-main\samples\BankAccount\AccountTransfer.Interfaces\obj\MCD\Debug\net5.0\AccountTransfer.Interfaces.AssemblyInfo.cs
+C:\Users\Rodrigo\workspace\orleans-main\samples\BankAccount\AccountTransfer.Interfaces\obj\MCD\Debug\net5.0\AccountTransfer.Interfaces.csproj.CoreCompileInputs.cache
+C:\Users\Rodrigo\workspace\orleans-main\samples\BankAccount\AccountTransfer.Interfaces\obj\MCD\Debug\net5.0\AccountTransfer.Interfaces.dll
+C:\Users\Rodrigo\workspace\orleans-main\samples\BankAccount\AccountTransfer.Interfaces\obj\MCD\Debug\net5.0\ref\AccountTransfer.Interfaces.dll

@@ -1,0 +1,215 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\Users\\Rodrigo\\workspace\\orleans-main\\samples\\BankAccount\\BankClient\\BankClient.csproj": {}
+  },
+  "projects": {
+    "C:\\Users\\Rodrigo\\workspace\\orleans-main\\samples\\BankAccount\\AccountTransfer.Interfaces\\GrainInterfaces.csproj": {
+      "version": "3.0.0-dev",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\Rodrigo\\workspace\\orleans-main\\samples\\BankAccount\\AccountTransfer.Interfaces\\GrainInterfaces.csproj",
+        "projectName": "GrainInterfaces",
+        "projectPath": "C:\\Users\\Rodrigo\\workspace\\orleans-main\\samples\\BankAccount\\AccountTransfer.Interfaces\\GrainInterfaces.csproj",
+        "packagesPath": "C:\\Users\\Rodrigo\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Rodrigo\\workspace\\orleans-main\\samples\\BankAccount\\AccountTransfer.Interfaces\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Rodrigo\\workspace\\orleans-main\\NuGet.Config",
+          "C:\\Users\\Rodrigo\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net5.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net5.0": {
+            "targetAlias": "net5.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "allWarningsAsErrors": true,
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net5.0": {
+          "targetAlias": "net5.0",
+          "dependencies": {
+            "Microsoft.Orleans.CodeGenerator.MSBuild": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[3.4.2, )"
+            },
+            "Microsoft.Orleans.Core.Abstractions": {
+              "target": "Package",
+              "version": "[3.4.2, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.403\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\Rodrigo\\workspace\\orleans-main\\samples\\BankAccount\\BankClient\\BankClient.csproj": {
+      "version": "3.0.0-dev",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\Rodrigo\\workspace\\orleans-main\\samples\\BankAccount\\BankClient\\BankClient.csproj",
+        "projectName": "BankClient",
+        "projectPath": "C:\\Users\\Rodrigo\\workspace\\orleans-main\\samples\\BankAccount\\BankClient\\BankClient.csproj",
+        "packagesPath": "C:\\Users\\Rodrigo\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Rodrigo\\workspace\\orleans-main\\samples\\BankAccount\\BankClient\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Rodrigo\\workspace\\orleans-main\\NuGet.Config",
+          "C:\\Users\\Rodrigo\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net5.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net5.0": {
+            "targetAlias": "net5.0",
+            "projectReferences": {
+              "C:\\Users\\Rodrigo\\workspace\\orleans-main\\samples\\BankAccount\\AccountTransfer.Interfaces\\GrainInterfaces.csproj": {
+                "projectPath": "C:\\Users\\Rodrigo\\workspace\\orleans-main\\samples\\BankAccount\\AccountTransfer.Interfaces\\GrainInterfaces.csproj"
+              },
+              "C:\\Users\\Rodrigo\\workspace\\orleans-main\\samples\\BankAccount\\Common\\Common.csproj": {
+                "projectPath": "C:\\Users\\Rodrigo\\workspace\\orleans-main\\samples\\BankAccount\\Common\\Common.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "allWarningsAsErrors": true,
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net5.0": {
+          "targetAlias": "net5.0",
+          "dependencies": {
+            "Microsoft.Extensions.Logging.Console": {
+              "target": "Package",
+              "version": "[5.0.0, )"
+            },
+            "Microsoft.Orleans.Core": {
+              "target": "Package",
+              "version": "[3.4.2, )"
+            },
+            "Microsoft.Orleans.Transactions": {
+              "target": "Package",
+              "version": "[3.4.2, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.403\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\Rodrigo\\workspace\\orleans-main\\samples\\BankAccount\\Common\\Common.csproj": {
+      "version": "3.0.0-dev",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\Rodrigo\\workspace\\orleans-main\\samples\\BankAccount\\Common\\Common.csproj",
+        "projectName": "Common",
+        "projectPath": "C:\\Users\\Rodrigo\\workspace\\orleans-main\\samples\\BankAccount\\Common\\Common.csproj",
+        "packagesPath": "C:\\Users\\Rodrigo\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Rodrigo\\workspace\\orleans-main\\samples\\BankAccount\\Common\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Rodrigo\\workspace\\orleans-main\\NuGet.Config",
+          "C:\\Users\\Rodrigo\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "targetAlias": "netcoreapp3.1",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "allWarningsAsErrors": true,
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "targetAlias": "netcoreapp3.1",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.403\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

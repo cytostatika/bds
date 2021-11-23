@@ -1,0 +1,16 @@
+C:\Users\Rodrigo\workspace\orleans-main\samples\BankAccount\Common\bin\MCD\Debug\netcoreapp3.1\Common.deps.json
+C:\Users\Rodrigo\workspace\orleans-main\samples\BankAccount\Common\bin\MCD\Debug\netcoreapp3.1\Common.dll
+C:\Users\Rodrigo\workspace\orleans-main\samples\BankAccount\Common\obj\MCD\Debug\netcoreapp3.1\Common.csproj.AssemblyReference.cache
+C:\Users\Rodrigo\workspace\orleans-main\samples\BankAccount\Common\obj\MCD\Debug\netcoreapp3.1\Common.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Rodrigo\workspace\orleans-main\samples\BankAccount\Common\obj\MCD\Debug\netcoreapp3.1\Common.AssemblyInfoInputs.cache
+C:\Users\Rodrigo\workspace\orleans-main\samples\BankAccount\Common\obj\MCD\Debug\netcoreapp3.1\Common.AssemblyInfo.cs
+C:\Users\Rodrigo\workspace\orleans-main\samples\BankAccount\Common\obj\MCD\Debug\netcoreapp3.1\Common.csproj.CoreCompileInputs.cache
+C:\Users\Rodrigo\workspace\orleans-main\samples\BankAccount\Common\obj\MCD\Debug\netcoreapp3.1\Common.dll
+C:\Users\Rodrigo\workspace\orleans-main\samples\Streaming\Common\bin\MCD\Debug\netcoreapp3.1\Common.deps.json
+C:\Users\Rodrigo\workspace\orleans-main\samples\Streaming\Common\bin\MCD\Debug\netcoreapp3.1\Common.dll
+C:\Users\Rodrigo\workspace\orleans-main\samples\Streaming\Common\obj\MCD\Debug\netcoreapp3.1\Common.csproj.AssemblyReference.cache
+C:\Users\Rodrigo\workspace\orleans-main\samples\Streaming\Common\obj\MCD\Debug\netcoreapp3.1\Common.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Rodrigo\workspace\orleans-main\samples\Streaming\Common\obj\MCD\Debug\netcoreapp3.1\Common.AssemblyInfoInputs.cache
+C:\Users\Rodrigo\workspace\orleans-main\samples\Streaming\Common\obj\MCD\Debug\netcoreapp3.1\Common.AssemblyInfo.cs
+C:\Users\Rodrigo\workspace\orleans-main\samples\Streaming\Common\obj\MCD\Debug\netcoreapp3.1\Common.csproj.CoreCompileInputs.cache
+C:\Users\Rodrigo\workspace\orleans-main\samples\Streaming\Common\obj\MCD\Debug\netcoreapp3.1\Common.dll

@@ -1,0 +1,13 @@
+{
+  "version": 2,
+  "dgSpecHash": "qVzYHPqRfXpfxYE1Cl3vUuAKt/gRJkj5J0BrQSAJzDIR3XIkbtSoABBhVMg362JeIn5IasmVrobNedbsMcfc+Q==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Rodrigo\\workspace\\orleans-main\\samples\\Streaming\\GrainInterfaces\\GrainInterfaces.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Rodrigo\\.nuget\\packages\\microsoft.orleans.codegenerator.msbuild\\3.5.1\\microsoft.orleans.codegenerator.msbuild.3.5.1.nupkg.sha512",
+    "C:\\Users\\Rodrigo\\.nuget\\packages\\microsoft.orleans.core.abstractions\\3.5.1\\microsoft.orleans.core.abstractions.3.5.1.nupkg.sha512",
+    "C:\\Users\\Rodrigo\\.nuget\\packages\\system.memory\\4.5.3\\system.memory.4.5.3.nupkg.sha512",
+    "C:\\Users\\Rodrigo\\.nuget\\packages\\system.threading.tasks.extensions\\4.5.4\\system.threading.tasks.extensions.4.5.4.nupkg.sha512"
+  ],
+  "logs": []
+}
