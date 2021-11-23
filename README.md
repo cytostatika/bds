@@ -1,2 +1,1 @@
-# bds
-Big data systems
+# Big data systems
