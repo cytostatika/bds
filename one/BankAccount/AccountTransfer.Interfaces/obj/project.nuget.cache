@@ -1,0 +1,13 @@
+{
+  "version": 2,
+  "dgSpecHash": "UNZkfhqDPX+y6WxWvgiMf+VJUi9FW4u6GSzf4bSsWcpLjGTWNV8YbGHyGrb9m/74s3spRBg3y+We6VeijG7lOA==",
+  "success": true,
+  "projectFilePath": "/Users/johan/Documents/Datalogi/BDS/bds/one/BankAccount/AccountTransfer.Interfaces/AccountTransfer.Interfaces.csproj",
+  "expectedPackageFiles": [
+    "/Users/johan/.nuget/packages/microsoft.orleans.codegenerator.msbuild/3.4.2/microsoft.orleans.codegenerator.msbuild.3.4.2.nupkg.sha512",
+    "/Users/johan/.nuget/packages/microsoft.orleans.core.abstractions/3.4.2/microsoft.orleans.core.abstractions.3.4.2.nupkg.sha512",
+    "/Users/johan/.nuget/packages/system.memory/4.5.3/system.memory.4.5.3.nupkg.sha512",
+    "/Users/johan/.nuget/packages/system.threading.tasks.extensions/4.5.4/system.threading.tasks.extensions.4.5.4.nupkg.sha512"
+  ],
+  "logs": []
+}

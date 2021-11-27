@@ -1,0 +1,264 @@
+{
+  "format": 1,
+  "restore": {
+    "/Users/johan/Documents/Datalogi/BDS/bds/one/BankStream/BankClient/BankClient.csproj": {}
+  },
+  "projects": {
+    "/Users/johan/Documents/Datalogi/BDS/bds/one/BankStream/BankClient/BankClient.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/johan/Documents/Datalogi/BDS/bds/one/BankStream/BankClient/BankClient.csproj",
+        "projectName": "BankClient",
+        "projectPath": "/Users/johan/Documents/Datalogi/BDS/bds/one/BankStream/BankClient/BankClient.csproj",
+        "packagesPath": "/Users/johan/.nuget/packages/",
+        "outputPath": "/Users/johan/Documents/Datalogi/BDS/bds/one/BankStream/BankClient/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/Users/johan/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "/Users/johan/Documents/Datalogi/BDS/bds/one/BankStream/Common/Common.csproj": {
+                "projectPath": "/Users/johan/Documents/Datalogi/BDS/bds/one/BankStream/Common/Common.csproj"
+              },
+              "/Users/johan/Documents/Datalogi/BDS/bds/one/BankStream/GrainInterfaces/GrainInterfaces.csproj": {
+                "projectPath": "/Users/johan/Documents/Datalogi/BDS/bds/one/BankStream/GrainInterfaces/GrainInterfaces.csproj"
+              },
+              "/Users/johan/Documents/Datalogi/BDS/bds/one/BankStream/Grains/Grains.csproj": {
+                "projectPath": "/Users/johan/Documents/Datalogi/BDS/bds/one/BankStream/Grains/Grains.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "Microsoft.Extensions.Logging.Console": {
+              "target": "Package",
+              "version": "[6.0.0, )"
+            },
+            "Microsoft.Orleans.Core": {
+              "target": "Package",
+              "version": "[3.5.1, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/6.0.100/RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/Users/johan/Documents/Datalogi/BDS/bds/one/BankStream/Common/Common.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/johan/Documents/Datalogi/BDS/bds/one/BankStream/Common/Common.csproj",
+        "projectName": "Common",
+        "projectPath": "/Users/johan/Documents/Datalogi/BDS/bds/one/BankStream/Common/Common.csproj",
+        "packagesPath": "/Users/johan/.nuget/packages/",
+        "outputPath": "/Users/johan/Documents/Datalogi/BDS/bds/one/BankStream/Common/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/Users/johan/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/6.0.100/RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/Users/johan/Documents/Datalogi/BDS/bds/one/BankStream/GrainInterfaces/GrainInterfaces.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/johan/Documents/Datalogi/BDS/bds/one/BankStream/GrainInterfaces/GrainInterfaces.csproj",
+        "projectName": "GrainInterfaces",
+        "projectPath": "/Users/johan/Documents/Datalogi/BDS/bds/one/BankStream/GrainInterfaces/GrainInterfaces.csproj",
+        "packagesPath": "/Users/johan/.nuget/packages/",
+        "outputPath": "/Users/johan/Documents/Datalogi/BDS/bds/one/BankStream/GrainInterfaces/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/Users/johan/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "Microsoft.Orleans.CodeGenerator.MSBuild": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[3.5.1, )"
+            },
+            "Microsoft.Orleans.Core.Abstractions": {
+              "target": "Package",
+              "version": "[3.5.1, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/6.0.100/RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/Users/johan/Documents/Datalogi/BDS/bds/one/BankStream/Grains/Grains.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/johan/Documents/Datalogi/BDS/bds/one/BankStream/Grains/Grains.csproj",
+        "projectName": "Grains",
+        "projectPath": "/Users/johan/Documents/Datalogi/BDS/bds/one/BankStream/Grains/Grains.csproj",
+        "packagesPath": "/Users/johan/.nuget/packages/",
+        "outputPath": "/Users/johan/Documents/Datalogi/BDS/bds/one/BankStream/Grains/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/Users/johan/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "/Users/johan/Documents/Datalogi/BDS/bds/one/BankStream/GrainInterfaces/GrainInterfaces.csproj": {
+                "projectPath": "/Users/johan/Documents/Datalogi/BDS/bds/one/BankStream/GrainInterfaces/GrainInterfaces.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "Microsoft.Orleans.CodeGenerator.MSBuild": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[3.5.1, )"
+            },
+            "Microsoft.Orleans.Core.Abstractions": {
+              "target": "Package",
+              "version": "[3.5.1, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/6.0.100/RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

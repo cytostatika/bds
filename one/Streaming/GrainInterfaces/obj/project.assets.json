@@ -240,25 +240,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Rodrigo\\.nuget\\packages\\": {},
-    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
+    "/Users/johan/.nuget/packages/": {}
   },
   "project": {
-    "version": "3.0.0",
+    "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Rodrigo\\workspace\\orleans-main\\samples\\Streaming\\GrainInterfaces\\GrainInterfaces.csproj",
+      "projectUniqueName": "/Users/johan/Documents/Datalogi/BDS/bds/one/Streaming/GrainInterfaces/GrainInterfaces.csproj",
       "projectName": "GrainInterfaces",
-      "projectPath": "C:\\Users\\Rodrigo\\workspace\\orleans-main\\samples\\Streaming\\GrainInterfaces\\GrainInterfaces.csproj",
-      "packagesPath": "C:\\Users\\Rodrigo\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Rodrigo\\workspace\\orleans-main\\samples\\Streaming\\GrainInterfaces\\obj\\",
+      "projectPath": "/Users/johan/Documents/Datalogi/BDS/bds/one/Streaming/GrainInterfaces/GrainInterfaces.csproj",
+      "packagesPath": "/Users/johan/.nuget/packages/",
+      "outputPath": "/Users/johan/Documents/Datalogi/BDS/bds/one/Streaming/GrainInterfaces/obj/",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-      ],
       "configFilePaths": [
-        "C:\\Users\\Rodrigo\\workspace\\orleans-main\\NuGet.Config",
-        "C:\\Users\\Rodrigo\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "/Users/johan/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net5.0"
@@ -273,7 +267,6 @@
         }
       },
       "warningProperties": {
-        "allWarningsAsErrors": true,
         "warnAsError": [
           "NU1605"
         ]
@@ -309,7 +302,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.403\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/5.0.403/RuntimeIdentifierGraph.json"
       }
     }
   }

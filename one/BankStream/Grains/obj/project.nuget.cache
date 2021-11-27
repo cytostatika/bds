@@ -1,0 +1,13 @@
+{
+  "version": 2,
+  "dgSpecHash": "lEv3X3ii1PFnmzIM3Hdeq1f0UKsWDbWNnh0v3amPl4wi3ZVg3W0orAsa/McrQGopgwWAJrDgGsS+T/smVjLZfQ==",
+  "success": true,
+  "projectFilePath": "/Users/johan/Documents/Datalogi/BDS/bds/one/BankStream/Grains/Grains.csproj",
+  "expectedPackageFiles": [
+    "/Users/johan/.nuget/packages/microsoft.orleans.codegenerator.msbuild/3.5.1/microsoft.orleans.codegenerator.msbuild.3.5.1.nupkg.sha512",
+    "/Users/johan/.nuget/packages/microsoft.orleans.core.abstractions/3.5.1/microsoft.orleans.core.abstractions.3.5.1.nupkg.sha512",
+    "/Users/johan/.nuget/packages/system.memory/4.5.3/system.memory.4.5.3.nupkg.sha512",
+    "/Users/johan/.nuget/packages/system.threading.tasks.extensions/4.5.4/system.threading.tasks.extensions.4.5.4.nupkg.sha512"
+  ],
+  "logs": []
+}

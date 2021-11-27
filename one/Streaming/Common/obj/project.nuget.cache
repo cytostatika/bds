@@ -1,11 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "KmplDGMXB8j6omNZ5PnPXdmn+qKEkCU5ZhR/t0SKyklGTezDe0gxUF5P98JcFgH1j1vCaZJm7aXCFwm9QscaRA==",
+  "dgSpecHash": "TX03zdXv9upHQ1g6OtZ9UWlFHm3aUrlV9sB558JVV1SpR2SwjvKKyNd+PGAnrkZI48mEcBtoGzIOEepTcTOeUw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Rodrigo\\workspace\\orleans-main\\samples\\Streaming\\Common\\Common.csproj",
+  "projectFilePath": "/Users/johan/Documents/Datalogi/BDS/bds/one/Streaming/Common/Common.csproj",
   "expectedPackageFiles": [
-    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
-    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\netstandard.library\\2.0.3\\netstandard.library.2.0.3.nupkg.sha512"
+    "/Users/johan/.nuget/packages/microsoft.netcore.platforms/1.1.0/microsoft.netcore.platforms.1.1.0.nupkg.sha512",
+    "/Users/johan/.nuget/packages/netstandard.library/2.0.3/netstandard.library.2.0.3.nupkg.sha512",
+    "/Users/johan/.nuget/packages/microsoft.netcore.app.ref/3.1.0/microsoft.netcore.app.ref.3.1.0.nupkg.sha512",
+    "/Users/johan/.nuget/packages/microsoft.aspnetcore.app.ref/3.1.10/microsoft.aspnetcore.app.ref.3.1.10.nupkg.sha512"
   ],
   "logs": []
 }

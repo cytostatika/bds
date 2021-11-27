@@ -1,25 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Rodrigo\\workspace\\orleans-main\\samples\\Streaming\\Silo\\Silo.csproj": {}
+    "/Users/johan/Documents/Datalogi/BDS/bds/one/Streaming/Silo/Silo.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Rodrigo\\workspace\\orleans-main\\samples\\Streaming\\Common\\Common.csproj": {
-      "version": "3.0.0",
+    "/Users/johan/Documents/Datalogi/BDS/bds/one/Streaming/Common/Common.csproj": {
+      "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Rodrigo\\workspace\\orleans-main\\samples\\Streaming\\Common\\Common.csproj",
+        "projectUniqueName": "/Users/johan/Documents/Datalogi/BDS/bds/one/Streaming/Common/Common.csproj",
         "projectName": "Common",
-        "projectPath": "C:\\Users\\Rodrigo\\workspace\\orleans-main\\samples\\Streaming\\Common\\Common.csproj",
-        "packagesPath": "C:\\Users\\Rodrigo\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Rodrigo\\workspace\\orleans-main\\samples\\Streaming\\Common\\obj\\",
+        "projectPath": "/Users/johan/Documents/Datalogi/BDS/bds/one/Streaming/Common/Common.csproj",
+        "packagesPath": "/Users/johan/.nuget/packages/",
+        "outputPath": "/Users/johan/Documents/Datalogi/BDS/bds/one/Streaming/Common/obj/",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-        ],
         "configFilePaths": [
-          "C:\\Users\\Rodrigo\\workspace\\orleans-main\\NuGet.Config",
-          "C:\\Users\\Rodrigo\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "/Users/johan/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp3.1"
@@ -34,7 +29,6 @@
           }
         },
         "warningProperties": {
-          "allWarningsAsErrors": true,
           "warnAsError": [
             "NU1605"
           ]
@@ -45,6 +39,7 @@
           "targetAlias": "netcoreapp3.1",
           "dependencies": {
             "NETStandard.Library": {
+              "suppressParent": "All",
               "target": "Package",
               "version": "[2.0.3, )"
             }
@@ -59,31 +54,36 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[3.1.10, 3.1.10]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Ref",
+              "version": "[3.1.0, 3.1.0]"
+            }
+          ],
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.403\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/5.0.403/RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\Rodrigo\\workspace\\orleans-main\\samples\\Streaming\\GrainInterfaces\\GrainInterfaces.csproj": {
-      "version": "3.0.0",
+    "/Users/johan/Documents/Datalogi/BDS/bds/one/Streaming/GrainInterfaces/GrainInterfaces.csproj": {
+      "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Rodrigo\\workspace\\orleans-main\\samples\\Streaming\\GrainInterfaces\\GrainInterfaces.csproj",
+        "projectUniqueName": "/Users/johan/Documents/Datalogi/BDS/bds/one/Streaming/GrainInterfaces/GrainInterfaces.csproj",
         "projectName": "GrainInterfaces",
-        "projectPath": "C:\\Users\\Rodrigo\\workspace\\orleans-main\\samples\\Streaming\\GrainInterfaces\\GrainInterfaces.csproj",
-        "packagesPath": "C:\\Users\\Rodrigo\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Rodrigo\\workspace\\orleans-main\\samples\\Streaming\\GrainInterfaces\\obj\\",
+        "projectPath": "/Users/johan/Documents/Datalogi/BDS/bds/one/Streaming/GrainInterfaces/GrainInterfaces.csproj",
+        "packagesPath": "/Users/johan/.nuget/packages/",
+        "outputPath": "/Users/johan/Documents/Datalogi/BDS/bds/one/Streaming/GrainInterfaces/obj/",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-        ],
         "configFilePaths": [
-          "C:\\Users\\Rodrigo\\workspace\\orleans-main\\NuGet.Config",
-          "C:\\Users\\Rodrigo\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "/Users/johan/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net5.0"
@@ -98,7 +98,6 @@
           }
         },
         "warningProperties": {
-          "allWarningsAsErrors": true,
           "warnAsError": [
             "NU1605"
           ]
@@ -134,26 +133,21 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.403\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/5.0.403/RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\Rodrigo\\workspace\\orleans-main\\samples\\Streaming\\Grains\\Grains.csproj": {
-      "version": "3.0.0",
+    "/Users/johan/Documents/Datalogi/BDS/bds/one/Streaming/Grains/Grains.csproj": {
+      "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Rodrigo\\workspace\\orleans-main\\samples\\Streaming\\Grains\\Grains.csproj",
+        "projectUniqueName": "/Users/johan/Documents/Datalogi/BDS/bds/one/Streaming/Grains/Grains.csproj",
         "projectName": "Grains",
-        "projectPath": "C:\\Users\\Rodrigo\\workspace\\orleans-main\\samples\\Streaming\\Grains\\Grains.csproj",
-        "packagesPath": "C:\\Users\\Rodrigo\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Rodrigo\\workspace\\orleans-main\\samples\\Streaming\\Grains\\obj\\",
+        "projectPath": "/Users/johan/Documents/Datalogi/BDS/bds/one/Streaming/Grains/Grains.csproj",
+        "packagesPath": "/Users/johan/.nuget/packages/",
+        "outputPath": "/Users/johan/Documents/Datalogi/BDS/bds/one/Streaming/Grains/obj/",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-        ],
         "configFilePaths": [
-          "C:\\Users\\Rodrigo\\workspace\\orleans-main\\NuGet.Config",
-          "C:\\Users\\Rodrigo\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "/Users/johan/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net5.0"
@@ -165,17 +159,16 @@
           "net5.0": {
             "targetAlias": "net5.0",
             "projectReferences": {
-              "C:\\Users\\Rodrigo\\workspace\\orleans-main\\samples\\Streaming\\Common\\Common.csproj": {
-                "projectPath": "C:\\Users\\Rodrigo\\workspace\\orleans-main\\samples\\Streaming\\Common\\Common.csproj"
+              "/Users/johan/Documents/Datalogi/BDS/bds/one/Streaming/Common/Common.csproj": {
+                "projectPath": "/Users/johan/Documents/Datalogi/BDS/bds/one/Streaming/Common/Common.csproj"
               },
-              "C:\\Users\\Rodrigo\\workspace\\orleans-main\\samples\\Streaming\\GrainInterfaces\\GrainInterfaces.csproj": {
-                "projectPath": "C:\\Users\\Rodrigo\\workspace\\orleans-main\\samples\\Streaming\\GrainInterfaces\\GrainInterfaces.csproj"
+              "/Users/johan/Documents/Datalogi/BDS/bds/one/Streaming/GrainInterfaces/GrainInterfaces.csproj": {
+                "projectPath": "/Users/johan/Documents/Datalogi/BDS/bds/one/Streaming/GrainInterfaces/GrainInterfaces.csproj"
               }
             }
           }
         },
         "warningProperties": {
-          "allWarningsAsErrors": true,
           "warnAsError": [
             "NU1605"
           ]
@@ -215,26 +208,21 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.403\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/5.0.403/RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\Rodrigo\\workspace\\orleans-main\\samples\\Streaming\\Silo\\Silo.csproj": {
-      "version": "3.0.0",
+    "/Users/johan/Documents/Datalogi/BDS/bds/one/Streaming/Silo/Silo.csproj": {
+      "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Rodrigo\\workspace\\orleans-main\\samples\\Streaming\\Silo\\Silo.csproj",
+        "projectUniqueName": "/Users/johan/Documents/Datalogi/BDS/bds/one/Streaming/Silo/Silo.csproj",
         "projectName": "Silo",
-        "projectPath": "C:\\Users\\Rodrigo\\workspace\\orleans-main\\samples\\Streaming\\Silo\\Silo.csproj",
-        "packagesPath": "C:\\Users\\Rodrigo\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Rodrigo\\workspace\\orleans-main\\samples\\Streaming\\Silo\\obj\\",
+        "projectPath": "/Users/johan/Documents/Datalogi/BDS/bds/one/Streaming/Silo/Silo.csproj",
+        "packagesPath": "/Users/johan/.nuget/packages/",
+        "outputPath": "/Users/johan/Documents/Datalogi/BDS/bds/one/Streaming/Silo/obj/",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-        ],
         "configFilePaths": [
-          "C:\\Users\\Rodrigo\\workspace\\orleans-main\\NuGet.Config",
-          "C:\\Users\\Rodrigo\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "/Users/johan/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net5.0"
@@ -246,17 +234,16 @@
           "net5.0": {
             "targetAlias": "net5.0",
             "projectReferences": {
-              "C:\\Users\\Rodrigo\\workspace\\orleans-main\\samples\\Streaming\\GrainInterfaces\\GrainInterfaces.csproj": {
-                "projectPath": "C:\\Users\\Rodrigo\\workspace\\orleans-main\\samples\\Streaming\\GrainInterfaces\\GrainInterfaces.csproj"
+              "/Users/johan/Documents/Datalogi/BDS/bds/one/Streaming/GrainInterfaces/GrainInterfaces.csproj": {
+                "projectPath": "/Users/johan/Documents/Datalogi/BDS/bds/one/Streaming/GrainInterfaces/GrainInterfaces.csproj"
               },
-              "C:\\Users\\Rodrigo\\workspace\\orleans-main\\samples\\Streaming\\Grains\\Grains.csproj": {
-                "projectPath": "C:\\Users\\Rodrigo\\workspace\\orleans-main\\samples\\Streaming\\Grains\\Grains.csproj"
+              "/Users/johan/Documents/Datalogi/BDS/bds/one/Streaming/Grains/Grains.csproj": {
+                "projectPath": "/Users/johan/Documents/Datalogi/BDS/bds/one/Streaming/Grains/Grains.csproj"
               }
             }
           }
         },
         "warningProperties": {
-          "allWarningsAsErrors": true,
           "warnAsError": [
             "NU1605"
           ]
@@ -298,7 +285,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.403\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/5.0.403/RuntimeIdentifierGraph.json"
         }
       }
     }

@@ -1,0 +1,17 @@
+/Users/johan/Documents/Datalogi/BDS/bds/one/BankAccount/AccountTransfer.Grains/bin/Debug/net5.0/AccountTransfer.Grains.deps.json
+/Users/johan/Documents/Datalogi/BDS/bds/one/BankAccount/AccountTransfer.Grains/bin/Debug/net5.0/AccountTransfer.Grains.dll
+/Users/johan/Documents/Datalogi/BDS/bds/one/BankAccount/AccountTransfer.Grains/bin/Debug/net5.0/ref/AccountTransfer.Grains.dll
+/Users/johan/Documents/Datalogi/BDS/bds/one/BankAccount/AccountTransfer.Grains/bin/Debug/net5.0/AccountTransfer.Grains.pdb
+/Users/johan/Documents/Datalogi/BDS/bds/one/BankAccount/AccountTransfer.Grains/bin/Debug/net5.0/AccountTransfer.Interfaces.dll
+/Users/johan/Documents/Datalogi/BDS/bds/one/BankAccount/AccountTransfer.Grains/bin/Debug/net5.0/AccountTransfer.Interfaces.pdb
+/Users/johan/Documents/Datalogi/BDS/bds/one/BankAccount/AccountTransfer.Grains/obj/Debug/net5.0/AccountTransfer.Grains.csproj.AssemblyReference.cache
+/Users/johan/Documents/Datalogi/BDS/bds/one/BankAccount/AccountTransfer.Grains/obj/Debug/net5.0/AccountTransfer.Grains.orleans.g.args.txt
+/Users/johan/Documents/Datalogi/BDS/bds/one/BankAccount/AccountTransfer.Grains/obj/Debug/net5.0/AccountTransfer.Grains.orleans.g.cs
+/Users/johan/Documents/Datalogi/BDS/bds/one/BankAccount/AccountTransfer.Grains/obj/Debug/net5.0/AccountTransfer.Grains.GeneratedMSBuildEditorConfig.editorconfig
+/Users/johan/Documents/Datalogi/BDS/bds/one/BankAccount/AccountTransfer.Grains/obj/Debug/net5.0/AccountTransfer.Grains.AssemblyInfoInputs.cache
+/Users/johan/Documents/Datalogi/BDS/bds/one/BankAccount/AccountTransfer.Grains/obj/Debug/net5.0/AccountTransfer.Grains.AssemblyInfo.cs
+/Users/johan/Documents/Datalogi/BDS/bds/one/BankAccount/AccountTransfer.Grains/obj/Debug/net5.0/AccountTransfer.Grains.csproj.CoreCompileInputs.cache
+/Users/johan/Documents/Datalogi/BDS/bds/one/BankAccount/AccountTransfer.Grains/obj/Debug/net5.0/AccountTransfer.Grains.csproj.CopyComplete
+/Users/johan/Documents/Datalogi/BDS/bds/one/BankAccount/AccountTransfer.Grains/obj/Debug/net5.0/AccountTransfer.Grains.dll
+/Users/johan/Documents/Datalogi/BDS/bds/one/BankAccount/AccountTransfer.Grains/obj/Debug/net5.0/ref/AccountTransfer.Grains.dll
+/Users/johan/Documents/Datalogi/BDS/bds/one/BankAccount/AccountTransfer.Grains/obj/Debug/net5.0/AccountTransfer.Grains.pdb
