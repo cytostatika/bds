@@ -8,19 +8,19 @@
     "net6.0": []
   },
   "packageFolders": {
-    "/Users/johan/.nuget/packages/": {}
+    "/Users/johanpedersen/.nuget/packages/": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/johan/Documents/Datalogi/BDS/bds/one/BankStream/Common/Common.csproj",
+      "projectUniqueName": "/Users/johanpedersen/Documents/Datalogi/BDS/Assignments/one/BankStream/Common/Common.csproj",
       "projectName": "Common",
-      "projectPath": "/Users/johan/Documents/Datalogi/BDS/bds/one/BankStream/Common/Common.csproj",
-      "packagesPath": "/Users/johan/.nuget/packages/",
-      "outputPath": "/Users/johan/Documents/Datalogi/BDS/bds/one/BankStream/Common/obj/",
+      "projectPath": "/Users/johanpedersen/Documents/Datalogi/BDS/Assignments/one/BankStream/Common/Common.csproj",
+      "packagesPath": "/Users/johanpedersen/.nuget/packages/",
+      "outputPath": "/Users/johanpedersen/Documents/Datalogi/BDS/Assignments/one/BankStream/Common/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "/Users/johan/.nuget/NuGet/NuGet.Config"
+        "/Users/johanpedersen/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net6.0"

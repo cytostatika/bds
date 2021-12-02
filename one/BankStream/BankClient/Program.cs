@@ -9,17 +9,10 @@ using Constants = Common.Constants;
 using var client = new ClientBuilder()
     .UseLocalhostClustering()
     .ConfigureLogging(logging => logging.AddConsole())
-    .AddSimpleMessageStreamProvider("SMSProvider")
+    .AddSimpleMessageStreamProvider(Constants.StreamProvider)
     .Build();
 
 await client.Connect();
-
-
-var streamProvider = client.GetStreamProvider("SMSProvider");
-
-var guid = Guid.NewGuid();
-var stream = streamProvider.GetStream<int>(guid, Constants.StreamNamespace);
-
 
 
 

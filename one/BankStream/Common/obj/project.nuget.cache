@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "ouxuLLTUYTVMzvOCnyljAapgwSc1+Ml3BR4dV06JSld/E34AMkWY8MyX7d76mdSd9lVXT/oYUKbJ7xTQ0Ps74g==",
+  "dgSpecHash": "affe5CfKnUfWkXJWBR/SjZSzScn3esSmojALS+cWK2E4oaBkPQstSc95IiMLMLd2H1yx3pyVbaQr3qHIW+EVgQ==",
   "success": true,
-  "projectFilePath": "/Users/johan/Documents/Datalogi/BDS/bds/one/BankStream/Common/Common.csproj",
+  "projectFilePath": "/Users/johanpedersen/Documents/Datalogi/BDS/Assignments/one/BankStream/Common/Common.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

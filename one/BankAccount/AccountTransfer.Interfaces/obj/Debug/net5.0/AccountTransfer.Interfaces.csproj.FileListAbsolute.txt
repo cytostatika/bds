@@ -12,3 +12,17 @@
 /Users/johan/Documents/Datalogi/BDS/bds/one/BankAccount/AccountTransfer.Interfaces/obj/Debug/net5.0/AccountTransfer.Interfaces.dll
 /Users/johan/Documents/Datalogi/BDS/bds/one/BankAccount/AccountTransfer.Interfaces/obj/Debug/net5.0/ref/AccountTransfer.Interfaces.dll
 /Users/johan/Documents/Datalogi/BDS/bds/one/BankAccount/AccountTransfer.Interfaces/obj/Debug/net5.0/AccountTransfer.Interfaces.pdb
+/Users/johanpedersen/Documents/Datalogi/BDS/Assignments/one/BankAccount/AccountTransfer.Interfaces/bin/Debug/net5.0/AccountTransfer.Interfaces.deps.json
+/Users/johanpedersen/Documents/Datalogi/BDS/Assignments/one/BankAccount/AccountTransfer.Interfaces/bin/Debug/net5.0/AccountTransfer.Interfaces.dll
+/Users/johanpedersen/Documents/Datalogi/BDS/Assignments/one/BankAccount/AccountTransfer.Interfaces/bin/Debug/net5.0/ref/AccountTransfer.Interfaces.dll
+/Users/johanpedersen/Documents/Datalogi/BDS/Assignments/one/BankAccount/AccountTransfer.Interfaces/bin/Debug/net5.0/AccountTransfer.Interfaces.pdb
+/Users/johanpedersen/Documents/Datalogi/BDS/Assignments/one/BankAccount/AccountTransfer.Interfaces/obj/Debug/net5.0/AccountTransfer.Interfaces.csproj.AssemblyReference.cache
+/Users/johanpedersen/Documents/Datalogi/BDS/Assignments/one/BankAccount/AccountTransfer.Interfaces/obj/Debug/net5.0/AccountTransfer.Interfaces.orleans.g.args.txt
+/Users/johanpedersen/Documents/Datalogi/BDS/Assignments/one/BankAccount/AccountTransfer.Interfaces/obj/Debug/net5.0/AccountTransfer.Interfaces.orleans.g.cs
+/Users/johanpedersen/Documents/Datalogi/BDS/Assignments/one/BankAccount/AccountTransfer.Interfaces/obj/Debug/net5.0/AccountTransfer.Interfaces.GeneratedMSBuildEditorConfig.editorconfig
+/Users/johanpedersen/Documents/Datalogi/BDS/Assignments/one/BankAccount/AccountTransfer.Interfaces/obj/Debug/net5.0/AccountTransfer.Interfaces.AssemblyInfoInputs.cache
+/Users/johanpedersen/Documents/Datalogi/BDS/Assignments/one/BankAccount/AccountTransfer.Interfaces/obj/Debug/net5.0/AccountTransfer.Interfaces.AssemblyInfo.cs
+/Users/johanpedersen/Documents/Datalogi/BDS/Assignments/one/BankAccount/AccountTransfer.Interfaces/obj/Debug/net5.0/AccountTransfer.Interfaces.csproj.CoreCompileInputs.cache
+/Users/johanpedersen/Documents/Datalogi/BDS/Assignments/one/BankAccount/AccountTransfer.Interfaces/obj/Debug/net5.0/AccountTransfer.Interfaces.dll
+/Users/johanpedersen/Documents/Datalogi/BDS/Assignments/one/BankAccount/AccountTransfer.Interfaces/obj/Debug/net5.0/ref/AccountTransfer.Interfaces.dll
+/Users/johanpedersen/Documents/Datalogi/BDS/Assignments/one/BankAccount/AccountTransfer.Interfaces/obj/Debug/net5.0/AccountTransfer.Interfaces.pdb

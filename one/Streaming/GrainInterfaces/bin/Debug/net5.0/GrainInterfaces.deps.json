@@ -6,7 +6,7 @@
   "compilationOptions": {},
   "targets": {
     ".NETCoreApp,Version=v5.0": {
-      "GrainInterfaces/3.0.0-dev": {
+      "GrainInterfaces/1.0.0": {
         "dependencies": {
           "Microsoft.Orleans.CodeGenerator.MSBuild": "3.5.1",
           "Microsoft.Orleans.Core.Abstractions": "3.5.1"
@@ -33,7 +33,7 @@
     }
   },
   "libraries": {
-    "GrainInterfaces/3.0.0-dev": {
+    "GrainInterfaces/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

@@ -1,20 +1,72 @@
 {
   "format": 1,
   "restore": {
-    "/Users/johan/Documents/Datalogi/BDS/bds/one/BankStream/Grains/Grains.csproj": {}
+    "/Users/johanpedersen/Documents/Datalogi/BDS/Assignments/one/BankStream/Grains/Grains.csproj": {}
   },
   "projects": {
-    "/Users/johan/Documents/Datalogi/BDS/bds/one/BankStream/GrainInterfaces/GrainInterfaces.csproj": {
+    "/Users/johanpedersen/Documents/Datalogi/BDS/Assignments/one/BankStream/Common/Common.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/johan/Documents/Datalogi/BDS/bds/one/BankStream/GrainInterfaces/GrainInterfaces.csproj",
-        "projectName": "GrainInterfaces",
-        "projectPath": "/Users/johan/Documents/Datalogi/BDS/bds/one/BankStream/GrainInterfaces/GrainInterfaces.csproj",
-        "packagesPath": "/Users/johan/.nuget/packages/",
-        "outputPath": "/Users/johan/Documents/Datalogi/BDS/bds/one/BankStream/GrainInterfaces/obj/",
+        "projectUniqueName": "/Users/johanpedersen/Documents/Datalogi/BDS/Assignments/one/BankStream/Common/Common.csproj",
+        "projectName": "Common",
+        "projectPath": "/Users/johanpedersen/Documents/Datalogi/BDS/Assignments/one/BankStream/Common/Common.csproj",
+        "packagesPath": "/Users/johanpedersen/.nuget/packages/",
+        "outputPath": "/Users/johanpedersen/Documents/Datalogi/BDS/Assignments/one/BankStream/Common/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/Users/johan/.nuget/NuGet/NuGet.Config"
+          "/Users/johanpedersen/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/6.0.100/RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/Users/johanpedersen/Documents/Datalogi/BDS/Assignments/one/BankStream/GrainInterfaces/GrainInterfaces.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/johanpedersen/Documents/Datalogi/BDS/Assignments/one/BankStream/GrainInterfaces/GrainInterfaces.csproj",
+        "projectName": "GrainInterfaces",
+        "projectPath": "/Users/johanpedersen/Documents/Datalogi/BDS/Assignments/one/BankStream/GrainInterfaces/GrainInterfaces.csproj",
+        "packagesPath": "/Users/johanpedersen/.nuget/packages/",
+        "outputPath": "/Users/johanpedersen/Documents/Datalogi/BDS/Assignments/one/BankStream/GrainInterfaces/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/Users/johanpedersen/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net6.0"
@@ -68,17 +120,17 @@
         }
       }
     },
-    "/Users/johan/Documents/Datalogi/BDS/bds/one/BankStream/Grains/Grains.csproj": {
+    "/Users/johanpedersen/Documents/Datalogi/BDS/Assignments/one/BankStream/Grains/Grains.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/johan/Documents/Datalogi/BDS/bds/one/BankStream/Grains/Grains.csproj",
+        "projectUniqueName": "/Users/johanpedersen/Documents/Datalogi/BDS/Assignments/one/BankStream/Grains/Grains.csproj",
         "projectName": "Grains",
-        "projectPath": "/Users/johan/Documents/Datalogi/BDS/bds/one/BankStream/Grains/Grains.csproj",
-        "packagesPath": "/Users/johan/.nuget/packages/",
-        "outputPath": "/Users/johan/Documents/Datalogi/BDS/bds/one/BankStream/Grains/obj/",
+        "projectPath": "/Users/johanpedersen/Documents/Datalogi/BDS/Assignments/one/BankStream/Grains/Grains.csproj",
+        "packagesPath": "/Users/johanpedersen/.nuget/packages/",
+        "outputPath": "/Users/johanpedersen/Documents/Datalogi/BDS/Assignments/one/BankStream/Grains/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/Users/johan/.nuget/NuGet/NuGet.Config"
+          "/Users/johanpedersen/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net6.0"
@@ -90,8 +142,11 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "/Users/johan/Documents/Datalogi/BDS/bds/one/BankStream/GrainInterfaces/GrainInterfaces.csproj": {
-                "projectPath": "/Users/johan/Documents/Datalogi/BDS/bds/one/BankStream/GrainInterfaces/GrainInterfaces.csproj"
+              "/Users/johanpedersen/Documents/Datalogi/BDS/Assignments/one/BankStream/Common/Common.csproj": {
+                "projectPath": "/Users/johanpedersen/Documents/Datalogi/BDS/Assignments/one/BankStream/Common/Common.csproj"
+              },
+              "/Users/johanpedersen/Documents/Datalogi/BDS/Assignments/one/BankStream/GrainInterfaces/GrainInterfaces.csproj": {
+                "projectPath": "/Users/johanpedersen/Documents/Datalogi/BDS/Assignments/one/BankStream/GrainInterfaces/GrainInterfaces.csproj"
               }
             }
           }

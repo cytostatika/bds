@@ -1,6 +1,10 @@
-﻿using Orleans;
+﻿using Common;
+using Grains;
+using Microsoft.Extensions.DependencyInjection;
+using Orleans;
 using Orleans.Hosting;
 using Microsoft.Extensions.Hosting;
+using Grains;
 
 await Host.CreateDefaultBuilder()
     .UseOrleans(siloBuilder =>
@@ -8,6 +12,6 @@ await Host.CreateDefaultBuilder()
         siloBuilder
             .UseLocalhostClustering()
             .AddMemoryGrainStorage("PubSubStore")
-            .AddSimpleMessageStreamProvider("SMSProvider");
+            .AddSimpleMessageStreamProvider(Constants.StreamProvider);
     })
     .RunConsoleAsync();

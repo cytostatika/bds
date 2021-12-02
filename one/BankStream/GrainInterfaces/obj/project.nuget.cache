@@ -1,13 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "sbcZhPf9doznBxatPcL20d/YmGQ/H5hwUFblk/BLcXZtP6OXLzrLJaDfbJxIE63yu2eLz8cOMNNsaUyL97rVXw==",
+  "dgSpecHash": "GOlMB83bn0opuvE4445bnRx0GJVf1/7t3f3A6uxOGC+WI8O17bZUVC8PrN1nRY9mdsrWORBBR21WPMk3hHBNUQ==",
   "success": true,
-  "projectFilePath": "/Users/johan/Documents/Datalogi/BDS/bds/one/BankStream/GrainInterfaces/GrainInterfaces.csproj",
+  "projectFilePath": "/Users/johanpedersen/Documents/Datalogi/BDS/Assignments/one/BankStream/GrainInterfaces/GrainInterfaces.csproj",
   "expectedPackageFiles": [
-    "/Users/johan/.nuget/packages/microsoft.orleans.codegenerator.msbuild/3.5.1/microsoft.orleans.codegenerator.msbuild.3.5.1.nupkg.sha512",
-    "/Users/johan/.nuget/packages/microsoft.orleans.core.abstractions/3.5.1/microsoft.orleans.core.abstractions.3.5.1.nupkg.sha512",
-    "/Users/johan/.nuget/packages/system.memory/4.5.3/system.memory.4.5.3.nupkg.sha512",
-    "/Users/johan/.nuget/packages/system.threading.tasks.extensions/4.5.4/system.threading.tasks.extensions.4.5.4.nupkg.sha512"
+    "/Users/johanpedersen/.nuget/packages/microsoft.orleans.codegenerator.msbuild/3.5.1/microsoft.orleans.codegenerator.msbuild.3.5.1.nupkg.sha512",
+    "/Users/johanpedersen/.nuget/packages/microsoft.orleans.core.abstractions/3.5.1/microsoft.orleans.core.abstractions.3.5.1.nupkg.sha512",
+    "/Users/johanpedersen/.nuget/packages/system.memory/4.5.3/system.memory.4.5.3.nupkg.sha512",
+    "/Users/johanpedersen/.nuget/packages/system.threading.tasks.extensions/4.5.4/system.threading.tasks.extensions.4.5.4.nupkg.sha512"
   ],
   "logs": []
 }

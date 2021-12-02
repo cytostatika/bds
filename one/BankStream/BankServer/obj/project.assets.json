@@ -2046,6 +2046,44 @@
         "runtime": {
           "lib/netstandard1.3/System.Xml.XmlDocument.dll": {}
         }
+      },
+      "Common/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "compile": {
+          "bin/placeholder/Common.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Common.dll": {}
+        }
+      },
+      "GrainInterfaces/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "dependencies": {
+          "Microsoft.Orleans.Core.Abstractions": "3.5.1"
+        },
+        "compile": {
+          "bin/placeholder/GrainInterfaces.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/GrainInterfaces.dll": {}
+        }
+      },
+      "Grains/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "dependencies": {
+          "Common": "1.0.0",
+          "GrainInterfaces": "1.0.0",
+          "Microsoft.Orleans.Core.Abstractions": "3.5.1"
+        },
+        "compile": {
+          "bin/placeholder/Grains.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Grains.dll": {}
+        }
       }
     }
   },
@@ -6959,10 +6997,28 @@
         "system.xml.xmldocument.4.3.0.nupkg.sha512",
         "system.xml.xmldocument.nuspec"
       ]
+    },
+    "Common/1.0.0": {
+      "type": "project",
+      "path": "../Common/Common.csproj",
+      "msbuildProject": "../Common/Common.csproj"
+    },
+    "GrainInterfaces/1.0.0": {
+      "type": "project",
+      "path": "../GrainInterfaces/GrainInterfaces.csproj",
+      "msbuildProject": "../GrainInterfaces/GrainInterfaces.csproj"
+    },
+    "Grains/1.0.0": {
+      "type": "project",
+      "path": "../Grains/Grains.csproj",
+      "msbuildProject": "../Grains/Grains.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net6.0": [
+      "Common >= 1.0.0",
+      "GrainInterfaces >= 1.0.0",
+      "Grains >= 1.0.0",
       "Microsoft.Extensions.Hosting >= 6.0.0",
       "Microsoft.Extensions.Logging.Console >= 6.0.0",
       "Microsoft.Orleans.OrleansProviders >= 3.5.1",
@@ -6970,19 +7026,19 @@
     ]
   },
   "packageFolders": {
-    "/Users/johan/.nuget/packages/": {}
+    "/Users/johanpedersen/.nuget/packages/": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/johan/Documents/Datalogi/BDS/bds/one/BankStream/BankServer/BankServer.csproj",
+      "projectUniqueName": "/Users/johanpedersen/Documents/Datalogi/BDS/Assignments/one/BankStream/BankServer/BankServer.csproj",
       "projectName": "BankServer",
-      "projectPath": "/Users/johan/Documents/Datalogi/BDS/bds/one/BankStream/BankServer/BankServer.csproj",
-      "packagesPath": "/Users/johan/.nuget/packages/",
-      "outputPath": "/Users/johan/Documents/Datalogi/BDS/bds/one/BankStream/BankServer/obj/",
+      "projectPath": "/Users/johanpedersen/Documents/Datalogi/BDS/Assignments/one/BankStream/BankServer/BankServer.csproj",
+      "packagesPath": "/Users/johanpedersen/.nuget/packages/",
+      "outputPath": "/Users/johanpedersen/Documents/Datalogi/BDS/Assignments/one/BankStream/BankServer/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "/Users/johan/.nuget/NuGet/NuGet.Config"
+        "/Users/johanpedersen/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net6.0"
@@ -6993,7 +7049,17 @@
       "frameworks": {
         "net6.0": {
           "targetAlias": "net6.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "/Users/johanpedersen/Documents/Datalogi/BDS/Assignments/one/BankStream/Common/Common.csproj": {
+              "projectPath": "/Users/johanpedersen/Documents/Datalogi/BDS/Assignments/one/BankStream/Common/Common.csproj"
+            },
+            "/Users/johanpedersen/Documents/Datalogi/BDS/Assignments/one/BankStream/GrainInterfaces/GrainInterfaces.csproj": {
+              "projectPath": "/Users/johanpedersen/Documents/Datalogi/BDS/Assignments/one/BankStream/GrainInterfaces/GrainInterfaces.csproj"
+            },
+            "/Users/johanpedersen/Documents/Datalogi/BDS/Assignments/one/BankStream/Grains/Grains.csproj": {
+              "projectPath": "/Users/johanpedersen/Documents/Datalogi/BDS/Assignments/one/BankStream/Grains/Grains.csproj"
+            }
+          }
         }
       },
       "warningProperties": {

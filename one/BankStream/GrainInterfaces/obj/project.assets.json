@@ -240,19 +240,19 @@
     ]
   },
   "packageFolders": {
-    "/Users/johan/.nuget/packages/": {}
+    "/Users/johanpedersen/.nuget/packages/": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/johan/Documents/Datalogi/BDS/bds/one/BankStream/GrainInterfaces/GrainInterfaces.csproj",
+      "projectUniqueName": "/Users/johanpedersen/Documents/Datalogi/BDS/Assignments/one/BankStream/GrainInterfaces/GrainInterfaces.csproj",
       "projectName": "GrainInterfaces",
-      "projectPath": "/Users/johan/Documents/Datalogi/BDS/bds/one/BankStream/GrainInterfaces/GrainInterfaces.csproj",
-      "packagesPath": "/Users/johan/.nuget/packages/",
-      "outputPath": "/Users/johan/Documents/Datalogi/BDS/bds/one/BankStream/GrainInterfaces/obj/",
+      "projectPath": "/Users/johanpedersen/Documents/Datalogi/BDS/Assignments/one/BankStream/GrainInterfaces/GrainInterfaces.csproj",
+      "packagesPath": "/Users/johanpedersen/.nuget/packages/",
+      "outputPath": "/Users/johanpedersen/Documents/Datalogi/BDS/Assignments/one/BankStream/GrainInterfaces/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "/Users/johan/.nuget/NuGet/NuGet.Config"
+        "/Users/johanpedersen/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net6.0"

@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "/Users/johan/Documents/Datalogi/BDS/bds/one/Streaming/GrainInterfaces/GrainInterfaces.csproj": {}
+    "/Users/johanpedersen/Documents/Datalogi/BDS/Assignments/one/Streaming/GrainInterfaces/GrainInterfaces.csproj": {}
   },
   "projects": {
-    "/Users/johan/Documents/Datalogi/BDS/bds/one/Streaming/GrainInterfaces/GrainInterfaces.csproj": {
+    "/Users/johanpedersen/Documents/Datalogi/BDS/Assignments/one/Streaming/GrainInterfaces/GrainInterfaces.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/johan/Documents/Datalogi/BDS/bds/one/Streaming/GrainInterfaces/GrainInterfaces.csproj",
+        "projectUniqueName": "/Users/johanpedersen/Documents/Datalogi/BDS/Assignments/one/Streaming/GrainInterfaces/GrainInterfaces.csproj",
         "projectName": "GrainInterfaces",
-        "projectPath": "/Users/johan/Documents/Datalogi/BDS/bds/one/Streaming/GrainInterfaces/GrainInterfaces.csproj",
-        "packagesPath": "/Users/johan/.nuget/packages/",
-        "outputPath": "/Users/johan/Documents/Datalogi/BDS/bds/one/Streaming/GrainInterfaces/obj/",
+        "projectPath": "/Users/johanpedersen/Documents/Datalogi/BDS/Assignments/one/Streaming/GrainInterfaces/GrainInterfaces.csproj",
+        "packagesPath": "/Users/johanpedersen/.nuget/packages/",
+        "outputPath": "/Users/johanpedersen/Documents/Datalogi/BDS/Assignments/one/Streaming/GrainInterfaces/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/Users/johan/.nuget/NuGet/NuGet.Config"
+          "/Users/johanpedersen/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net5.0"

@@ -10,9 +10,10 @@ namespace Common
 
         public const string ClusterId = "dev";
 
-        public const string StreamProvider = "my-stream-provider";
+        public const string StreamProvider = "SMSProvider";
 
-        public const string StreamNamespace = "my-namespace";
+        public const string WithdrawStreamName = "withdraw";
+        public const string DepositStreamName = "deposit";
 
         public const string EHConsumerGroup = "my-group";
 

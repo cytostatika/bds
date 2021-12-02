@@ -7042,19 +7042,19 @@
     ]
   },
   "packageFolders": {
-    "/Users/johan/.nuget/packages/": {}
+    "/Users/johanpedersen/.nuget/packages/": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/johan/Documents/Datalogi/BDS/bds/one/Streaming/Silo/Silo.csproj",
+      "projectUniqueName": "/Users/johanpedersen/Documents/Datalogi/BDS/Assignments/one/Streaming/Silo/Silo.csproj",
       "projectName": "Silo",
-      "projectPath": "/Users/johan/Documents/Datalogi/BDS/bds/one/Streaming/Silo/Silo.csproj",
-      "packagesPath": "/Users/johan/.nuget/packages/",
-      "outputPath": "/Users/johan/Documents/Datalogi/BDS/bds/one/Streaming/Silo/obj/",
+      "projectPath": "/Users/johanpedersen/Documents/Datalogi/BDS/Assignments/one/Streaming/Silo/Silo.csproj",
+      "packagesPath": "/Users/johanpedersen/.nuget/packages/",
+      "outputPath": "/Users/johanpedersen/Documents/Datalogi/BDS/Assignments/one/Streaming/Silo/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "/Users/johan/.nuget/NuGet/NuGet.Config"
+        "/Users/johanpedersen/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net5.0"
@@ -7066,11 +7066,11 @@
         "net5.0": {
           "targetAlias": "net5.0",
           "projectReferences": {
-            "/Users/johan/Documents/Datalogi/BDS/bds/one/Streaming/GrainInterfaces/GrainInterfaces.csproj": {
-              "projectPath": "/Users/johan/Documents/Datalogi/BDS/bds/one/Streaming/GrainInterfaces/GrainInterfaces.csproj"
+            "/Users/johanpedersen/Documents/Datalogi/BDS/Assignments/one/Streaming/GrainInterfaces/GrainInterfaces.csproj": {
+              "projectPath": "/Users/johanpedersen/Documents/Datalogi/BDS/Assignments/one/Streaming/GrainInterfaces/GrainInterfaces.csproj"
             },
-            "/Users/johan/Documents/Datalogi/BDS/bds/one/Streaming/Grains/Grains.csproj": {
-              "projectPath": "/Users/johan/Documents/Datalogi/BDS/bds/one/Streaming/Grains/Grains.csproj"
+            "/Users/johanpedersen/Documents/Datalogi/BDS/Assignments/one/Streaming/Grains/Grains.csproj": {
+              "projectPath": "/Users/johanpedersen/Documents/Datalogi/BDS/Assignments/one/Streaming/Grains/Grains.csproj"
             }
           }
         }

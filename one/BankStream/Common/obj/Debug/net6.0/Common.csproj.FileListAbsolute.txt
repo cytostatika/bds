@@ -1,0 +1,12 @@
+/Users/johanpedersen/Documents/Datalogi/BDS/Assignments/one/BankStream/Common/bin/Debug/net6.0/Common.deps.json
+/Users/johanpedersen/Documents/Datalogi/BDS/Assignments/one/BankStream/Common/bin/Debug/net6.0/Common.dll
+/Users/johanpedersen/Documents/Datalogi/BDS/Assignments/one/BankStream/Common/bin/Debug/net6.0/ref/Common.dll
+/Users/johanpedersen/Documents/Datalogi/BDS/Assignments/one/BankStream/Common/bin/Debug/net6.0/Common.pdb
+/Users/johanpedersen/Documents/Datalogi/BDS/Assignments/one/BankStream/Common/obj/Debug/net6.0/Common.csproj.AssemblyReference.cache
+/Users/johanpedersen/Documents/Datalogi/BDS/Assignments/one/BankStream/Common/obj/Debug/net6.0/Common.GeneratedMSBuildEditorConfig.editorconfig
+/Users/johanpedersen/Documents/Datalogi/BDS/Assignments/one/BankStream/Common/obj/Debug/net6.0/Common.AssemblyInfoInputs.cache
+/Users/johanpedersen/Documents/Datalogi/BDS/Assignments/one/BankStream/Common/obj/Debug/net6.0/Common.AssemblyInfo.cs
+/Users/johanpedersen/Documents/Datalogi/BDS/Assignments/one/BankStream/Common/obj/Debug/net6.0/Common.csproj.CoreCompileInputs.cache
+/Users/johanpedersen/Documents/Datalogi/BDS/Assignments/one/BankStream/Common/obj/Debug/net6.0/Common.dll
+/Users/johanpedersen/Documents/Datalogi/BDS/Assignments/one/BankStream/Common/obj/Debug/net6.0/ref/Common.dll
+/Users/johanpedersen/Documents/Datalogi/BDS/Assignments/one/BankStream/Common/obj/Debug/net6.0/Common.pdb

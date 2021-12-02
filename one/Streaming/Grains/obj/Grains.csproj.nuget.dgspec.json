@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "/Users/johan/Documents/Datalogi/BDS/bds/one/Streaming/Grains/Grains.csproj": {}
+    "/Users/johanpedersen/Documents/Datalogi/BDS/Assignments/one/Streaming/Grains/Grains.csproj": {}
   },
   "projects": {
-    "/Users/johan/Documents/Datalogi/BDS/bds/one/Streaming/Common/Common.csproj": {
+    "/Users/johanpedersen/Documents/Datalogi/BDS/Assignments/one/Streaming/Common/Common.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/johan/Documents/Datalogi/BDS/bds/one/Streaming/Common/Common.csproj",
+        "projectUniqueName": "/Users/johanpedersen/Documents/Datalogi/BDS/Assignments/one/Streaming/Common/Common.csproj",
         "projectName": "Common",
-        "projectPath": "/Users/johan/Documents/Datalogi/BDS/bds/one/Streaming/Common/Common.csproj",
-        "packagesPath": "/Users/johan/.nuget/packages/",
-        "outputPath": "/Users/johan/Documents/Datalogi/BDS/bds/one/Streaming/Common/obj/",
+        "projectPath": "/Users/johanpedersen/Documents/Datalogi/BDS/Assignments/one/Streaming/Common/Common.csproj",
+        "packagesPath": "/Users/johanpedersen/.nuget/packages/",
+        "outputPath": "/Users/johanpedersen/Documents/Datalogi/BDS/Assignments/one/Streaming/Common/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/Users/johan/.nuget/NuGet/NuGet.Config"
+          "/Users/johanpedersen/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp3.1"
@@ -73,17 +73,17 @@
         }
       }
     },
-    "/Users/johan/Documents/Datalogi/BDS/bds/one/Streaming/GrainInterfaces/GrainInterfaces.csproj": {
+    "/Users/johanpedersen/Documents/Datalogi/BDS/Assignments/one/Streaming/GrainInterfaces/GrainInterfaces.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/johan/Documents/Datalogi/BDS/bds/one/Streaming/GrainInterfaces/GrainInterfaces.csproj",
+        "projectUniqueName": "/Users/johanpedersen/Documents/Datalogi/BDS/Assignments/one/Streaming/GrainInterfaces/GrainInterfaces.csproj",
         "projectName": "GrainInterfaces",
-        "projectPath": "/Users/johan/Documents/Datalogi/BDS/bds/one/Streaming/GrainInterfaces/GrainInterfaces.csproj",
-        "packagesPath": "/Users/johan/.nuget/packages/",
-        "outputPath": "/Users/johan/Documents/Datalogi/BDS/bds/one/Streaming/GrainInterfaces/obj/",
+        "projectPath": "/Users/johanpedersen/Documents/Datalogi/BDS/Assignments/one/Streaming/GrainInterfaces/GrainInterfaces.csproj",
+        "packagesPath": "/Users/johanpedersen/.nuget/packages/",
+        "outputPath": "/Users/johanpedersen/Documents/Datalogi/BDS/Assignments/one/Streaming/GrainInterfaces/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/Users/johan/.nuget/NuGet/NuGet.Config"
+          "/Users/johanpedersen/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net5.0"
@@ -137,17 +137,17 @@
         }
       }
     },
-    "/Users/johan/Documents/Datalogi/BDS/bds/one/Streaming/Grains/Grains.csproj": {
+    "/Users/johanpedersen/Documents/Datalogi/BDS/Assignments/one/Streaming/Grains/Grains.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/johan/Documents/Datalogi/BDS/bds/one/Streaming/Grains/Grains.csproj",
+        "projectUniqueName": "/Users/johanpedersen/Documents/Datalogi/BDS/Assignments/one/Streaming/Grains/Grains.csproj",
         "projectName": "Grains",
-        "projectPath": "/Users/johan/Documents/Datalogi/BDS/bds/one/Streaming/Grains/Grains.csproj",
-        "packagesPath": "/Users/johan/.nuget/packages/",
-        "outputPath": "/Users/johan/Documents/Datalogi/BDS/bds/one/Streaming/Grains/obj/",
+        "projectPath": "/Users/johanpedersen/Documents/Datalogi/BDS/Assignments/one/Streaming/Grains/Grains.csproj",
+        "packagesPath": "/Users/johanpedersen/.nuget/packages/",
+        "outputPath": "/Users/johanpedersen/Documents/Datalogi/BDS/Assignments/one/Streaming/Grains/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/Users/johan/.nuget/NuGet/NuGet.Config"
+          "/Users/johanpedersen/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net5.0"
@@ -159,11 +159,11 @@
           "net5.0": {
             "targetAlias": "net5.0",
             "projectReferences": {
-              "/Users/johan/Documents/Datalogi/BDS/bds/one/Streaming/Common/Common.csproj": {
-                "projectPath": "/Users/johan/Documents/Datalogi/BDS/bds/one/Streaming/Common/Common.csproj"
+              "/Users/johanpedersen/Documents/Datalogi/BDS/Assignments/one/Streaming/Common/Common.csproj": {
+                "projectPath": "/Users/johanpedersen/Documents/Datalogi/BDS/Assignments/one/Streaming/Common/Common.csproj"
               },
-              "/Users/johan/Documents/Datalogi/BDS/bds/one/Streaming/GrainInterfaces/GrainInterfaces.csproj": {
-                "projectPath": "/Users/johan/Documents/Datalogi/BDS/bds/one/Streaming/GrainInterfaces/GrainInterfaces.csproj"
+              "/Users/johanpedersen/Documents/Datalogi/BDS/Assignments/one/Streaming/GrainInterfaces/GrainInterfaces.csproj": {
+                "projectPath": "/Users/johanpedersen/Documents/Datalogi/BDS/Assignments/one/Streaming/GrainInterfaces/GrainInterfaces.csproj"
               }
             }
           }

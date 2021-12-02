@@ -234,19 +234,19 @@
     ]
   },
   "packageFolders": {
-    "/Users/johan/.nuget/packages/": {}
+    "/Users/johanpedersen/.nuget/packages/": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/johan/Documents/Datalogi/BDS/bds/one/BankAccount/AccountTransfer.Interfaces/AccountTransfer.Interfaces.csproj",
+      "projectUniqueName": "/Users/johanpedersen/Documents/Datalogi/BDS/Assignments/one/BankAccount/AccountTransfer.Interfaces/AccountTransfer.Interfaces.csproj",
       "projectName": "AccountTransfer.Interfaces",
-      "projectPath": "/Users/johan/Documents/Datalogi/BDS/bds/one/BankAccount/AccountTransfer.Interfaces/AccountTransfer.Interfaces.csproj",
-      "packagesPath": "/Users/johan/.nuget/packages/",
-      "outputPath": "/Users/johan/Documents/Datalogi/BDS/bds/one/BankAccount/AccountTransfer.Interfaces/obj/",
+      "projectPath": "/Users/johanpedersen/Documents/Datalogi/BDS/Assignments/one/BankAccount/AccountTransfer.Interfaces/AccountTransfer.Interfaces.csproj",
+      "packagesPath": "/Users/johanpedersen/.nuget/packages/",
+      "outputPath": "/Users/johanpedersen/Documents/Datalogi/BDS/Assignments/one/BankAccount/AccountTransfer.Interfaces/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "/Users/johan/.nuget/NuGet/NuGet.Config"
+        "/Users/johanpedersen/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net5.0"
