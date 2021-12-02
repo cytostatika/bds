@@ -70,6 +70,7 @@ namespace OrleansGeneratedCode
             feature.AddKnownType("Grains.AccountGrain,Grains", "Grains.AccountGrain");
             feature.AddKnownType("Grains.AtmGrain,Grains", "Grains.AtmGrain");
             feature.AddKnownType("Grains.Balance,Grains", "Grains.Balance");
+            feature.AddKnownType("Grains.AccountUpdate,Grains", "Grains.AccountUpdate");
             feature.AddKnownType("Microsoft.CodeAnalysis.EmbeddedAttribute,Common", "Microsoft.CodeAnalysis.EmbeddedAttribute");
             feature.AddKnownType("System.Runtime.CompilerServices.NullableAttribute", "NullableAttribute");
             feature.AddKnownType("System.Runtime.CompilerServices.NullableContextAttribute", "NullableContextAttribute");

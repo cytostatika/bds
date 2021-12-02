@@ -53,12 +53,12 @@ namespace Grains
             //Get one of the providers which we defined in config
             var streamProvider = GetStreamProvider(Constants.StreamProvider);
             //Get the reference to a stream
-            var stream = streamProvider.GetStream<uint>(guid, Constants.DepositStreamName);
+            var stream = streamProvider.GetStream<AccountUpdate>(guid, Constants.DepositStreamName);
             //Set our OnNext method to the lambda which simply prints the data. This doesn't make new subscriptions, because we are using implicit subscriptions via [ImplicitStreamSubscription].
             await stream.SubscribeAsync(async (data, token) =>
             {
                 Console.WriteLine(data);
-                Console.WriteLine("HEEEEEEEST");
+                await data.AccountGrain.Deposit(data.Amount);
             });
         }
         
