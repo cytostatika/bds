@@ -15,6 +15,7 @@ namespace Grains
     }
     
     [ImplicitStreamSubscription(Constants.DepositStreamName)]
+    [ImplicitStreamSubscription(Constants.WithdrawStreamName)]
     public class AccountGrain : Grain, IAccountGrain
     {
         private readonly Balance _balance;
@@ -52,14 +53,16 @@ namespace Grains
             var guid = this.GetPrimaryKey(out identityString);
             //Get one of the providers which we defined in config
             var streamProvider = GetStreamProvider(Constants.StreamProvider);
+            
             //Get the reference to a stream
-            var stream = streamProvider.GetStream<AccountUpdate>(guid, Constants.DepositStreamName);
+            var withdrawStream = streamProvider.GetStream<AccountUpdate>(guid, Constants.WithdrawStreamName);
             //Set our OnNext method to the lambda which simply prints the data. This doesn't make new subscriptions, because we are using implicit subscriptions via [ImplicitStreamSubscription].
-            await stream.SubscribeAsync(async (data, token) =>
-            {
-                Console.WriteLine(data);
-                await data.AccountGrain.Deposit(data.Amount);
-            });
+            await withdrawStream.SubscribeAsync((data, token) => data.AccountGrain.Withdraw(data.Amount));
+            
+            //Get the reference to a stream
+            var depositStream = streamProvider.GetStream<AccountUpdate>(guid, Constants.DepositStreamName);
+            //Set our OnNext method to the lambda which simply prints the data. This doesn't make new subscriptions, because we are using implicit subscriptions via [ImplicitStreamSubscription].
+            await depositStream.SubscribeAsync((data, token) => data.AccountGrain.Deposit(data.Amount));
         }
         
         

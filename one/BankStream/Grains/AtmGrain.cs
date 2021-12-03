@@ -34,15 +34,16 @@ namespace Grains
         {
             _guid = Guid.NewGuid();
             var streamProvider = GetStreamProvider(Constants.StreamProvider);
-            //var withdrawStream = streamProvider.GetStream<uint>(guid, Constants.WithdrawStreamName);
+            var withdrawStream = streamProvider.GetStream<AccountUpdate>(_guid, Constants.WithdrawStreamName);
             var depositStream = streamProvider.GetStream<AccountUpdate>(_guid, Constants.DepositStreamName);
 
 
-            //await withdrawStream.OnNextAsync(amountToTransfer);
-            await depositStream.OnNextAsync(new AccountUpdate(amountToTransfer, toAccount));
-            // await Task.WhenAll(
-            //     fromAccount.Withdraw(amountToTransfer),
-            //     toAccount.Deposit(amountToTransfer));
+            Task withdrawTask = withdrawStream.OnNextAsync(new AccountUpdate(amountToTransfer, fromAccount));
+            Task depositTask = depositStream.OnNextAsync(new AccountUpdate(amountToTransfer, toAccount));
+            
+            await Task.WhenAll(
+                withdrawTask,
+                depositTask);
         }
     }
 }
