@@ -3,33 +3,26 @@ using System.Threading.Tasks;
 using Common;
 using GrainInterfaces;
 using Orleans;
-using Orleans.Concurrency;
 
 namespace Grains
 {
     public class AccountUpdate
     {
-        private readonly uint _amount;
-        private readonly IAccountGrain _accountGrain;
-
-        public uint Amount => _amount;
-        public IAccountGrain AccountGrain => _accountGrain;
-
-        public AccountUpdate(uint amount, IAccountGrain accountGrain)
+        public AccountUpdate(uint amount, string accountId)
         {
-            _amount = amount;
-            _accountGrain = accountGrain;
+            Amount = amount;
+            AccountId = accountId;
         }
 
-        public override string ToString()
-        {
-            return $"{_amount} to {_accountGrain}";
-        }
+        public uint Amount { get; }
+
+        public string AccountId { get; }
     }
+
     public class AtmGrain : Grain, IAtmGrain
     {
         private Guid _guid;
-        
+
         public async Task Transfer(IAccountGrain fromAccount, IAccountGrain toAccount, uint amountToTransfer)
         {
             _guid = Guid.NewGuid();
@@ -37,10 +30,11 @@ namespace Grains
             var withdrawStream = streamProvider.GetStream<AccountUpdate>(_guid, Constants.WithdrawStreamName);
             var depositStream = streamProvider.GetStream<AccountUpdate>(_guid, Constants.DepositStreamName);
 
+            Task withdrawTask =
+                withdrawStream.OnNextAsync(new AccountUpdate(amountToTransfer, fromAccount.GetPrimaryKeyString()));
+            Task depositTask =
+                depositStream.OnNextAsync(new AccountUpdate(amountToTransfer, toAccount.GetPrimaryKeyString()));
 
-            Task withdrawTask = withdrawStream.OnNextAsync(new AccountUpdate(amountToTransfer, fromAccount));
-            Task depositTask = depositStream.OnNextAsync(new AccountUpdate(amountToTransfer, toAccount));
-            
             await Task.WhenAll(
                 withdrawTask,
                 depositTask);

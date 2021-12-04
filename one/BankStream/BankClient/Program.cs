@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Threading.Tasks;
+using Common;
 using GrainInterfaces;
 using Microsoft.Extensions.Logging;
 using Orleans;
 using Orleans.Hosting;
-using Constants = Common.Constants;
 
 using var client = new ClientBuilder()
     .UseLocalhostClustering()
@@ -15,8 +15,7 @@ using var client = new ClientBuilder()
 await client.Connect();
 
 
-
-var accountNames = new[] { "Xaawo", "Pasqualino", "Derick", "Ida", "Stacy", "Xiao" };
+var accountNames = new[] {"Xaawo", "Pasqualino", "Derick", "Ida", "Stacy", "Xiao"};
 var random = new Random();
 while (!Console.KeyAvailable)
 {
@@ -26,10 +25,8 @@ while (!Console.KeyAvailable)
     var fromId = random.Next(accountNames.Length);
     var toId = random.Next(accountNames.Length);
     while (toId == fromId)
-    {
         // Avoid transfering to/from the same account, since it would be meaningless
         toId = (toId + 1) % accountNames.Length;
-    }
 
     var fromName = accountNames[fromId];
     var toName = accountNames[toId];
@@ -44,15 +41,13 @@ while (!Console.KeyAvailable)
         var fromBalance = await from.GetBalance();
         var toBalance = await to.GetBalance();
 
-        Console.WriteLine($"We transfered 100 credits from {fromName} to {toName}.\n{fromName} balance: {fromBalance}\n{toName} balance: {toBalance}\n");
+        Console.WriteLine(
+            $"We transfered 100 credits from {fromName} to {toName}.\n{fromName} balance: {fromBalance}\n{toName} balance: {toBalance}\n");
     }
     catch (Exception exception)
     {
         Console.WriteLine($"Error transfering 100 credits from {fromName} to {toName}: {exception.Message}");
-        if (exception.InnerException is { } inner)
-        {
-            Console.WriteLine($"\tInnerException: {inner.Message}\n");
-        }
+        if (exception.InnerException is { } inner) Console.WriteLine($"\tInnerException: {inner.Message}\n");
 
         Console.WriteLine();
     }

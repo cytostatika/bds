@@ -1,10 +1,6 @@
 ﻿using Common;
-using Grains;
-using Microsoft.Extensions.DependencyInjection;
-using Orleans;
-using Orleans.Hosting;
 using Microsoft.Extensions.Hosting;
-using Grains;
+using Orleans.Hosting;
 
 await Host.CreateDefaultBuilder()
     .UseOrleans(siloBuilder =>
