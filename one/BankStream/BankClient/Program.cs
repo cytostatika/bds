@@ -25,7 +25,7 @@ while (!Console.KeyAvailable)
     var fromId = random.Next(accountNames.Length);
     var toId = random.Next(accountNames.Length);
     while (toId == fromId)
-        // Avoid transfering to/from the same account, since it would be meaningless
+        // Avoid transferring to/from the same account, since it would be meaningless
         toId = (toId + 1) % accountNames.Length;
 
     var fromName = accountNames[fromId];
@@ -42,14 +42,18 @@ while (!Console.KeyAvailable)
         var toBalance = await to.GetBalance();
 
         Console.WriteLine(
-            $"We transfered 100 credits from {fromName} to {toName}.\n{fromName} balance: {fromBalance}\n{toName} balance: {toBalance}\n");
+            $"We transferred 100 credits from {fromName} to {toName}.\n{fromName} balance: {fromBalance}\n{toName} balance: {toBalance}\n");
     }
-    catch (Exception exception)
+    catch (InvalidOperationException exception)
     {
-        Console.WriteLine($"Error transfering 100 credits from {fromName} to {toName}: {exception.Message}");
+        Console.WriteLine($"Error transferring 100 credits from {fromName} to {toName}: {exception.Message}");
         if (exception.InnerException is { } inner) Console.WriteLine($"\tInnerException: {inner.Message}\n");
 
         Console.WriteLine();
+    }
+    catch (Exception e)
+    {
+        Console.WriteLine($"Unexpected error: {e.Message}");
     }
 
     // Sleep and run again

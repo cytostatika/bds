@@ -62,6 +62,8 @@ namespace OrleansGeneratedCode
         {
             feature.Classes.Add(new global::Orleans.Metadata.GrainClassMetadata(typeof(global::Grains.AccountGrain)));
             feature.Classes.Add(new global::Orleans.Metadata.GrainClassMetadata(typeof(global::Grains.AtmGrain)));
+            feature.Classes.Add(new global::Orleans.Metadata.GrainClassMetadata(typeof(global::Grains.DepositConsumerGrain)));
+            feature.Classes.Add(new global::Orleans.Metadata.GrainClassMetadata(typeof(global::Grains.WithdrawalConsumerGrain)));
         }
 
         public void Populate(global::Orleans.Serialization.SerializerFeature feature)
@@ -69,6 +71,8 @@ namespace OrleansGeneratedCode
             feature.AddSerializerType(typeof(global::Grains.Balance), typeof(Grains.OrleansCodeGenGrains_BalanceSerializer), false);
             feature.AddKnownType("Grains.AccountGrain,Grains", "Grains.AccountGrain");
             feature.AddKnownType("Grains.AtmGrain,Grains", "Grains.AtmGrain");
+            feature.AddKnownType("Grains.DepositConsumerGrain,Grains", "Grains.DepositConsumerGrain");
+            feature.AddKnownType("Grains.WithdrawalConsumerGrain,Grains", "Grains.WithdrawalConsumerGrain");
             feature.AddKnownType("Grains.Balance,Grains", "Grains.Balance");
             feature.AddKnownType("Grains.AccountUpdate,Grains", "Grains.AccountUpdate");
             feature.AddKnownType("Microsoft.CodeAnalysis.EmbeddedAttribute,Common", "Microsoft.CodeAnalysis.EmbeddedAttribute");

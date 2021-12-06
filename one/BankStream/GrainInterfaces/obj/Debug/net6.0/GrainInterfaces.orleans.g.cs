@@ -206,6 +206,83 @@ namespace GrainInterfaces
             return base.InvokeMethodAsync<object>((int)0x7234586F, new object[]{fromAccount0 is global::Orleans.Grain ? fromAccount0.AsReference<global::GrainInterfaces.IAccountGrain>() : fromAccount0, toAccount1 is global::Orleans.Grain ? toAccount1.AsReference<global::GrainInterfaces.IAccountGrain>() : toAccount1, amountToTransfer2});
         }
     }
+
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("OrleansCodeGen", "2.0.0.0"), global::Orleans.CodeGeneration.MethodInvokerAttribute(typeof(global::GrainInterfaces.IConsumerGrain), unchecked((int)0xB56D06D5)), global::System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverageAttribute]
+    internal class OrleansCodeGenConsumerGrainMethodInvoker : global::Orleans.CodeGeneration.IGrainMethodInvoker
+    {
+        public async global::System.Threading.Tasks.Task<object> Invoke(global::Orleans.Runtime.IAddressable grain, global::Orleans.CodeGeneration.InvokeMethodRequest request)
+        {
+            int interfaceId = request.InterfaceId;
+            int methodId = request.MethodId;
+            var arguments = request.Arguments;
+            switch (interfaceId)
+            {
+                case unchecked((int)0xB56D06D5):
+                {
+                    var casted = ((global::GrainInterfaces.IConsumerGrain)grain);
+                    switch (methodId)
+                    {
+                        default:
+                            ThrowMethodNotImplemented(interfaceId, methodId);
+                            return null;
+                    }
+                }
+
+                default:
+                    ThrowInterfaceNotImplemented(interfaceId);
+                    return null;
+            }
+
+            void ThrowInterfaceNotImplemented(int i) => throw new global::System.NotImplementedException($"InterfaceId: 0x{i:X}");
+            void ThrowMethodNotImplemented(int i, int m) => throw new global::System.NotImplementedException($"InterfaceId: 0x{i:X}, MethodId: 0x{m:X}");
+        }
+
+        public int InterfaceId => unchecked((int)0xB56D06D5);
+        public ushort InterfaceVersion => 0;
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("OrleansCodeGen", "2.0.0.0"), global::System.SerializableAttribute, global::System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverageAttribute, global::Orleans.CodeGeneration.GrainReferenceAttribute(typeof(global::GrainInterfaces.IConsumerGrain))]
+    internal class OrleansCodeGenConsumerGrainReference : global::Orleans.Runtime.GrainReference, global::GrainInterfaces.IConsumerGrain
+    {
+        OrleansCodeGenConsumerGrainReference(global::Orleans.Runtime.GrainReference other): base(other)
+        {
+        }
+
+        OrleansCodeGenConsumerGrainReference(global::Orleans.Runtime.GrainReference other, global::Orleans.CodeGeneration.InvokeMethodOptions invokeMethodOptions): base(other, invokeMethodOptions)
+        {
+        }
+
+        OrleansCodeGenConsumerGrainReference(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context): base(info, context)
+        {
+        }
+
+        public override int InterfaceId => unchecked((int)0xB56D06D5);
+        public override ushort InterfaceVersion => 0;
+        public override string InterfaceName => "IConsumerGrain";
+        public override bool IsCompatible(int interfaceId) => interfaceId == unchecked((int)0xB56D06D5);
+        public override string GetMethodName(int interfaceId, int methodId)
+        {
+            switch (interfaceId)
+            {
+                case unchecked((int)0xB56D06D5):
+                {
+                    switch (methodId)
+                    {
+                        default:
+                            ThrowMethodNotImplemented(interfaceId, methodId);
+                            return null;
+                    }
+                }
+
+                default:
+                    ThrowInterfaceNotImplemented(interfaceId);
+                    return null;
+            }
+
+            void ThrowInterfaceNotImplemented(int i) => throw new global::System.NotImplementedException($"InterfaceId: 0x{i:X}");
+            void ThrowMethodNotImplemented(int i, int m) => throw new global::System.NotImplementedException($"InterfaceId: 0x{i:X}, MethodId: 0x{m:X}");
+        }
+    }
 }
 
 namespace OrleansGeneratedCode
@@ -217,6 +294,7 @@ namespace OrleansGeneratedCode
         {
             feature.Interfaces.Add(new global::Orleans.Metadata.GrainInterfaceMetadata(typeof(global::GrainInterfaces.IAccountGrain), typeof(GrainInterfaces.OrleansCodeGenAccountGrainReference), typeof(GrainInterfaces.OrleansCodeGenAccountGrainMethodInvoker), unchecked((int)0xD6071629)));
             feature.Interfaces.Add(new global::Orleans.Metadata.GrainInterfaceMetadata(typeof(global::GrainInterfaces.IAtmGrain), typeof(GrainInterfaces.OrleansCodeGenAtmGrainReference), typeof(GrainInterfaces.OrleansCodeGenAtmGrainMethodInvoker), (int)0x708EF08A));
+            feature.Interfaces.Add(new global::Orleans.Metadata.GrainInterfaceMetadata(typeof(global::GrainInterfaces.IConsumerGrain), typeof(GrainInterfaces.OrleansCodeGenConsumerGrainReference), typeof(GrainInterfaces.OrleansCodeGenConsumerGrainMethodInvoker), unchecked((int)0xB56D06D5)));
         }
 
         public void Populate(global::Orleans.Metadata.GrainClassFeature feature)
@@ -229,6 +307,7 @@ namespace OrleansGeneratedCode
             feature.AddKnownType("System.Threading.Tasks.Task", "Task");
             feature.AddKnownType("System.Threading.Tasks.Task`1", "Task`1'1");
             feature.AddKnownType("GrainInterfaces.IAtmGrain,GrainInterfaces", "GrainInterfaces.IAtmGrain");
+            feature.AddKnownType("GrainInterfaces.IConsumerGrain,GrainInterfaces", "GrainInterfaces.IConsumerGrain");
             feature.AddKnownType("Microsoft.CSharp.RuntimeBinder.CSharpArgumentInfo,Microsoft.CSharp", "Microsoft.CSharp.RuntimeBinder.CSharpArgumentInfo");
             feature.AddKnownType("Microsoft.CSharp.RuntimeBinder.CSharpArgumentInfoFlags,Microsoft.CSharp", "Microsoft.CSharp.RuntimeBinder.CSharpArgumentInfoFlags");
             feature.AddKnownType("Microsoft.CSharp.RuntimeBinder.CSharpBinderFlags,Microsoft.CSharp", "Microsoft.CSharp.RuntimeBinder.CSharpBinderFlags");

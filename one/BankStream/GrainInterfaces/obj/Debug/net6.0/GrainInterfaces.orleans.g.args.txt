@@ -7,6 +7,7 @@ TargetPath:/Users/johanpedersen/Documents/Datalogi/BDS/Assignments/one/BankStrea
 CodeGenOutputFile:/Users/johanpedersen/Documents/Datalogi/BDS/Assignments/one/BankStream/GrainInterfaces/obj/Debug/net6.0/GrainInterfaces.orleans.g.cs
 Compile:/Users/johanpedersen/Documents/Datalogi/BDS/Assignments/one/BankStream/GrainInterfaces/IAccountGrain.cs
 Compile:/Users/johanpedersen/Documents/Datalogi/BDS/Assignments/one/BankStream/GrainInterfaces/IAtmGrain.cs
+Compile:/Users/johanpedersen/Documents/Datalogi/BDS/Assignments/one/BankStream/GrainInterfaces/IConsumerGrain.cs
 Compile:/Users/johanpedersen/Documents/Datalogi/BDS/Assignments/one/BankStream/GrainInterfaces/obj/Debug/net6.0/GrainInterfaces.GlobalUsings.g.cs
 Reference:/usr/local/share/dotnet/packs/Microsoft.NETCore.App.Ref/6.0.0/ref/net6.0/Microsoft.CSharp.dll
 Reference:/usr/local/share/dotnet/packs/Microsoft.NETCore.App.Ref/6.0.0/ref/net6.0/Microsoft.VisualBasic.Core.dll
@@ -169,4 +170,4 @@ Reference:/usr/local/share/dotnet/packs/Microsoft.NETCore.App.Ref/6.0.0/ref/net6
 Reference:/usr/local/share/dotnet/packs/Microsoft.NETCore.App.Ref/6.0.0/ref/net6.0/System.Xml.XPath.XDocument.dll
 Reference:/usr/local/share/dotnet/packs/Microsoft.NETCore.App.Ref/6.0.0/ref/net6.0/WindowsBase.dll
 DefineConstants:TRACE,DEBUG,NET,NET6_0,NETCOREAPP
-InputHash:6701adecf23653551e64cc0a0508f962c2e77e4f
+InputHash:aeefecdebebfe45d29b5544afae7e8fd6ca5886a
