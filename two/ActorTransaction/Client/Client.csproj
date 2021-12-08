@@ -1,0 +1,26 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <ServerGarbageCollection>true</ServerGarbageCollection>
+    <ConcurrentGarbageCollection>true</ConcurrentGarbageCollection>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Grain.Interface\Grain.Interface.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="Microsoft.Extensions.Logging.Console" />
+    <None Remove="Microsoft.Orleans.Client" />
+    <None Remove="MathNet.Numerics" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.Logging.Console" Version="6.0.0" />
+    <PackageReference Include="Microsoft.Orleans.Client" Version="3.5.1" />
+    <PackageReference Include="MathNet.Numerics" Version="4.15.0" />
+  </ItemGroup>
+</Project>

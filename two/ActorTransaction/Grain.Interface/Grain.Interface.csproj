@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Microsoft.Orleans.Core.Abstractions" />
+    <None Remove="Microsoft.Orleans.CodeGenerator.MSBuild" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Orleans.Core.Abstractions" Version="3.5.1" />
+    <PackageReference Include="Microsoft.Orleans.CodeGenerator.MSBuild" Version="3.5.1">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Concurrency.Interface\Concurrency.Interface.csproj" />
+    <ProjectReference Include="..\Utilities\Utilities.csproj" />
+  </ItemGroup>
+</Project>

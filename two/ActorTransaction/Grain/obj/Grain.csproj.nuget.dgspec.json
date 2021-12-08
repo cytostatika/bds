@@ -1,0 +1,349 @@
+{
+  "format": 1,
+  "restore": {
+    "/Users/krimmity/Documents/ActorTransaction/Grain/Grain.csproj": {}
+  },
+  "projects": {
+    "/Users/krimmity/Documents/ActorTransaction/Concurrency.Interface/Concurrency.Interface.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/krimmity/Documents/ActorTransaction/Concurrency.Interface/Concurrency.Interface.csproj",
+        "projectName": "Concurrency.Interface",
+        "projectPath": "/Users/krimmity/Documents/ActorTransaction/Concurrency.Interface/Concurrency.Interface.csproj",
+        "packagesPath": "/Users/krimmity/.nuget/packages/",
+        "outputPath": "/Users/krimmity/Documents/ActorTransaction/Concurrency.Interface/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/Users/krimmity/.config/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "targetAlias": "netcoreapp3.1",
+            "projectReferences": {
+              "/Users/krimmity/Documents/ActorTransaction/Utilities/Utilities.csproj": {
+                "projectPath": "/Users/krimmity/Documents/ActorTransaction/Utilities/Utilities.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "targetAlias": "netcoreapp3.1",
+          "dependencies": {
+            "Microsoft.Orleans.CodeGenerator.MSBuild": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[3.5.1, )"
+            },
+            "Microsoft.Orleans.Core.Abstractions": {
+              "target": "Package",
+              "version": "[3.5.1, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/6.0.100/RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/Users/krimmity/Documents/ActorTransaction/Concurrency/Concurrency.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/krimmity/Documents/ActorTransaction/Concurrency/Concurrency.csproj",
+        "projectName": "Concurrency",
+        "projectPath": "/Users/krimmity/Documents/ActorTransaction/Concurrency/Concurrency.csproj",
+        "packagesPath": "/Users/krimmity/.nuget/packages/",
+        "outputPath": "/Users/krimmity/Documents/ActorTransaction/Concurrency/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/Users/krimmity/.config/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "targetAlias": "netcoreapp3.1",
+            "projectReferences": {
+              "/Users/krimmity/Documents/ActorTransaction/Concurrency.Interface/Concurrency.Interface.csproj": {
+                "projectPath": "/Users/krimmity/Documents/ActorTransaction/Concurrency.Interface/Concurrency.Interface.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "targetAlias": "netcoreapp3.1",
+          "dependencies": {
+            "Microsoft.Extensions.Logging.Abstractions": {
+              "target": "Package",
+              "version": "[6.0.0, )"
+            },
+            "Microsoft.Orleans.CodeGenerator.MSBuild": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[3.5.1, )"
+            },
+            "Microsoft.Orleans.Core.Abstractions": {
+              "target": "Package",
+              "version": "[3.5.1, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/6.0.100/RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/Users/krimmity/Documents/ActorTransaction/Grain.Interface/Grain.Interface.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/krimmity/Documents/ActorTransaction/Grain.Interface/Grain.Interface.csproj",
+        "projectName": "Grain.Interface",
+        "projectPath": "/Users/krimmity/Documents/ActorTransaction/Grain.Interface/Grain.Interface.csproj",
+        "packagesPath": "/Users/krimmity/.nuget/packages/",
+        "outputPath": "/Users/krimmity/Documents/ActorTransaction/Grain.Interface/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/Users/krimmity/.config/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "targetAlias": "netcoreapp3.1",
+            "projectReferences": {
+              "/Users/krimmity/Documents/ActorTransaction/Concurrency.Interface/Concurrency.Interface.csproj": {
+                "projectPath": "/Users/krimmity/Documents/ActorTransaction/Concurrency.Interface/Concurrency.Interface.csproj"
+              },
+              "/Users/krimmity/Documents/ActorTransaction/Utilities/Utilities.csproj": {
+                "projectPath": "/Users/krimmity/Documents/ActorTransaction/Utilities/Utilities.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "targetAlias": "netcoreapp3.1",
+          "dependencies": {
+            "Microsoft.Orleans.CodeGenerator.MSBuild": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[3.5.1, )"
+            },
+            "Microsoft.Orleans.Core.Abstractions": {
+              "target": "Package",
+              "version": "[3.5.1, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/6.0.100/RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/Users/krimmity/Documents/ActorTransaction/Grain/Grain.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/krimmity/Documents/ActorTransaction/Grain/Grain.csproj",
+        "projectName": "Grain",
+        "projectPath": "/Users/krimmity/Documents/ActorTransaction/Grain/Grain.csproj",
+        "packagesPath": "/Users/krimmity/.nuget/packages/",
+        "outputPath": "/Users/krimmity/Documents/ActorTransaction/Grain/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/Users/krimmity/.config/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "targetAlias": "netcoreapp3.1",
+            "projectReferences": {
+              "/Users/krimmity/Documents/ActorTransaction/Concurrency/Concurrency.csproj": {
+                "projectPath": "/Users/krimmity/Documents/ActorTransaction/Concurrency/Concurrency.csproj"
+              },
+              "/Users/krimmity/Documents/ActorTransaction/Grain.Interface/Grain.Interface.csproj": {
+                "projectPath": "/Users/krimmity/Documents/ActorTransaction/Grain.Interface/Grain.Interface.csproj"
+              },
+              "/Users/krimmity/Documents/ActorTransaction/Utilities/Utilities.csproj": {
+                "projectPath": "/Users/krimmity/Documents/ActorTransaction/Utilities/Utilities.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "targetAlias": "netcoreapp3.1",
+          "dependencies": {
+            "Microsoft.Extensions.Logging.Abstractions": {
+              "target": "Package",
+              "version": "[6.0.0, )"
+            },
+            "Microsoft.Orleans.CodeGenerator.MSBuild": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[3.5.1, )"
+            },
+            "Microsoft.Orleans.Core.Abstractions": {
+              "target": "Package",
+              "version": "[3.5.1, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/6.0.100/RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/Users/krimmity/Documents/ActorTransaction/Utilities/Utilities.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/krimmity/Documents/ActorTransaction/Utilities/Utilities.csproj",
+        "projectName": "Utilities",
+        "projectPath": "/Users/krimmity/Documents/ActorTransaction/Utilities/Utilities.csproj",
+        "packagesPath": "/Users/krimmity/.nuget/packages/",
+        "outputPath": "/Users/krimmity/Documents/ActorTransaction/Utilities/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/Users/krimmity/.config/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "targetAlias": "netcoreapp3.1",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "targetAlias": "netcoreapp3.1",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/6.0.100/RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}
