@@ -1,0 +1,3 @@
+is_global = true
+build_property.RootNamespace = Concurrency.Interface
+build_property.ProjectDir = /Users/johanpedersen/Documents/Datalogi/BDS/Assignments/two/ActorTransaction/Concurrency.Interface/

@@ -1,7 +1,7 @@
 {
   "version": 3,
   "targets": {
-    ".NETCoreApp,Version=v3.1": {
+    "net5.0": {
       "Microsoft.Extensions.Logging.Abstractions/6.0.0": {
         "type": "package",
         "dependencies": {
@@ -70,7 +70,7 @@
       },
       "Concurrency.Interface/1.0.0": {
         "type": "project",
-        "framework": ".NETCoreApp,Version=v3.1",
+        "framework": ".NETCoreApp,Version=v5.0",
         "dependencies": {
           "Microsoft.Orleans.Core.Abstractions": "3.5.1",
           "Utilities": "1.0.0"
@@ -84,7 +84,7 @@
       },
       "Utilities/1.0.0": {
         "type": "project",
-        "framework": ".NETCoreApp,Version=v3.1",
+        "framework": ".NETCoreApp,Version=v5.0",
         "compile": {
           "bin/placeholder/Utilities.dll": {}
         },
@@ -379,7 +379,7 @@
     }
   },
   "projectFileDependencyGroups": {
-    ".NETCoreApp,Version=v3.1": [
+    "net5.0": [
       "Concurrency.Interface >= 1.0.0",
       "Microsoft.Extensions.Logging.Abstractions >= 6.0.0",
       "Microsoft.Orleans.CodeGenerator.MSBuild >= 3.5.1",
@@ -387,32 +387,32 @@
     ]
   },
   "packageFolders": {
-    "/Users/krimmity/.nuget/packages/": {}
+    "/Users/johanpedersen/.nuget/packages/": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/krimmity/Documents/ActorTransaction/Concurrency/Concurrency.csproj",
+      "projectUniqueName": "/Users/johanpedersen/Documents/Datalogi/BDS/Assignments/two/ActorTransaction/Concurrency/Concurrency.csproj",
       "projectName": "Concurrency",
-      "projectPath": "/Users/krimmity/Documents/ActorTransaction/Concurrency/Concurrency.csproj",
-      "packagesPath": "/Users/krimmity/.nuget/packages/",
-      "outputPath": "/Users/krimmity/Documents/ActorTransaction/Concurrency/obj/",
+      "projectPath": "/Users/johanpedersen/Documents/Datalogi/BDS/Assignments/two/ActorTransaction/Concurrency/Concurrency.csproj",
+      "packagesPath": "/Users/johanpedersen/.nuget/packages/",
+      "outputPath": "/Users/johanpedersen/Documents/Datalogi/BDS/Assignments/two/ActorTransaction/Concurrency/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "/Users/krimmity/.config/NuGet/NuGet.Config"
+        "/Users/johanpedersen/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
-        "netcoreapp3.1"
+        "net5.0"
       ],
       "sources": {
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
-        "netcoreapp3.1": {
-          "targetAlias": "netcoreapp3.1",
+        "net5.0": {
+          "targetAlias": "net5.0",
           "projectReferences": {
-            "/Users/krimmity/Documents/ActorTransaction/Concurrency.Interface/Concurrency.Interface.csproj": {
-              "projectPath": "/Users/krimmity/Documents/ActorTransaction/Concurrency.Interface/Concurrency.Interface.csproj"
+            "/Users/johanpedersen/Documents/Datalogi/BDS/Assignments/two/ActorTransaction/Concurrency.Interface/Concurrency.Interface.csproj": {
+              "projectPath": "/Users/johanpedersen/Documents/Datalogi/BDS/Assignments/two/ActorTransaction/Concurrency.Interface/Concurrency.Interface.csproj"
             }
           }
         }
@@ -424,8 +424,8 @@
       }
     },
     "frameworks": {
-      "netcoreapp3.1": {
-        "targetAlias": "netcoreapp3.1",
+      "net5.0": {
+        "targetAlias": "net5.0",
         "dependencies": {
           "Microsoft.Extensions.Logging.Abstractions": {
             "target": "Package",

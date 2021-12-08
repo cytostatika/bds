@@ -1,33 +1,33 @@
 {
   "format": 1,
   "restore": {
-    "/Users/krimmity/Documents/ActorTransaction/Concurrency.Interface/Concurrency.Interface.csproj": {}
+    "/Users/johanpedersen/Documents/Datalogi/BDS/Assignments/two/ActorTransaction/Concurrency.Interface/Concurrency.Interface.csproj": {}
   },
   "projects": {
-    "/Users/krimmity/Documents/ActorTransaction/Concurrency.Interface/Concurrency.Interface.csproj": {
+    "/Users/johanpedersen/Documents/Datalogi/BDS/Assignments/two/ActorTransaction/Concurrency.Interface/Concurrency.Interface.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/krimmity/Documents/ActorTransaction/Concurrency.Interface/Concurrency.Interface.csproj",
+        "projectUniqueName": "/Users/johanpedersen/Documents/Datalogi/BDS/Assignments/two/ActorTransaction/Concurrency.Interface/Concurrency.Interface.csproj",
         "projectName": "Concurrency.Interface",
-        "projectPath": "/Users/krimmity/Documents/ActorTransaction/Concurrency.Interface/Concurrency.Interface.csproj",
-        "packagesPath": "/Users/krimmity/.nuget/packages/",
-        "outputPath": "/Users/krimmity/Documents/ActorTransaction/Concurrency.Interface/obj/",
+        "projectPath": "/Users/johanpedersen/Documents/Datalogi/BDS/Assignments/two/ActorTransaction/Concurrency.Interface/Concurrency.Interface.csproj",
+        "packagesPath": "/Users/johanpedersen/.nuget/packages/",
+        "outputPath": "/Users/johanpedersen/Documents/Datalogi/BDS/Assignments/two/ActorTransaction/Concurrency.Interface/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/Users/krimmity/.config/NuGet/NuGet.Config"
+          "/Users/johanpedersen/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
-          "netcoreapp3.1"
+          "net5.0"
         ],
         "sources": {
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
-          "netcoreapp3.1": {
-            "targetAlias": "netcoreapp3.1",
+          "net5.0": {
+            "targetAlias": "net5.0",
             "projectReferences": {
-              "/Users/krimmity/Documents/ActorTransaction/Utilities/Utilities.csproj": {
-                "projectPath": "/Users/krimmity/Documents/ActorTransaction/Utilities/Utilities.csproj"
+              "/Users/johanpedersen/Documents/Datalogi/BDS/Assignments/two/ActorTransaction/Utilities/Utilities.csproj": {
+                "projectPath": "/Users/johanpedersen/Documents/Datalogi/BDS/Assignments/two/ActorTransaction/Utilities/Utilities.csproj"
               }
             }
           }
@@ -39,8 +39,8 @@
         }
       },
       "frameworks": {
-        "netcoreapp3.1": {
-          "targetAlias": "netcoreapp3.1",
+        "net5.0": {
+          "targetAlias": "net5.0",
           "dependencies": {
             "Microsoft.Orleans.CodeGenerator.MSBuild": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
@@ -72,27 +72,27 @@
         }
       }
     },
-    "/Users/krimmity/Documents/ActorTransaction/Utilities/Utilities.csproj": {
+    "/Users/johanpedersen/Documents/Datalogi/BDS/Assignments/two/ActorTransaction/Utilities/Utilities.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/krimmity/Documents/ActorTransaction/Utilities/Utilities.csproj",
+        "projectUniqueName": "/Users/johanpedersen/Documents/Datalogi/BDS/Assignments/two/ActorTransaction/Utilities/Utilities.csproj",
         "projectName": "Utilities",
-        "projectPath": "/Users/krimmity/Documents/ActorTransaction/Utilities/Utilities.csproj",
-        "packagesPath": "/Users/krimmity/.nuget/packages/",
-        "outputPath": "/Users/krimmity/Documents/ActorTransaction/Utilities/obj/",
+        "projectPath": "/Users/johanpedersen/Documents/Datalogi/BDS/Assignments/two/ActorTransaction/Utilities/Utilities.csproj",
+        "packagesPath": "/Users/johanpedersen/.nuget/packages/",
+        "outputPath": "/Users/johanpedersen/Documents/Datalogi/BDS/Assignments/two/ActorTransaction/Utilities/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/Users/krimmity/.config/NuGet/NuGet.Config"
+          "/Users/johanpedersen/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
-          "netcoreapp3.1"
+          "net5.0"
         ],
         "sources": {
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
-          "netcoreapp3.1": {
-            "targetAlias": "netcoreapp3.1",
+          "net5.0": {
+            "targetAlias": "net5.0",
             "projectReferences": {}
           }
         },
@@ -103,8 +103,8 @@
         }
       },
       "frameworks": {
-        "netcoreapp3.1": {
-          "targetAlias": "netcoreapp3.1",
+        "net5.0": {
+          "targetAlias": "net5.0",
           "imports": [
             "net461",
             "net462",

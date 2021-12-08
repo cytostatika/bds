@@ -1,7 +1,7 @@
 {
   "version": 3,
   "targets": {
-    ".NETCoreApp,Version=v3.1": {
+    "net5.0": {
       "Microsoft.Orleans.CodeGenerator.MSBuild/3.5.1": {
         "type": "package",
         "build": {
@@ -44,7 +44,7 @@
       },
       "Utilities/1.0.0": {
         "type": "project",
-        "framework": ".NETCoreApp,Version=v3.1",
+        "framework": ".NETCoreApp,Version=v5.0",
         "compile": {
           "bin/placeholder/Utilities.dll": {}
         },
@@ -249,39 +249,39 @@
     }
   },
   "projectFileDependencyGroups": {
-    ".NETCoreApp,Version=v3.1": [
+    "net5.0": [
       "Microsoft.Orleans.CodeGenerator.MSBuild >= 3.5.1",
       "Microsoft.Orleans.Core.Abstractions >= 3.5.1",
       "Utilities >= 1.0.0"
     ]
   },
   "packageFolders": {
-    "/Users/krimmity/.nuget/packages/": {}
+    "/Users/johanpedersen/.nuget/packages/": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/krimmity/Documents/ActorTransaction/Concurrency.Interface/Concurrency.Interface.csproj",
+      "projectUniqueName": "/Users/johanpedersen/Documents/Datalogi/BDS/Assignments/two/ActorTransaction/Concurrency.Interface/Concurrency.Interface.csproj",
       "projectName": "Concurrency.Interface",
-      "projectPath": "/Users/krimmity/Documents/ActorTransaction/Concurrency.Interface/Concurrency.Interface.csproj",
-      "packagesPath": "/Users/krimmity/.nuget/packages/",
-      "outputPath": "/Users/krimmity/Documents/ActorTransaction/Concurrency.Interface/obj/",
+      "projectPath": "/Users/johanpedersen/Documents/Datalogi/BDS/Assignments/two/ActorTransaction/Concurrency.Interface/Concurrency.Interface.csproj",
+      "packagesPath": "/Users/johanpedersen/.nuget/packages/",
+      "outputPath": "/Users/johanpedersen/Documents/Datalogi/BDS/Assignments/two/ActorTransaction/Concurrency.Interface/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "/Users/krimmity/.config/NuGet/NuGet.Config"
+        "/Users/johanpedersen/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
-        "netcoreapp3.1"
+        "net5.0"
       ],
       "sources": {
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
-        "netcoreapp3.1": {
-          "targetAlias": "netcoreapp3.1",
+        "net5.0": {
+          "targetAlias": "net5.0",
           "projectReferences": {
-            "/Users/krimmity/Documents/ActorTransaction/Utilities/Utilities.csproj": {
-              "projectPath": "/Users/krimmity/Documents/ActorTransaction/Utilities/Utilities.csproj"
+            "/Users/johanpedersen/Documents/Datalogi/BDS/Assignments/two/ActorTransaction/Utilities/Utilities.csproj": {
+              "projectPath": "/Users/johanpedersen/Documents/Datalogi/BDS/Assignments/two/ActorTransaction/Utilities/Utilities.csproj"
             }
           }
         }
@@ -293,8 +293,8 @@
       }
     },
     "frameworks": {
-      "netcoreapp3.1": {
-        "targetAlias": "netcoreapp3.1",
+      "net5.0": {
+        "targetAlias": "net5.0",
         "dependencies": {
           "Microsoft.Orleans.CodeGenerator.MSBuild": {
             "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",

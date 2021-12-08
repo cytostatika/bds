@@ -1,0 +1,17 @@
+/Users/johanpedersen/Documents/Datalogi/BDS/Assignments/two/ActorTransaction/Concurrency.Interface/bin/Debug/net5.0/Concurrency.Interface.deps.json
+/Users/johanpedersen/Documents/Datalogi/BDS/Assignments/two/ActorTransaction/Concurrency.Interface/bin/Debug/net5.0/Concurrency.Interface.dll
+/Users/johanpedersen/Documents/Datalogi/BDS/Assignments/two/ActorTransaction/Concurrency.Interface/bin/Debug/net5.0/ref/Concurrency.Interface.dll
+/Users/johanpedersen/Documents/Datalogi/BDS/Assignments/two/ActorTransaction/Concurrency.Interface/bin/Debug/net5.0/Concurrency.Interface.pdb
+/Users/johanpedersen/Documents/Datalogi/BDS/Assignments/two/ActorTransaction/Concurrency.Interface/bin/Debug/net5.0/Utilities.dll
+/Users/johanpedersen/Documents/Datalogi/BDS/Assignments/two/ActorTransaction/Concurrency.Interface/bin/Debug/net5.0/Utilities.pdb
+/Users/johanpedersen/Documents/Datalogi/BDS/Assignments/two/ActorTransaction/Concurrency.Interface/obj/Debug/net5.0/Concurrency.Interface.csproj.AssemblyReference.cache
+/Users/johanpedersen/Documents/Datalogi/BDS/Assignments/two/ActorTransaction/Concurrency.Interface/obj/Debug/net5.0/Concurrency.Interface.orleans.g.args.txt
+/Users/johanpedersen/Documents/Datalogi/BDS/Assignments/two/ActorTransaction/Concurrency.Interface/obj/Debug/net5.0/Concurrency.Interface.orleans.g.cs
+/Users/johanpedersen/Documents/Datalogi/BDS/Assignments/two/ActorTransaction/Concurrency.Interface/obj/Debug/net5.0/Concurrency.Interface.GeneratedMSBuildEditorConfig.editorconfig
+/Users/johanpedersen/Documents/Datalogi/BDS/Assignments/two/ActorTransaction/Concurrency.Interface/obj/Debug/net5.0/Concurrency.Interface.AssemblyInfoInputs.cache
+/Users/johanpedersen/Documents/Datalogi/BDS/Assignments/two/ActorTransaction/Concurrency.Interface/obj/Debug/net5.0/Concurrency.Interface.AssemblyInfo.cs
+/Users/johanpedersen/Documents/Datalogi/BDS/Assignments/two/ActorTransaction/Concurrency.Interface/obj/Debug/net5.0/Concurrency.Interface.csproj.CoreCompileInputs.cache
+/Users/johanpedersen/Documents/Datalogi/BDS/Assignments/two/ActorTransaction/Concurrency.Interface/obj/Debug/net5.0/Concurrency.Interface.csproj.CopyComplete
+/Users/johanpedersen/Documents/Datalogi/BDS/Assignments/two/ActorTransaction/Concurrency.Interface/obj/Debug/net5.0/Concurrency.Interface.dll
+/Users/johanpedersen/Documents/Datalogi/BDS/Assignments/two/ActorTransaction/Concurrency.Interface/obj/Debug/net5.0/ref/Concurrency.Interface.dll
+/Users/johanpedersen/Documents/Datalogi/BDS/Assignments/two/ActorTransaction/Concurrency.Interface/obj/Debug/net5.0/Concurrency.Interface.pdb

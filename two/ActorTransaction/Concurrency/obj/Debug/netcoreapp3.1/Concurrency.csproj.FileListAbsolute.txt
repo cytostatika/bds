@@ -1,0 +1,17 @@
+/Users/johanpedersen/Documents/Datalogi/BDS/Assignments/two/ActorTransaction/Concurrency/bin/Debug/netcoreapp3.1/Concurrency.deps.json
+/Users/johanpedersen/Documents/Datalogi/BDS/Assignments/two/ActorTransaction/Concurrency/bin/Debug/netcoreapp3.1/Concurrency.dll
+/Users/johanpedersen/Documents/Datalogi/BDS/Assignments/two/ActorTransaction/Concurrency/bin/Debug/netcoreapp3.1/Concurrency.pdb
+/Users/johanpedersen/Documents/Datalogi/BDS/Assignments/two/ActorTransaction/Concurrency/bin/Debug/netcoreapp3.1/Concurrency.Interface.dll
+/Users/johanpedersen/Documents/Datalogi/BDS/Assignments/two/ActorTransaction/Concurrency/bin/Debug/netcoreapp3.1/Utilities.dll
+/Users/johanpedersen/Documents/Datalogi/BDS/Assignments/two/ActorTransaction/Concurrency/bin/Debug/netcoreapp3.1/Concurrency.Interface.pdb
+/Users/johanpedersen/Documents/Datalogi/BDS/Assignments/two/ActorTransaction/Concurrency/bin/Debug/netcoreapp3.1/Utilities.pdb
+/Users/johanpedersen/Documents/Datalogi/BDS/Assignments/two/ActorTransaction/Concurrency/obj/Debug/netcoreapp3.1/Concurrency.csproj.AssemblyReference.cache
+/Users/johanpedersen/Documents/Datalogi/BDS/Assignments/two/ActorTransaction/Concurrency/obj/Debug/netcoreapp3.1/Concurrency.orleans.g.args.txt
+/Users/johanpedersen/Documents/Datalogi/BDS/Assignments/two/ActorTransaction/Concurrency/obj/Debug/netcoreapp3.1/Concurrency.orleans.g.cs
+/Users/johanpedersen/Documents/Datalogi/BDS/Assignments/two/ActorTransaction/Concurrency/obj/Debug/netcoreapp3.1/Concurrency.GeneratedMSBuildEditorConfig.editorconfig
+/Users/johanpedersen/Documents/Datalogi/BDS/Assignments/two/ActorTransaction/Concurrency/obj/Debug/netcoreapp3.1/Concurrency.AssemblyInfoInputs.cache
+/Users/johanpedersen/Documents/Datalogi/BDS/Assignments/two/ActorTransaction/Concurrency/obj/Debug/netcoreapp3.1/Concurrency.AssemblyInfo.cs
+/Users/johanpedersen/Documents/Datalogi/BDS/Assignments/two/ActorTransaction/Concurrency/obj/Debug/netcoreapp3.1/Concurrency.csproj.CoreCompileInputs.cache
+/Users/johanpedersen/Documents/Datalogi/BDS/Assignments/two/ActorTransaction/Concurrency/obj/Debug/netcoreapp3.1/Concurrency.csproj.CopyComplete
+/Users/johanpedersen/Documents/Datalogi/BDS/Assignments/two/ActorTransaction/Concurrency/obj/Debug/netcoreapp3.1/Concurrency.dll
+/Users/johanpedersen/Documents/Datalogi/BDS/Assignments/two/ActorTransaction/Concurrency/obj/Debug/netcoreapp3.1/Concurrency.pdb

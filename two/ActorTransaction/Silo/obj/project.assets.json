@@ -1,7 +1,7 @@
 {
   "version": 3,
   "targets": {
-    ".NETCoreApp,Version=v3.1": {
+    "net5.0": {
       "Microsoft.AspNetCore.Connections.Abstractions/3.0.0": {
         "type": "package",
         "dependencies": {
@@ -834,14 +834,13 @@
       "System.Diagnostics.DiagnosticSource/6.0.0": {
         "type": "package",
         "dependencies": {
-          "System.Memory": "4.5.4",
           "System.Runtime.CompilerServices.Unsafe": "6.0.0"
         },
         "compile": {
-          "lib/netstandard2.0/System.Diagnostics.DiagnosticSource.dll": {}
+          "lib/net5.0/System.Diagnostics.DiagnosticSource.dll": {}
         },
         "runtime": {
-          "lib/netstandard2.0/System.Diagnostics.DiagnosticSource.dll": {}
+          "lib/net5.0/System.Diagnostics.DiagnosticSource.dll": {}
         },
         "build": {
           "buildTransitive/netcoreapp3.1/_._": {}
@@ -1833,7 +1832,7 @@
       },
       "Concurrency/1.0.0": {
         "type": "project",
-        "framework": ".NETCoreApp,Version=v3.1",
+        "framework": ".NETCoreApp,Version=v5.0",
         "dependencies": {
           "Concurrency.Interface": "1.0.0",
           "Microsoft.Extensions.Logging.Abstractions": "6.0.0",
@@ -1848,7 +1847,7 @@
       },
       "Concurrency.Interface/1.0.0": {
         "type": "project",
-        "framework": ".NETCoreApp,Version=v3.1",
+        "framework": ".NETCoreApp,Version=v5.0",
         "dependencies": {
           "Microsoft.Orleans.Core.Abstractions": "3.5.1",
           "Utilities": "1.0.0"
@@ -1862,7 +1861,7 @@
       },
       "Grain/1.0.0": {
         "type": "project",
-        "framework": ".NETCoreApp,Version=v3.1",
+        "framework": ".NETCoreApp,Version=v5.0",
         "dependencies": {
           "Concurrency": "1.0.0",
           "Grain.Interface": "1.0.0",
@@ -1879,7 +1878,7 @@
       },
       "Grain.Interface/1.0.0": {
         "type": "project",
-        "framework": ".NETCoreApp,Version=v3.1",
+        "framework": ".NETCoreApp,Version=v5.0",
         "dependencies": {
           "Concurrency.Interface": "1.0.0",
           "Microsoft.Orleans.Core.Abstractions": "3.5.1",
@@ -1894,7 +1893,7 @@
       },
       "Utilities/1.0.0": {
         "type": "project",
-        "framework": ".NETCoreApp,Version=v3.1",
+        "framework": ".NETCoreApp,Version=v5.0",
         "compile": {
           "bin/placeholder/Utilities.dll": {}
         },
@@ -6566,7 +6565,7 @@
     }
   },
   "projectFileDependencyGroups": {
-    ".NETCoreApp,Version=v3.1": [
+    "net5.0": [
       "Grain >= 1.0.0",
       "Grain.Interface >= 1.0.0",
       "Microsoft.Extensions.Logging.Console >= 6.0.0",
@@ -6574,35 +6573,35 @@
     ]
   },
   "packageFolders": {
-    "/Users/krimmity/.nuget/packages/": {}
+    "/Users/johanpedersen/.nuget/packages/": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/krimmity/Documents/ActorTransaction/Silo/Silo.csproj",
+      "projectUniqueName": "/Users/johanpedersen/Documents/Datalogi/BDS/Assignments/two/ActorTransaction/Silo/Silo.csproj",
       "projectName": "Silo",
-      "projectPath": "/Users/krimmity/Documents/ActorTransaction/Silo/Silo.csproj",
-      "packagesPath": "/Users/krimmity/.nuget/packages/",
-      "outputPath": "/Users/krimmity/Documents/ActorTransaction/Silo/obj/",
+      "projectPath": "/Users/johanpedersen/Documents/Datalogi/BDS/Assignments/two/ActorTransaction/Silo/Silo.csproj",
+      "packagesPath": "/Users/johanpedersen/.nuget/packages/",
+      "outputPath": "/Users/johanpedersen/Documents/Datalogi/BDS/Assignments/two/ActorTransaction/Silo/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "/Users/krimmity/.config/NuGet/NuGet.Config"
+        "/Users/johanpedersen/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
-        "netcoreapp3.1"
+        "net5.0"
       ],
       "sources": {
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
-        "netcoreapp3.1": {
-          "targetAlias": "netcoreapp3.1",
+        "net5.0": {
+          "targetAlias": "net5.0",
           "projectReferences": {
-            "/Users/krimmity/Documents/ActorTransaction/Grain.Interface/Grain.Interface.csproj": {
-              "projectPath": "/Users/krimmity/Documents/ActorTransaction/Grain.Interface/Grain.Interface.csproj"
+            "/Users/johanpedersen/Documents/Datalogi/BDS/Assignments/two/ActorTransaction/Grain.Interface/Grain.Interface.csproj": {
+              "projectPath": "/Users/johanpedersen/Documents/Datalogi/BDS/Assignments/two/ActorTransaction/Grain.Interface/Grain.Interface.csproj"
             },
-            "/Users/krimmity/Documents/ActorTransaction/Grain/Grain.csproj": {
-              "projectPath": "/Users/krimmity/Documents/ActorTransaction/Grain/Grain.csproj"
+            "/Users/johanpedersen/Documents/Datalogi/BDS/Assignments/two/ActorTransaction/Grain/Grain.csproj": {
+              "projectPath": "/Users/johanpedersen/Documents/Datalogi/BDS/Assignments/two/ActorTransaction/Grain/Grain.csproj"
             }
           }
         }
@@ -6614,8 +6613,8 @@
       }
     },
     "frameworks": {
-      "netcoreapp3.1": {
-        "targetAlias": "netcoreapp3.1",
+      "net5.0": {
+        "targetAlias": "net5.0",
         "dependencies": {
           "Microsoft.Extensions.Logging.Console": {
             "target": "Package",

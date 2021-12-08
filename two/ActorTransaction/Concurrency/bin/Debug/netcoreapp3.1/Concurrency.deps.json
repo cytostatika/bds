@@ -1,0 +1,123 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v3.1",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v3.1": {
+      "Concurrency/1.0.0": {
+        "dependencies": {
+          "Concurrency.Interface": "1.0.0",
+          "Microsoft.Extensions.Logging.Abstractions": "6.0.0",
+          "Microsoft.Orleans.CodeGenerator.MSBuild": "3.5.1",
+          "Microsoft.Orleans.Core.Abstractions": "3.5.1"
+        },
+        "runtime": {
+          "Concurrency.dll": {}
+        }
+      },
+      "Microsoft.Extensions.Logging.Abstractions/6.0.0": {
+        "dependencies": {
+          "System.Buffers": "4.5.1",
+          "System.Memory": "4.5.4"
+        },
+        "runtime": {
+          "lib/netstandard2.0/Microsoft.Extensions.Logging.Abstractions.dll": {
+            "assemblyVersion": "6.0.0.0",
+            "fileVersion": "6.0.21.52210"
+          }
+        }
+      },
+      "Microsoft.Orleans.CodeGenerator.MSBuild/3.5.1": {},
+      "Microsoft.Orleans.Core.Abstractions/3.5.1": {
+        "dependencies": {
+          "System.Memory": "4.5.4",
+          "System.Threading.Tasks.Extensions": "4.5.4"
+        },
+        "runtime": {
+          "lib/netstandard2.0/Orleans.Core.Abstractions.dll": {
+            "assemblyVersion": "2.0.0.0",
+            "fileVersion": "2.0.0.0"
+          }
+        }
+      },
+      "System.Buffers/4.5.1": {},
+      "System.Memory/4.5.4": {},
+      "System.Threading.Tasks.Extensions/4.5.4": {},
+      "Concurrency.Interface/1.0.0": {
+        "dependencies": {
+          "Microsoft.Orleans.Core.Abstractions": "3.5.1",
+          "Utilities": "1.0.0"
+        },
+        "runtime": {
+          "Concurrency.Interface.dll": {}
+        }
+      },
+      "Utilities/1.0.0": {
+        "runtime": {
+          "Utilities.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Concurrency/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Microsoft.Extensions.Logging.Abstractions/6.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-/HggWBbTwy8TgebGSX5DBZ24ndhzi93sHUBDvP1IxbZD7FDokYzdAr6+vbWGjw2XAfR2EJ1sfKUotpjHnFWPxA==",
+      "path": "microsoft.extensions.logging.abstractions/6.0.0",
+      "hashPath": "microsoft.extensions.logging.abstractions.6.0.0.nupkg.sha512"
+    },
+    "Microsoft.Orleans.CodeGenerator.MSBuild/3.5.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-mMqYCuLrY9C/zExq8kqse2CJicbQD0ERBW/TBmPhIfhwjLL50syZ3hf4C7dO/q/6BX5hWFwtHiUaODNxtj1j0A==",
+      "path": "microsoft.orleans.codegenerator.msbuild/3.5.1",
+      "hashPath": "microsoft.orleans.codegenerator.msbuild.3.5.1.nupkg.sha512"
+    },
+    "Microsoft.Orleans.Core.Abstractions/3.5.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-fAJXrpjPwPoKt3Mo4Wvne4DNn0uj9He9UYfeikUsUeLKIer2ab1afcDmoJP+IHbV6vRZUeP4lE6onA6p0r0Y7w==",
+      "path": "microsoft.orleans.core.abstractions/3.5.1",
+      "hashPath": "microsoft.orleans.core.abstractions.3.5.1.nupkg.sha512"
+    },
+    "System.Buffers/4.5.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-Rw7ijyl1qqRS0YQD/WycNst8hUUMgrMH4FCn1nNm27M4VxchZ1js3fVjQaANHO5f3sN4isvP4a+Met9Y4YomAg==",
+      "path": "system.buffers/4.5.1",
+      "hashPath": "system.buffers.4.5.1.nupkg.sha512"
+    },
+    "System.Memory/4.5.4": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-1MbJTHS1lZ4bS4FmsJjnuGJOu88ZzTT2rLvrhW7Ygic+pC0NWA+3hgAen0HRdsocuQXCkUTdFn9yHJJhsijDXw==",
+      "path": "system.memory/4.5.4",
+      "hashPath": "system.memory.4.5.4.nupkg.sha512"
+    },
+    "System.Threading.Tasks.Extensions/4.5.4": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-zteT+G8xuGu6mS+mzDzYXbzS7rd3K6Fjb9RiZlYlJPam2/hU7JCBZBVEcywNuR+oZ1ncTvc/cq0faRr3P01OVg==",
+      "path": "system.threading.tasks.extensions/4.5.4",
+      "hashPath": "system.threading.tasks.extensions.4.5.4.nupkg.sha512"
+    },
+    "Concurrency.Interface/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Utilities/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}
