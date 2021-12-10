@@ -11,9 +11,9 @@ using System.Linq;
 namespace Concurrency
 {
     [Reentrant]
-    public abstract class TransactionalActor<TState> : Grain, ITransactionalActor
+    public abstract class TransactionalActor<TState> : Grain, ITransactionalActor where TState: new()
     {
-        private int myActorID;
+        public int myActorID;
         protected TState actorState;
         private ICoordinator coordinator;
         private int lastCommittedBid;
@@ -33,6 +33,7 @@ namespace Concurrency
         {
             lastCommittedBid = -1;
             myActorID = (int)this.GetPrimaryKeyLong();
+            actorState = new TState();
 
             // Assume that coordinator's actor ID is 0 and there is only one coordinator in the whole system
             coordinator = GrainFactory.GetGrain<ICoordinator>(0);
@@ -62,18 +63,18 @@ namespace Concurrency
         {
             // STEP 1: get the transaction context from the coordinator
             var context = await coordinator.NewTransaction(actorAccessInfo);
-
+            
             // STEP 2: invoke the first function call on this actor
             var call = new FunctionCall(funcName, funcInput, GetType());
             var transactionResult = await Execute(call, context);
-
+            /*
             // STEP 3: add an entry to waitBatchCommit if it hasn't been added
             if (waitBatchCommit.ContainsKey(context.bid) == false)
                 waitBatchCommit.Add(context.bid, new TaskCompletionSource<bool>());
 
             // STEP 4: wait for the transaction to be committed
             await waitBatchCommit[context.bid].Task;
-
+            */
             // STEP 5: return the result to the client after the transaction is committed
             return transactionResult;
         }
@@ -97,13 +98,14 @@ namespace Concurrency
 
         public async Task<object> Execute(FunctionCall call, TransactionContext context)
         {
+            /*
             // STEP 0: wait until the sub-batch has arrived
             if (batches.ContainsKey(context.bid) == false)
             {
                 waitBatchMsg.Add(context.bid, new TaskCompletionSource<bool>());
                 await waitBatchMsg[context.bid].Task;
             }   
-            Debug.Assert(batches.ContainsKey(context.bid));
+            Debug.Assert(batches.ContainsKey(context.bid));*/
 
             // STEP 1: block the call until it is its turn to execute
             /*
@@ -133,7 +135,7 @@ namespace Concurrency
             return result;
         }
 
-        public Task BatchCommit(int bid)
+        public async Task BatchCommit(int bid)
         {
             // STEP 0: update lastCommittedBid
             lastCommittedBid = Math.Max(lastCommittedBid, bid);
@@ -149,7 +151,6 @@ namespace Concurrency
             waitBatchCommit.Remove(bid);
             if (waitBatchMsg.ContainsKey(bid)) waitBatchMsg.Remove(bid);
             batches.Remove(bid);
-            return Task.CompletedTask;
         }
     }
 }

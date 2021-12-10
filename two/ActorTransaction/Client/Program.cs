@@ -14,14 +14,12 @@ namespace Client
 {
     class Program
     {
-        static int numAccountActor = 20;
-        static int numClient = 4;
+        static int numAccountActor = 4;
+        static int numClient = 8;
         static IClusterClient[] clients;
         static Thread[] threads;
+        static CountdownEvent threadACKs;
         static int elapsedTimeInMilliSec = 10000;   // run clients for 10s
-
-        static IDiscreteDistribution accountDistribution = new DiscreteUniform(0, numAccountActor - 1, new Random());
-        static IDiscreteDistribution moneyDistribution = new DiscreteUniform(1, 10, new Random());
 
         static int Main()
         {
@@ -42,11 +40,6 @@ namespace Client
             var coordinator = clients[0].GetGrain<ICoordinator>(0);
             await coordinator.Init();
 
-            /*
-             * ATTENTION!! The following part of code should work only if you have 
-             * correctly implemented the deterministic concurrency control protocol
-             */
-            /*
             // STEP 3: initialize all AccountActors
             var tasks = new List<Task>();
             for (int i = 0; i < numAccountActor; i++)
@@ -57,18 +50,19 @@ namespace Client
                 tasks.Add(actor.SubmitTransaction("Init", i, actorAccessInfo));
             }
             await Task.WhenAll(tasks);
-
+            
             // STEP 4: spawn threads to generate transaction requests
             threads = new Thread[numClient];
+            threadACKs = new CountdownEvent(numClient);
             for (int i = 0; i < numClient; i++)
             {
                 threads[i] = new Thread(ThreadWorkAsync);
                 threads[i].Start(i);
             }
-
-            // STEP 5: wait for all threads to finish
-            for (int i = 0; i < numClient; i++) threads[i].Join();
             
+            // STEP 5: wait for all threads to finish
+            threadACKs.Wait();
+
             // STEP 6: check garbage collection
             Console.WriteLine($"Check GC...");
             tasks = new List<Task>();
@@ -79,7 +73,7 @@ namespace Client
                 tasks.Add(actor.CheckGarbageCollection());
             }
             await Task.WhenAll(tasks);
-            Console.WriteLine("finish checking GC");
+            Console.WriteLine("Finish checking GC");
 
             // STEP 7: check all accounts' balance
             var checkBalance = new List<Task<object>>();
@@ -102,7 +96,8 @@ namespace Client
             }
             // the total amount of money should remain the same
             Debug.Assert(totalBalance == Constants.InitialBalance * numAccountActor);
-            */
+            
+            Console.WriteLine("Finish....");
             return 0;
         }
 
@@ -112,6 +107,8 @@ namespace Client
             var threadID = (int)obj;
             var client = clients[threadID];
             var numTransaction = 0;
+            var accountDistribution = new DiscreteUniform(0, numAccountActor - 1, new Random());
+            var moneyDistribution = new DiscreteUniform(1, 10, new Random());
             Console.WriteLine($"Thread {threadID} starts...");
             var globalWatch = new Stopwatch();
             globalWatch.Restart();
@@ -139,8 +136,10 @@ namespace Client
             var endTime = DateTime.Now.Ticks / TimeSpan.TicksPerMillisecond;
             globalWatch.Stop();
             var time = endTime - startTime;   // in milliseconds
+            Console.WriteLine($"Thread {threadID} elapsed {time}ms");
             var throughput = numTransaction * 1000.0 / time;
             Console.WriteLine($"Thread {threadID} tp = {throughput}");
+            threadACKs.Signal();
         }
     }
 }

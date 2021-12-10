@@ -66,7 +66,7 @@ namespace Concurrency
             return Task.CompletedTask;
         }
 
-        public Task<TransactionContext> NewTransaction(List<int> actorAccessInfo)
+        public async Task<TransactionContext> NewTransaction(List<int> actorAccessInfo)
         {
             // STEP 1: check if we should start a new batch / if the old batch has been emitted
             if (batchedTransactions.ContainsKey(nextBid) == false)
@@ -79,7 +79,7 @@ namespace Concurrency
             // STEP 3: put this transaction in the batch
             batchedTransactions[nextBid].Add(new Tuple<int, List<int>>(context.tid, actorAccessInfo));
 
-            return Task.FromResult(context);
+            return context;
         }
 
         private Task GenerateBatch(object _)
@@ -120,7 +120,7 @@ namespace Concurrency
                 var actorID = item.Key;
                 var subBatch = item.Value;
 
-                var actor = GrainFactory.GetGrain<ITransactionalActor>(actorID);
+                var actor = GrainFactory.GetGrain<ITransactionalActor>(actorID, "Grain.AccountActor");
                 _ = actor.ReceiveBatch(subBatch);
             }
 
@@ -141,7 +141,7 @@ namespace Concurrency
             var myLastBid = mapBidToLastBid[bid];
             if (myLastBid > lastCommittedBid)
             {
-                // need to wait for previouus batch to commit
+                // need to wait for previous batch to commit
                 if (waitBatchCommit.ContainsKey(myLastBid) == false)
                     waitBatchCommit.Add(myLastBid, new TaskCompletionSource<bool>());
                 await waitBatchCommit[myLastBid].Task;

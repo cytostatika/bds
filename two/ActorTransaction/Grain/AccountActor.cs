@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
+using System.Threading;
 using System.Threading.Tasks;
 using Concurrency;
 using Grain.Interface;
@@ -11,6 +12,10 @@ namespace Grain
     {
         public int accountID;
         public int balance;
+
+        public Account()
+        {
+        }
     }
 
     public class AccountActor : TransactionalActor<Account>, IAccountActor
@@ -48,7 +53,6 @@ namespace Grain
             var toAccountActor = GrainFactory.GetGrain<IAccountActor>(toAccount);
             var call = new FunctionCall("Deposit", money, typeof(AccountActor));
             await toAccountActor.Execute(call, context);
-
             myState.balance -= money;
             return null;
         }
