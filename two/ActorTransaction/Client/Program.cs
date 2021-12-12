@@ -49,8 +49,11 @@ namespace Client
                 actorAccessInfo.Add(i);
                 tasks.Add(actor.SubmitTransaction("Init", i, actorAccessInfo));
             }
+            Console.WriteLine($"Waiting for initialisations");
             await Task.WhenAll(tasks);
-            
+            Console.WriteLine($"All actors have been initialised");
+
+
             // STEP 4: spawn threads to generate transaction requests
             threads = new Thread[numClient];
             threadACKs = new CountdownEvent(numClient);

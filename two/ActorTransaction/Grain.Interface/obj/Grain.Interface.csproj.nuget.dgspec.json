@@ -1,33 +1,35 @@
 {
   "format": 1,
   "restore": {
-    "/Users/johanpedersen/Documents/Datalogi/BDS/Assignments/two/ActorTransaction/Grain.Interface/Grain.Interface.csproj": {}
+    "C:\\Users\\APC\\Documents\\bds\\two\\ActorTransaction\\Grain.Interface\\Grain.Interface.csproj": {}
   },
   "projects": {
-    "/Users/johanpedersen/Documents/Datalogi/BDS/Assignments/two/ActorTransaction/Concurrency.Interface/Concurrency.Interface.csproj": {
+    "C:\\Users\\APC\\Documents\\bds\\two\\ActorTransaction\\Concurrency.Interface\\Concurrency.Interface.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/johanpedersen/Documents/Datalogi/BDS/Assignments/two/ActorTransaction/Concurrency.Interface/Concurrency.Interface.csproj",
+        "projectUniqueName": "C:\\Users\\APC\\Documents\\bds\\two\\ActorTransaction\\Concurrency.Interface\\Concurrency.Interface.csproj",
         "projectName": "Concurrency.Interface",
-        "projectPath": "/Users/johanpedersen/Documents/Datalogi/BDS/Assignments/two/ActorTransaction/Concurrency.Interface/Concurrency.Interface.csproj",
-        "packagesPath": "/Users/johanpedersen/.nuget/packages/",
-        "outputPath": "/Users/johanpedersen/Documents/Datalogi/BDS/Assignments/two/ActorTransaction/Concurrency.Interface/obj/",
+        "projectPath": "C:\\Users\\APC\\Documents\\bds\\two\\ActorTransaction\\Concurrency.Interface\\Concurrency.Interface.csproj",
+        "packagesPath": "C:\\Users\\APC\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\APC\\Documents\\bds\\two\\ActorTransaction\\Concurrency.Interface\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/Users/johanpedersen/.nuget/NuGet/NuGet.Config"
+          "C:\\Users\\APC\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net5.0"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net5.0": {
             "targetAlias": "net5.0",
             "projectReferences": {
-              "/Users/johanpedersen/Documents/Datalogi/BDS/Assignments/two/ActorTransaction/Utilities/Utilities.csproj": {
-                "projectPath": "/Users/johanpedersen/Documents/Datalogi/BDS/Assignments/two/ActorTransaction/Utilities/Utilities.csproj"
+              "C:\\Users\\APC\\Documents\\bds\\two\\ActorTransaction\\Utilities\\Utilities.csproj": {
+                "projectPath": "C:\\Users\\APC\\Documents\\bds\\two\\ActorTransaction\\Utilities\\Utilities.csproj"
               }
             }
           }
@@ -68,37 +70,39 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/6.0.100/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.100\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "/Users/johanpedersen/Documents/Datalogi/BDS/Assignments/two/ActorTransaction/Grain.Interface/Grain.Interface.csproj": {
+    "C:\\Users\\APC\\Documents\\bds\\two\\ActorTransaction\\Grain.Interface\\Grain.Interface.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/johanpedersen/Documents/Datalogi/BDS/Assignments/two/ActorTransaction/Grain.Interface/Grain.Interface.csproj",
+        "projectUniqueName": "C:\\Users\\APC\\Documents\\bds\\two\\ActorTransaction\\Grain.Interface\\Grain.Interface.csproj",
         "projectName": "Grain.Interface",
-        "projectPath": "/Users/johanpedersen/Documents/Datalogi/BDS/Assignments/two/ActorTransaction/Grain.Interface/Grain.Interface.csproj",
-        "packagesPath": "/Users/johanpedersen/.nuget/packages/",
-        "outputPath": "/Users/johanpedersen/Documents/Datalogi/BDS/Assignments/two/ActorTransaction/Grain.Interface/obj/",
+        "projectPath": "C:\\Users\\APC\\Documents\\bds\\two\\ActorTransaction\\Grain.Interface\\Grain.Interface.csproj",
+        "packagesPath": "C:\\Users\\APC\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\APC\\Documents\\bds\\two\\ActorTransaction\\Grain.Interface\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/Users/johanpedersen/.nuget/NuGet/NuGet.Config"
+          "C:\\Users\\APC\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net5.0"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net5.0": {
             "targetAlias": "net5.0",
             "projectReferences": {
-              "/Users/johanpedersen/Documents/Datalogi/BDS/Assignments/two/ActorTransaction/Concurrency.Interface/Concurrency.Interface.csproj": {
-                "projectPath": "/Users/johanpedersen/Documents/Datalogi/BDS/Assignments/two/ActorTransaction/Concurrency.Interface/Concurrency.Interface.csproj"
+              "C:\\Users\\APC\\Documents\\bds\\two\\ActorTransaction\\Concurrency.Interface\\Concurrency.Interface.csproj": {
+                "projectPath": "C:\\Users\\APC\\Documents\\bds\\two\\ActorTransaction\\Concurrency.Interface\\Concurrency.Interface.csproj"
               },
-              "/Users/johanpedersen/Documents/Datalogi/BDS/Assignments/two/ActorTransaction/Utilities/Utilities.csproj": {
-                "projectPath": "/Users/johanpedersen/Documents/Datalogi/BDS/Assignments/two/ActorTransaction/Utilities/Utilities.csproj"
+              "C:\\Users\\APC\\Documents\\bds\\two\\ActorTransaction\\Utilities\\Utilities.csproj": {
+                "projectPath": "C:\\Users\\APC\\Documents\\bds\\two\\ActorTransaction\\Utilities\\Utilities.csproj"
               }
             }
           }
@@ -139,26 +143,28 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/6.0.100/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.100\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "/Users/johanpedersen/Documents/Datalogi/BDS/Assignments/two/ActorTransaction/Utilities/Utilities.csproj": {
+    "C:\\Users\\APC\\Documents\\bds\\two\\ActorTransaction\\Utilities\\Utilities.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/johanpedersen/Documents/Datalogi/BDS/Assignments/two/ActorTransaction/Utilities/Utilities.csproj",
+        "projectUniqueName": "C:\\Users\\APC\\Documents\\bds\\two\\ActorTransaction\\Utilities\\Utilities.csproj",
         "projectName": "Utilities",
-        "projectPath": "/Users/johanpedersen/Documents/Datalogi/BDS/Assignments/two/ActorTransaction/Utilities/Utilities.csproj",
-        "packagesPath": "/Users/johanpedersen/.nuget/packages/",
-        "outputPath": "/Users/johanpedersen/Documents/Datalogi/BDS/Assignments/two/ActorTransaction/Utilities/obj/",
+        "projectPath": "C:\\Users\\APC\\Documents\\bds\\two\\ActorTransaction\\Utilities\\Utilities.csproj",
+        "packagesPath": "C:\\Users\\APC\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\APC\\Documents\\bds\\two\\ActorTransaction\\Utilities\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/Users/johanpedersen/.nuget/NuGet/NuGet.Config"
+          "C:\\Users\\APC\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net5.0"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -191,7 +197,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/6.0.100/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.100\\RuntimeIdentifierGraph.json"
         }
       }
     }

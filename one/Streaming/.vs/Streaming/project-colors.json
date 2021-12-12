@@ -1,0 +1,16 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "c8097f83-2d0e-4ffd-aeae-aa075141289c": {
+      "ProjectGuid": "c8097f83-2d0e-4ffd-aeae-aa075141289c",
+      "DisplayName": "Grains",
+      "ColorIndex": 0
+    },
+    "18dfeae0-0000-4eff-825f-2150b0c509f8": {
+      "ProjectGuid": "18dfeae0-0000-4eff-825f-2150b0c509f8",
+      "DisplayName": "NonOrleansClient",
+      "ColorIndex": 1
+    }
+  },
+  "NextColorIndex": 2
+}

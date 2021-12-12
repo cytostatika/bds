@@ -387,32 +387,34 @@
     ]
   },
   "packageFolders": {
-    "/Users/johanpedersen/.nuget/packages/": {}
+    "C:\\Users\\APC\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/johanpedersen/Documents/Datalogi/BDS/Assignments/two/ActorTransaction/Concurrency/Concurrency.csproj",
+      "projectUniqueName": "C:\\Users\\APC\\Documents\\bds\\two\\ActorTransaction\\Concurrency\\Concurrency.csproj",
       "projectName": "Concurrency",
-      "projectPath": "/Users/johanpedersen/Documents/Datalogi/BDS/Assignments/two/ActorTransaction/Concurrency/Concurrency.csproj",
-      "packagesPath": "/Users/johanpedersen/.nuget/packages/",
-      "outputPath": "/Users/johanpedersen/Documents/Datalogi/BDS/Assignments/two/ActorTransaction/Concurrency/obj/",
+      "projectPath": "C:\\Users\\APC\\Documents\\bds\\two\\ActorTransaction\\Concurrency\\Concurrency.csproj",
+      "packagesPath": "C:\\Users\\APC\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\APC\\Documents\\bds\\two\\ActorTransaction\\Concurrency\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "/Users/johanpedersen/.nuget/NuGet/NuGet.Config"
+        "C:\\Users\\APC\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net5.0"
       ],
       "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "net5.0": {
           "targetAlias": "net5.0",
           "projectReferences": {
-            "/Users/johanpedersen/Documents/Datalogi/BDS/Assignments/two/ActorTransaction/Concurrency.Interface/Concurrency.Interface.csproj": {
-              "projectPath": "/Users/johanpedersen/Documents/Datalogi/BDS/Assignments/two/ActorTransaction/Concurrency.Interface/Concurrency.Interface.csproj"
+            "C:\\Users\\APC\\Documents\\bds\\two\\ActorTransaction\\Concurrency.Interface\\Concurrency.Interface.csproj": {
+              "projectPath": "C:\\Users\\APC\\Documents\\bds\\two\\ActorTransaction\\Concurrency.Interface\\Concurrency.Interface.csproj"
             }
           }
         }
@@ -457,7 +459,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/6.0.100/RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.100\\RuntimeIdentifierGraph.json"
       }
     }
   }

@@ -10,3 +10,15 @@
 /Users/johanpedersen/Documents/Datalogi/BDS/Assignments/two/ActorTransaction/Utilities/obj/Debug/net5.0/Utilities.dll
 /Users/johanpedersen/Documents/Datalogi/BDS/Assignments/two/ActorTransaction/Utilities/obj/Debug/net5.0/ref/Utilities.dll
 /Users/johanpedersen/Documents/Datalogi/BDS/Assignments/two/ActorTransaction/Utilities/obj/Debug/net5.0/Utilities.pdb
+C:\Users\APC\Documents\bds\two\ActorTransaction\Utilities\bin\Debug\net5.0\Utilities.deps.json
+C:\Users\APC\Documents\bds\two\ActorTransaction\Utilities\bin\Debug\net5.0\Utilities.dll
+C:\Users\APC\Documents\bds\two\ActorTransaction\Utilities\bin\Debug\net5.0\ref\Utilities.dll
+C:\Users\APC\Documents\bds\two\ActorTransaction\Utilities\bin\Debug\net5.0\Utilities.pdb
+C:\Users\APC\Documents\bds\two\ActorTransaction\Utilities\obj\Debug\net5.0\Utilities.csproj.AssemblyReference.cache
+C:\Users\APC\Documents\bds\two\ActorTransaction\Utilities\obj\Debug\net5.0\Utilities.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\APC\Documents\bds\two\ActorTransaction\Utilities\obj\Debug\net5.0\Utilities.AssemblyInfoInputs.cache
+C:\Users\APC\Documents\bds\two\ActorTransaction\Utilities\obj\Debug\net5.0\Utilities.AssemblyInfo.cs
+C:\Users\APC\Documents\bds\two\ActorTransaction\Utilities\obj\Debug\net5.0\Utilities.csproj.CoreCompileInputs.cache
+C:\Users\APC\Documents\bds\two\ActorTransaction\Utilities\obj\Debug\net5.0\Utilities.dll
+C:\Users\APC\Documents\bds\two\ActorTransaction\Utilities\obj\Debug\net5.0\ref\Utilities.dll
+C:\Users\APC\Documents\bds\two\ActorTransaction\Utilities\obj\Debug\net5.0\Utilities.pdb

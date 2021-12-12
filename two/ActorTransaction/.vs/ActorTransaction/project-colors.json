@@ -1,0 +1,41 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "1e3f44cb-ef41-47da-8271-356fbecb9c01": {
+      "ProjectGuid": "1e3f44cb-ef41-47da-8271-356fbecb9c01",
+      "DisplayName": "Silo",
+      "ColorIndex": 0
+    },
+    "3b79cfb9-1aec-4478-bb0a-c59237dca62a": {
+      "ProjectGuid": "3b79cfb9-1aec-4478-bb0a-c59237dca62a",
+      "DisplayName": "Grain",
+      "ColorIndex": 1
+    },
+    "72ab12e3-cb51-42c4-86bd-80a796e3b48a": {
+      "ProjectGuid": "72ab12e3-cb51-42c4-86bd-80a796e3b48a",
+      "DisplayName": "Client",
+      "ColorIndex": 2
+    },
+    "96bb0b72-9c78-4ca7-a914-604ac277915f": {
+      "ProjectGuid": "96bb0b72-9c78-4ca7-a914-604ac277915f",
+      "DisplayName": "Concurrency",
+      "ColorIndex": 3
+    },
+    "90d7b85e-c1e4-41a5-9ce1-e0e166a75698": {
+      "ProjectGuid": "90d7b85e-c1e4-41a5-9ce1-e0e166a75698",
+      "DisplayName": "Utilities",
+      "ColorIndex": 4
+    },
+    "e8e46e70-00ce-4a0c-a53c-df0463982228": {
+      "ProjectGuid": "e8e46e70-00ce-4a0c-a53c-df0463982228",
+      "DisplayName": "Grain.Interface",
+      "ColorIndex": 5
+    },
+    "55372980-a5bb-4018-abbc-807cf30048db": {
+      "ProjectGuid": "55372980-a5bb-4018-abbc-807cf30048db",
+      "DisplayName": "Concurrency.Interface",
+      "ColorIndex": 6
+    }
+  },
+  "NextColorIndex": 7
+}

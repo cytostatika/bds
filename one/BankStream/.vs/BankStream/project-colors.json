@@ -1,0 +1,31 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "59f8b9fb-5f73-475f-841e-f569a231f668": {
+      "ProjectGuid": "59f8b9fb-5f73-475f-841e-f569a231f668",
+      "DisplayName": "BankClient",
+      "ColorIndex": 0
+    },
+    "89018806-d608-41dd-ae60-00c845fddff9": {
+      "ProjectGuid": "89018806-d608-41dd-ae60-00c845fddff9",
+      "DisplayName": "BankServer",
+      "ColorIndex": 1
+    },
+    "ddf333cb-4d02-4eb1-aac8-55bd18066c45": {
+      "ProjectGuid": "ddf333cb-4d02-4eb1-aac8-55bd18066c45",
+      "DisplayName": "Common",
+      "ColorIndex": 2
+    },
+    "2367d7b7-3543-45c7-a72e-bea10e64b00f": {
+      "ProjectGuid": "2367d7b7-3543-45c7-a72e-bea10e64b00f",
+      "DisplayName": "GrainInterfaces",
+      "ColorIndex": 3
+    },
+    "7ef1e12d-555b-47c8-99d2-79f7963bfd60": {
+      "ProjectGuid": "7ef1e12d-555b-47c8-99d2-79f7963bfd60",
+      "DisplayName": "Grains",
+      "ColorIndex": 4
+    }
+  },
+  "NextColorIndex": 5
+}

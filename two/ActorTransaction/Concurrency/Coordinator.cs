@@ -68,6 +68,7 @@ namespace Concurrency
 
         public async Task<TransactionContext> NewTransaction(List<int> actorAccessInfo)
         {
+            Console.WriteLine("Coord: Starting new transaction process");
             // STEP 1: check if we should start a new batch / if the old batch has been emitted
             if (batchedTransactions.ContainsKey(nextBid) == false)
                 batchedTransactions.Add(nextBid, new List<Tuple<int, List<int>>>());
@@ -131,6 +132,7 @@ namespace Concurrency
 
         public async Task BatchComplete(int bid)
         {
+            Console.WriteLine("Coord: Starting completions process");
             // STEP 1: check if all accessed actors have completed the batch
             Debug.Assert(expectedAcksPerBatch.ContainsKey(bid));
             expectedAcksPerBatch[bid]--;
@@ -146,6 +148,7 @@ namespace Concurrency
                     waitBatchCommit.Add(myLastBid, new TaskCompletionSource<bool>());
                 await waitBatchCommit[myLastBid].Task;
             }
+            Console.WriteLine("Coord: Finished waiting for last batch commit");
 
             // STEP 3: commit the batch
             lastCommittedBid = bid;
@@ -159,6 +162,8 @@ namespace Concurrency
                 var actor = GrainFactory.GetGrain<ITransactionalActor>(actorID);
                 _ = actor.BatchCommit(bid);
             }
+
+            Console.WriteLine("Coord: Finished informing all actors of finished commit");
 
             // STEP 5: garbage collection
             if (waitBatchCommit.ContainsKey(bid))
