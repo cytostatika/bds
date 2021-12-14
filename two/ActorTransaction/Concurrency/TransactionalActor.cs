@@ -123,7 +123,8 @@ namespace Concurrency
             // STEP 0: wait until the sub-batch has arrived
             if (batches.ContainsKey(context.bid) == false)
             {
-                waitBatchMsg.Add(context.bid, new TaskCompletionSource<bool>());
+                if (waitBatchMsg.ContainsKey(context.bid) == false) 
+                    waitBatchMsg.Add(context.bid, new TaskCompletionSource<bool>()); 
                 await waitBatchMsg[context.bid].Task;
             }   
             Debug.Assert(batches.ContainsKey(context.bid));

@@ -159,7 +159,7 @@ namespace Concurrency
             Debug.Assert(actorsPerBatch.ContainsKey(bid));
             foreach (var actorID in actorsPerBatch[bid])
             {
-                var actor = GrainFactory.GetGrain<ITransactionalActor>(actorID);
+                var actor = GrainFactory.GetGrain<ITransactionalActor>(actorID, "Grain.AccountActor");
                 _ = actor.BatchCommit(bid);
             }
 
