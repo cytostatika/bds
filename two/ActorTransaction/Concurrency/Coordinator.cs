@@ -114,6 +114,7 @@ namespace Concurrency
             // STEP 4: add some entries for this batch
             expectedAcksPerBatch.Add(bid, actors.Count);
             actorsPerBatch.Add(bid, new List<int>(actors.Keys));
+            Console.WriteLine($"Coord: Expected actors for {bid} is {expectedAcksPerBatch[bid]}");
 
             // STEP 5: emit sub-batches to related actors
             foreach (var item in actors)
@@ -132,7 +133,7 @@ namespace Concurrency
 
         public async Task BatchComplete(int bid)
         {
-            Console.WriteLine("Coord: Starting completions process");
+            Console.WriteLine($"Coord: Starting completions process for {bid}");
             // STEP 1: check if all accessed actors have completed the batch
             Debug.Assert(expectedAcksPerBatch.ContainsKey(bid));
             expectedAcksPerBatch[bid]--;
