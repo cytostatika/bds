@@ -98,7 +98,7 @@ namespace Concurrency
 
         public async Task ReceiveBatch(Batch batch)
         {
-            Console.WriteLine($"Actor {myActorID}: received batch with id {batch.tid} and last bid {batch.lastBid}");
+            Console.WriteLine($"Actor {myActorID}: received batch with id {batch.bid} and last bid {batch.lastBid}");
             // STEP 1: store the received batch
             batches.Add(batch.bid, batch);
             if (waitBatchMsg.ContainsKey(batch.bid))
@@ -108,13 +108,13 @@ namespace Concurrency
             if (waitBatchCommit.ContainsKey(batch.bid) == false)
                 waitBatchCommit.Add(batch.bid, new TaskCompletionSource<bool>());
 
-            if (!localSchedule.ContainsKey(batch.bid)) { 
-                var transactions =  new Dictionary<int, TaskCompletionSource<bool>>();
-                for (int i = 0; i<batch.transactionList.Count; i++)
-                    transactions.Add(batch.transactionList[i], new TaskCompletionSource<bool>());
-                localSchedule.Add(batch.bid, (transactions, batch.lastBid));
-            }
-            if (!lastBidWaitMsg.ContainsKey(batch.bid)) lastBidWaitMsg.Add(batch.bid, new TaskCompletionSource<bool>());
+            // Step 3: assuming only one ReceiveBatch is called
+            var transactions =  new Dictionary<int, TaskCompletionSource<bool>>();
+            for (int i = 0; i<batch.transactionList.Count; i++)
+                transactions.Add(batch.transactionList[i], new TaskCompletionSource<bool>());
+            localSchedule.Add(batch.bid, (transactions, batch.lastBid));
+            
+            lastBidWaitMsg.Add(batch.bid, new TaskCompletionSource<bool>());
             //Check if this batches prevID is in local schedule. If it is then add its (id, previd) pair to the schedule. If not add (id, noid) to schedule
 
             /*
@@ -125,6 +125,7 @@ namespace Concurrency
 
         public async Task<object> Execute(FunctionCall call, TransactionContext context)
         {
+            //Debug.Assert(localSchedule.ContainsKey(context.bid));
             Console.WriteLine($"Actor {myActorID}: starting execution of batch {context.bid}");
 
             // STEP 0: wait until the sub-batch has arrived
@@ -135,21 +136,10 @@ namespace Concurrency
                 await waitBatchMsg[context.bid].Task;
             }   
             Debug.Assert(batches.ContainsKey(context.bid));
-            /*if (localSchedule.ContainsKey(context.bid))
-            {
-                var lastbid = localSchedule[context.bid];
-                if (lastbid > -1 )
-                {
-                    lastBidWaitMsg.Add(lastbid, new TaskCompletionSource<bool>());
-                    Console.WriteLine("Waiting");
-                    await lastBidWaitMsg[lastbid].Task;
-                    Console.WriteLine("Finished waiting");
-                }
-
-            }*/
+     
            
 
-            Console.WriteLine($"Actor { myActorID}: continuing execution of batch {context.bid}");
+            //Console.WriteLine($"Actor { myActorID}: continuing execution of batch {context.bid}");
             // STEP 1: block the call until it is its turn to execute
             /*
              * ATTENTION!! It is your task to enforce the actor to execute this call at a proper time
@@ -166,18 +156,28 @@ namespace Concurrency
                 Console.WriteLine("Finished waiting");
                 //lastBidWaitMsg.Remove(lastbid);
             }
-            // If not the first transaction, wait for previous to complete
-            if(localSchedule[context.bid].Item1.ContainsKey(context.tid-1))
-            {
-                await localSchedule[context.bid].Item1[context.tid - 1].Task;
+
+            // Checking if it exists to allow for "init" 
+            if(localSchedule.ContainsKey(context.bid)) {
+                // If not the first transaction, wait for previous to complete
+                if (localSchedule[context.bid].Item1.ContainsKey(context.tid-1))
+                {
+                    await localSchedule[context.bid].Item1[context.tid - 1].Task;
+                }
             }
+
             // STEP 2: execute the call
             var method = call.actorType.GetMethod(call.funcName);
             var result = await (Task<object>)method.Invoke(this, new object[] { context, call.funcInput });
             Console.WriteLine($"Actor { myActorID}: finished execution of batch {context.bid}");
 
+            // Checking if it exists to allow for "init" 
+            if (localSchedule.ContainsKey(context.bid))
+            {
+                localSchedule[context.bid].Item1[context.tid].SetResult(true);
+            }
             // Set current transaction to finished
-            localSchedule[context.bid].Item1[context.tid].SetResult(true);
+
 
             // STEP 3: check if the whole batch has been completed on this actor
             /*
@@ -190,10 +190,13 @@ namespace Concurrency
              *     _ = coordinator.BatchComplete(context.bid);
              *  +
              */
-            // If last transaction in batch
-            if (context.tid == context.bid + localSchedule[context.bid].Item1.Count-1)
-                _ = coordinator.BatchComplete(context.bid);
-
+            // Checking if it exists to allow for "init" 
+            if (localSchedule.ContainsKey(context.bid))
+            {
+                // If last transaction in batch
+                if (context.tid == context.bid + localSchedule[context.bid].Item1.Count - 1)
+                    _ = coordinator.BatchComplete(context.bid);
+            }
             // STEP 4: return the result
             return result;
         }

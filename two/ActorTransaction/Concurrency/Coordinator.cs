@@ -21,6 +21,8 @@ namespace Concurrency
         private Dictionary<int, int> expectedAcksPerBatch;
         private Dictionary<int, int> mapBidToLastBid;  // <bid, lastBid>
         private Dictionary<int, List<int>> actorsPerBatch;
+        private Dictionary<int, int> lastBidPerActor;
+
 
         /*
          * use this timer to generate epoch-based batches
@@ -63,6 +65,7 @@ namespace Concurrency
             actorsPerBatch = new Dictionary<int, List<int>>();
             mapBidToLastBid = new Dictionary<int, int>();
             timer = RegisterTimer(GenerateBatch, null, dueTime, period);     // the method "GenerateBatch" will be called periodically
+            lastBidPerActor = new Dictionary<int, int>();
             return Task.CompletedTask;
         }
 
@@ -106,7 +109,13 @@ namespace Concurrency
                 foreach (var actor in actorAccessInfo)
                 {
                     if (actors.ContainsKey(actor) == false)
-                        actors.Add(actor, new Batch(bid, myLastBid));
+                    {
+                        if (lastBidPerActor.ContainsKey(actor) == false)
+                            actors.Add(actor, new Batch(bid, -1));
+                        else
+                            actors.Add(actor, new Batch(bid, lastBidPerActor[actor]));
+                        lastBidPerActor[actor] = bid;
+                    }
                     actors[actor].AddTransaction(tid);
                 }
             }
