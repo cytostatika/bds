@@ -1,0 +1,317 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\Users\\Rodrigo\\Downloads\\BDSAssignment3\\BDSAssignment3\\Silo\\Silo.csproj": {}
+  },
+  "projects": {
+    "C:\\Users\\Rodrigo\\Downloads\\BDSAssignment3\\BDSAssignment3\\DataModel\\Model.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\Rodrigo\\Downloads\\BDSAssignment3\\BDSAssignment3\\DataModel\\Model.csproj",
+        "projectName": "Model",
+        "projectPath": "C:\\Users\\Rodrigo\\Downloads\\BDSAssignment3\\BDSAssignment3\\DataModel\\Model.csproj",
+        "packagesPath": "C:\\Users\\Rodrigo\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Rodrigo\\Downloads\\BDSAssignment3\\BDSAssignment3\\DataModel\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Rodrigo\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netstandard2.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netstandard2.1": {
+            "targetAlias": "netstandard2.1",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netstandard2.1": {
+          "targetAlias": "netstandard2.1",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "NETStandard.Library": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.403\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\Rodrigo\\Downloads\\BDSAssignment3\\BDSAssignment3\\GrainInterfaces\\GrainInterfaces.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\Rodrigo\\Downloads\\BDSAssignment3\\BDSAssignment3\\GrainInterfaces\\GrainInterfaces.csproj",
+        "projectName": "GrainInterfaces",
+        "projectPath": "C:\\Users\\Rodrigo\\Downloads\\BDSAssignment3\\BDSAssignment3\\GrainInterfaces\\GrainInterfaces.csproj",
+        "packagesPath": "C:\\Users\\Rodrigo\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Rodrigo\\Downloads\\BDSAssignment3\\BDSAssignment3\\GrainInterfaces\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Rodrigo\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netstandard2.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netstandard2.1": {
+            "targetAlias": "netstandard2.1",
+            "projectReferences": {
+              "C:\\Users\\Rodrigo\\Downloads\\BDSAssignment3\\BDSAssignment3\\DataModel\\Model.csproj": {
+                "projectPath": "C:\\Users\\Rodrigo\\Downloads\\BDSAssignment3\\BDSAssignment3\\DataModel\\Model.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netstandard2.1": {
+          "targetAlias": "netstandard2.1",
+          "dependencies": {
+            "Microsoft.Orleans.CodeGenerator.MSBuild": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[3.0.1, )"
+            },
+            "Microsoft.Orleans.Core.Abstractions": {
+              "target": "Package",
+              "version": "[3.0.1, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "NETStandard.Library": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.403\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\Rodrigo\\Downloads\\BDSAssignment3\\BDSAssignment3\\Grains\\Grains.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\Rodrigo\\Downloads\\BDSAssignment3\\BDSAssignment3\\Grains\\Grains.csproj",
+        "projectName": "Grains",
+        "projectPath": "C:\\Users\\Rodrigo\\Downloads\\BDSAssignment3\\BDSAssignment3\\Grains\\Grains.csproj",
+        "packagesPath": "C:\\Users\\Rodrigo\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Rodrigo\\Downloads\\BDSAssignment3\\BDSAssignment3\\Grains\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Rodrigo\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netstandard2.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netstandard2.1": {
+            "targetAlias": "netstandard2.1",
+            "projectReferences": {
+              "C:\\Users\\Rodrigo\\Downloads\\BDSAssignment3\\BDSAssignment3\\DataModel\\Model.csproj": {
+                "projectPath": "C:\\Users\\Rodrigo\\Downloads\\BDSAssignment3\\BDSAssignment3\\DataModel\\Model.csproj"
+              },
+              "C:\\Users\\Rodrigo\\Downloads\\BDSAssignment3\\BDSAssignment3\\GrainInterfaces\\GrainInterfaces.csproj": {
+                "projectPath": "C:\\Users\\Rodrigo\\Downloads\\BDSAssignment3\\BDSAssignment3\\GrainInterfaces\\GrainInterfaces.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netstandard2.1": {
+          "targetAlias": "netstandard2.1",
+          "dependencies": {
+            "Microsoft.Extensions.Logging.Abstractions": {
+              "target": "Package",
+              "version": "[3.1.0, )"
+            },
+            "Microsoft.Orleans.CodeGenerator.MSBuild": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[3.0.1, )"
+            },
+            "Microsoft.Orleans.Core.Abstractions": {
+              "target": "Package",
+              "version": "[3.0.1, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "NETStandard.Library": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.403\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\Rodrigo\\Downloads\\BDSAssignment3\\BDSAssignment3\\Silo\\Silo.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\Rodrigo\\Downloads\\BDSAssignment3\\BDSAssignment3\\Silo\\Silo.csproj",
+        "projectName": "Silo",
+        "projectPath": "C:\\Users\\Rodrigo\\Downloads\\BDSAssignment3\\BDSAssignment3\\Silo\\Silo.csproj",
+        "packagesPath": "C:\\Users\\Rodrigo\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Rodrigo\\Downloads\\BDSAssignment3\\BDSAssignment3\\Silo\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Rodrigo\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.0": {
+            "targetAlias": "netcoreapp3.0",
+            "projectReferences": {
+              "C:\\Users\\Rodrigo\\Downloads\\BDSAssignment3\\BDSAssignment3\\DataModel\\Model.csproj": {
+                "projectPath": "C:\\Users\\Rodrigo\\Downloads\\BDSAssignment3\\BDSAssignment3\\DataModel\\Model.csproj"
+              },
+              "C:\\Users\\Rodrigo\\Downloads\\BDSAssignment3\\BDSAssignment3\\GrainInterfaces\\GrainInterfaces.csproj": {
+                "projectPath": "C:\\Users\\Rodrigo\\Downloads\\BDSAssignment3\\BDSAssignment3\\GrainInterfaces\\GrainInterfaces.csproj"
+              },
+              "C:\\Users\\Rodrigo\\Downloads\\BDSAssignment3\\BDSAssignment3\\Grains\\Grains.csproj": {
+                "projectPath": "C:\\Users\\Rodrigo\\Downloads\\BDSAssignment3\\BDSAssignment3\\Grains\\Grains.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.0": {
+          "targetAlias": "netcoreapp3.0",
+          "dependencies": {
+            "Microsoft.Extensions.Logging.Console": {
+              "target": "Package",
+              "version": "[3.1.0, )"
+            },
+            "Microsoft.Orleans.Server": {
+              "target": "Package",
+              "version": "[3.0.1, )"
+            },
+            "Orleans.Streams.Utils": {
+              "target": "Package",
+              "version": "[8.0.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[3.0.1, 3.0.1]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Host.win-x64",
+              "version": "[3.0.3, 3.0.3]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Ref",
+              "version": "[3.0.0, 3.0.0]"
+            },
+            {
+              "name": "Microsoft.WindowsDesktop.App.Ref",
+              "version": "[3.0.0, 3.0.0]"
+            }
+          ],
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.403\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}
