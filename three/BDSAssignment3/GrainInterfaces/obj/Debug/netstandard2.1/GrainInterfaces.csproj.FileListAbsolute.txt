@@ -1,0 +1,15 @@
+/Users/johanpedersen/Documents/Datalogi/BDS/Assignments/three/BDSAssignment3/GrainInterfaces/bin/Debug/netstandard2.1/GrainInterfaces.deps.json
+/Users/johanpedersen/Documents/Datalogi/BDS/Assignments/three/BDSAssignment3/GrainInterfaces/bin/Debug/netstandard2.1/GrainInterfaces.dll
+/Users/johanpedersen/Documents/Datalogi/BDS/Assignments/three/BDSAssignment3/GrainInterfaces/bin/Debug/netstandard2.1/GrainInterfaces.pdb
+/Users/johanpedersen/Documents/Datalogi/BDS/Assignments/three/BDSAssignment3/GrainInterfaces/bin/Debug/netstandard2.1/Model.dll
+/Users/johanpedersen/Documents/Datalogi/BDS/Assignments/three/BDSAssignment3/GrainInterfaces/bin/Debug/netstandard2.1/Model.pdb
+/Users/johanpedersen/Documents/Datalogi/BDS/Assignments/three/BDSAssignment3/GrainInterfaces/obj/Debug/netstandard2.1/GrainInterfaces.csproj.AssemblyReference.cache
+/Users/johanpedersen/Documents/Datalogi/BDS/Assignments/three/BDSAssignment3/GrainInterfaces/obj/Debug/netstandard2.1/GrainInterfaces.csproj.OrleansCodeGenInputs.cache
+/Users/johanpedersen/Documents/Datalogi/BDS/Assignments/three/BDSAssignment3/GrainInterfaces/obj/Debug/netstandard2.1/GrainInterfaces.orleans.g.cs
+/Users/johanpedersen/Documents/Datalogi/BDS/Assignments/three/BDSAssignment3/GrainInterfaces/obj/Debug/netstandard2.1/GrainInterfaces.GeneratedMSBuildEditorConfig.editorconfig
+/Users/johanpedersen/Documents/Datalogi/BDS/Assignments/three/BDSAssignment3/GrainInterfaces/obj/Debug/netstandard2.1/GrainInterfaces.AssemblyInfoInputs.cache
+/Users/johanpedersen/Documents/Datalogi/BDS/Assignments/three/BDSAssignment3/GrainInterfaces/obj/Debug/netstandard2.1/GrainInterfaces.AssemblyInfo.cs
+/Users/johanpedersen/Documents/Datalogi/BDS/Assignments/three/BDSAssignment3/GrainInterfaces/obj/Debug/netstandard2.1/GrainInterfaces.csproj.CoreCompileInputs.cache
+/Users/johanpedersen/Documents/Datalogi/BDS/Assignments/three/BDSAssignment3/GrainInterfaces/obj/Debug/netstandard2.1/GrainInterfaces.csproj.CopyComplete
+/Users/johanpedersen/Documents/Datalogi/BDS/Assignments/three/BDSAssignment3/GrainInterfaces/obj/Debug/netstandard2.1/GrainInterfaces.dll
+/Users/johanpedersen/Documents/Datalogi/BDS/Assignments/three/BDSAssignment3/GrainInterfaces/obj/Debug/netstandard2.1/GrainInterfaces.pdb
