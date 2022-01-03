@@ -95,6 +95,7 @@ namespace Client
                 var balance = (int)t.Result;
                 // each account's balance should be non-negative
                 Debug.Assert(balance >= 0);
+                Console.WriteLine($"Balance: {balance}");
                 totalBalance += balance;
             }
             // the total amount of money should remain the same
