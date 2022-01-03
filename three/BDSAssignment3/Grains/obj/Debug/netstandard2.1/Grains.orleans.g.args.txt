@@ -6,6 +6,7 @@ OutputType:Library
 TargetPath:/Users/johanpedersen/Documents/Datalogi/BDS/Assignments/three/BDSAssignment3/Grains/bin/Debug/netstandard2.1/Grains.dll
 CodeGenOutputFile:/Users/johanpedersen/Documents/Datalogi/BDS/Assignments/three/BDSAssignment3/Grains/obj/Debug/netstandard2.1/Grains.orleans.g.cs
 Compile:/Users/johanpedersen/Documents/Datalogi/BDS/Assignments/three/BDSAssignment3/Grains/FilterGrain.cs
+Compile:/Users/johanpedersen/Documents/Datalogi/BDS/Assignments/three/BDSAssignment3/Grains/FlatMapGrain.cs
 Compile:/Users/johanpedersen/Documents/Datalogi/BDS/Assignments/three/BDSAssignment3/Grains/SinkGrain.cs
 Compile:/Users/johanpedersen/Documents/Datalogi/BDS/Assignments/three/BDSAssignment3/Grains/SourceGrain.cs
 Reference:/Users/johanpedersen/Documents/Datalogi/BDS/Assignments/three/BDSAssignment3/GrainInterfaces/bin/Debug/netstandard2.1/GrainInterfaces.dll

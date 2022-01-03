@@ -10,9 +10,13 @@ namespace GrainStreamProcessing.GrainImpl
     public class SourceGrain : Grain, ISource
     {
         string streamName;
+        private Guid _guid;
+
         public Task Init()
         {
             Console.WriteLine($"SourceGrain of stream {streamName} starts.");
+            Guid.NewGuid();
+
             return Task.CompletedTask;
         }
         public override async Task OnActivateAsync()
@@ -31,21 +35,25 @@ namespace GrainStreamProcessing.GrainImpl
                     await subscriptionHandle.ResumeAsync(OnNextMessage);
                 }
             }
-
             await stream.SubscribeAsync(OnNextMessage);
         }
 
-        private Task OnNextMessage(string message, StreamSequenceToken sequenceToken)
+        private async Task OnNextMessage(string message, StreamSequenceToken sequenceToken)
         {
-            Console.WriteLine($"Stream {streamName} receives: {message}.");
+            //Console.WriteLine($"Stream {streamName} receives: {message}.");
             //Add your logic here to process received data
+            //Get one of the providers which we defined in our config
+            var streamProvider = GetStreamProvider("SMSProvider");
+            //Get the reference to a stream
+            var stream = streamProvider.GetStream<long>(_guid, "Filter");
+
+            var filterGrain = GrainFactory.GetGrain<IFilter>(0, "GrainStreamProcessing.GrainImpl.OddNumberFilter");
+            //Pick a GUID for a chat room grain and chat room stream
 
 
+            await stream.OnNextAsync(1);
 
-
-
-
-            return Task.CompletedTask;
+            
         }
     }
 }

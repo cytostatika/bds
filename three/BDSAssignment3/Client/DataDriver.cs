@@ -25,7 +25,8 @@ namespace Client
             StreamReader photoFile = new StreamReader(photoFilename);
             StreamReader tagFile = new StreamReader(tagFilename);
             StreamReader gpsFile = new StreamReader(gpsFilename);
-            long ratePhoto = rate / 100, rateGPS = rate * cGPS / cPhoto / 100;
+            long ratePhoto = rate / 100;
+            long rateGPS = rate * cGPS / cPhoto / 100;
             PhotoStreamProducer psp = new PhotoStreamProducer(photoFile, tagFile, photoStream, tagStream, (int)ratePhoto, randSpan);
             GPSStreamProducer gsp = new GPSStreamProducer(gpsFile, gpsStream, (int)rateGPS, randSpan);
             var task1 = psp.Start();
