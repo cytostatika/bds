@@ -15,11 +15,6 @@ namespace GrainStreamProcessing.GrainImpl
         public abstract bool Apply(T e); 
         public async Task Process(object e) // Implements the Process method from IFilter
         {
-            // if (Apply((T)e)) // If the function returns true, send the element to SinkGrain
-            //     {
-            //         await this.GrainFactory.GetGrain<ISink>(0, "GrainStreamProcessing.GrainImpl.SinkGrain").Process(e);
-            //     } // Otherwise, skip it
-            //
             if (Apply((T) e))
             {
                 var streamProvider = GetStreamProvider("SMSProvider");
@@ -59,7 +54,7 @@ namespace GrainStreamProcessing.GrainImpl
         }
     }
     
-    
+    [ImplicitStreamSubscription("Filter")]
     public class LargerThanTenFilter : FilterGrain<DataTuple>
     {
         public override bool Apply(DataTuple e) // Implements the Apply method, filtering numbers larger than 10
