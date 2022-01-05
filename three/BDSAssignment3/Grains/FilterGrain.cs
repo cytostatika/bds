@@ -4,6 +4,7 @@ using GrainStreamProcessing.Functions;
 using GrainStreamProcessing.GrainInterfaces;
 using System;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using Orleans.Streams;
 
 namespace GrainStreamProcessing.GrainImpl
@@ -35,7 +36,7 @@ namespace GrainStreamProcessing.GrainImpl
             _sinkGuid = Guid.NewGuid();
             
             var streamProvider = GetStreamProvider("SMSProvider");
-            var stream = streamProvider.GetStream<string>(this.GetPrimaryKey(), "Filter");
+            var stream = streamProvider.GetStream<ITuple>(this.GetPrimaryKey(), "Filter");
             // To resume stream in case of stream deactivation
             // var subscriptionHandles = await stream.GetAllSubscriptionHandles();
             //
@@ -49,11 +50,12 @@ namespace GrainStreamProcessing.GrainImpl
 
             await stream.SubscribeAsync(OnNextMessage);
         }
-        private async Task OnNextMessage(string message, StreamSequenceToken sequenceToken)
+        private async Task OnNextMessage(ITuple message, StreamSequenceToken sequenceToken)
         {
             Console.WriteLine($"OnNextMessage in Filter: {message}");
+            
 
-            await Process(long.Parse(message));
+            await Process(message);
         }
     }
     
@@ -74,11 +76,11 @@ namespace GrainStreamProcessing.GrainImpl
     }
     
     [ImplicitStreamSubscription("Filter")]
-    public class OddNumberFilter : FilterGrain<long>
+    public class OddNumberFilter : FilterGrain<ITuple>
     {
-        public override bool Apply(long e) // Implements the Apply method, filtering odd numbers
+        public override bool Apply(ITuple e) // Implements the Apply method, filtering odd numbers
         {
-            if (e % 2 == 1)
+            if ((int)e[0] % 2 == 1)
             {
                 return true;
             }
