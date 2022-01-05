@@ -10,7 +10,7 @@ namespace GrainStreamProcessing.GrainImpl
     public class SourceGrain : Grain, ISource
     {
         string streamName;
-        private Guid _guid;
+        private Guid _filterGuid;
 
         public Task Init()
         {
@@ -21,9 +21,10 @@ namespace GrainStreamProcessing.GrainImpl
         }
         public override async Task OnActivateAsync()
         {
+            _filterGuid = Guid.NewGuid();
             var primaryKey = this.GetPrimaryKey(out streamName);
             var streamProvider = GetStreamProvider("SMSProvider");
-            var stream = streamProvider.GetStream<String>(primaryKey, streamName);
+            var stream = streamProvider.GetStream<string>(primaryKey, streamName);
 
             // To resume stream in case of stream deactivation
             var subscriptionHandles = await stream.GetAllSubscriptionHandles();
@@ -45,13 +46,11 @@ namespace GrainStreamProcessing.GrainImpl
             //Get one of the providers which we defined in our config
             var streamProvider = GetStreamProvider("SMSProvider");
             //Get the reference to a stream
-            var stream = streamProvider.GetStream<long>(_guid, "Filter");
+            var stream = streamProvider.GetStream<string>(_filterGuid, "Filter");
 
-            var filterGrain = GrainFactory.GetGrain<IFilter>(0, "GrainStreamProcessing.GrainImpl.OddNumberFilter");
             //Pick a GUID for a chat room grain and chat room stream
 
-
-            await stream.OnNextAsync(1);
+            await stream.OnNextAsync(message);
 
             
         }

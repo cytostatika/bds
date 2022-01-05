@@ -10,23 +10,32 @@ namespace GrainStreamProcessing.GrainImpl
 {
     public abstract class FilterGrain<T> : Grain, IFilter, IFilterFunction<T>
     {
-
+        private Guid _sinkGuid;
         public abstract bool Apply(T e); 
-        public Task Process(object e) // Implements the Process method from IFilter
+        public async Task Process(object e) // Implements the Process method from IFilter
         {
-            if (Apply((T)e)) // If the function returns true, send the element to SinkGrain
-                {
-                    this.GrainFactory.GetGrain<ISink>(0, "GrainStreamProcessing.GrainImpl.SinkGrain").Process(e);
-                } // Otherwise, skip it
-            return Task.CompletedTask;
+            // if (Apply((T)e)) // If the function returns true, send the element to SinkGrain
+            //     {
+            //         await this.GrainFactory.GetGrain<ISink>(0, "GrainStreamProcessing.GrainImpl.SinkGrain").Process(e);
+            //     } // Otherwise, skip it
+            //
+            if (Apply((T) e))
+            {
+                var streamProvider = GetStreamProvider("SMSProvider");
+                //Get the reference to a stream
+                var stream = streamProvider.GetStream<string>(_sinkGuid, "Sink");
+            
+                await stream.OnNextAsync(e.ToString());
+            }
         }
 
         public override async Task OnActivateAsync()
         {
             Console.WriteLine("OnActivateAsync in Filter");
-
+            _sinkGuid = Guid.NewGuid();
+            
             var streamProvider = GetStreamProvider("SMSProvider");
-            var stream = streamProvider.GetStream<T>(this.GetPrimaryKey(), "Filter");
+            var stream = streamProvider.GetStream<string>(this.GetPrimaryKey(), "Filter");
             // To resume stream in case of stream deactivation
             // var subscriptionHandles = await stream.GetAllSubscriptionHandles();
             //
@@ -40,12 +49,11 @@ namespace GrainStreamProcessing.GrainImpl
 
             await stream.SubscribeAsync(OnNextMessage);
         }
-        private Task OnNextMessage(T message, StreamSequenceToken sequenceToken)
+        private async Task OnNextMessage(string message, StreamSequenceToken sequenceToken)
         {
             Console.WriteLine($"OnNextMessage in Filter: {message}");
 
-            Process(message);
-            return Task.CompletedTask;
+            await Process(long.Parse(message));
         }
     }
     
