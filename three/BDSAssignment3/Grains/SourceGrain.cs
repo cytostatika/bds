@@ -5,6 +5,7 @@ using GrainStreamProcessing.GrainInterfaces;
 using System.Threading.Tasks;
 using System;
 using System.Runtime.CompilerServices;
+using GrainStreamProcessing.Functions;
 
 namespace GrainStreamProcessing.GrainImpl
 {
@@ -42,30 +43,26 @@ namespace GrainStreamProcessing.GrainImpl
 
         private async Task OnNextMessage(string message, StreamSequenceToken sequenceToken)
         {
-            //Console.WriteLine($"Stream {_streamName} receives: {message}.");
+            Console.WriteLine($"Stream {_streamName} receives: {message}.");
             //Add your logic here to process received data
             //Get one of the providers which we defined in our config
             var streamProvider = GetStreamProvider("SMSProvider");
             //Get the reference to a stream
 
-            var stream = streamProvider.GetStream<ITuple>(_filterGuid, "Filter");
+            var stream = streamProvider.GetStream<DataTuple>(_filterGuid, "Filter");
 
             var parsedMessage = ParseStream(message, _streamName);
             
             await stream.OnNextAsync(parsedMessage);
         }
 
-            private ITuple ParseStream(string message, string streamNameParse)
+            private DataTuple ParseStream(string message, string streamNameParse)
             {
-                var numbers = message.Split();
-
                 return streamNameParse switch
                 {
-                    "Photo" => new Tuple<int, int, float, float>(int.Parse(numbers[0]), int.Parse(numbers[1]),
-                        float.Parse(numbers[2]), float.Parse(numbers[3])),
-                    "GPS" => new Tuple<int, float, float>(int.Parse(numbers[0]), float.Parse(numbers[1]),
-                        float.Parse(numbers[2])),
-                    _ => new Tuple<int, int>(int.Parse(numbers[0]), int.Parse(numbers[1]))
+                    "Photo" => new PhotoTuple(message),
+                    "GPS" => new GPSTuple(message),
+                    _ => new TagTuple(message)
                 };
             }
     }
