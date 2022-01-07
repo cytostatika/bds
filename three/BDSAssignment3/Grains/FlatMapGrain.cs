@@ -18,9 +18,9 @@ namespace GrainStreamProcessing.GrainImpl
             
             var streamProvider = GetStreamProvider("SMSProvider");
             //Get the reference to a stream
-            var stream = streamProvider.GetStream<string>(_sinkGuid, "Sink");
+            var stream = streamProvider.GetStream<object>(_sinkGuid, "Sink");
         
-            await stream.OnNextAsync(e.ToString());
+            await stream.OnNextAsync(res);
         }
         
         public override async Task OnActivateAsync()
@@ -48,11 +48,11 @@ namespace GrainStreamProcessing.GrainImpl
     {
         public override IList<DataTuple> Apply(DataTuple e) // Implements the Apply method, filtering odd numbers
         {
-            var res = new List<DataTuple>() {e, e};
+            var res = new List<DataTuple>{e};
 
             foreach (var dataTuple in res)
             {
-                dataTuple.Lat += 10;
+                dataTuple.UserId += 10;
             }
             return res;
         }

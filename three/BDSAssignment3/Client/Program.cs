@@ -6,6 +6,7 @@ using Orleans.Hosting;
 using System;
 using System.Threading.Tasks;
 using Client;
+using GrainStreamProcessing.Functions;
 
 namespace GrainStreamProcessing
 {
@@ -23,7 +24,8 @@ namespace GrainStreamProcessing
                 using (var client = await ConnectClient())
                 {
                     //await SampleClient(client);
-                    await StreamClient(client);
+                    await FlatMapClient(client);
+                    //await StreamClient(client);
                     Console.ReadKey();
                 }
 
@@ -98,6 +100,23 @@ namespace GrainStreamProcessing
                await filterGrain.Process(r); // Send these numbers to the filter operator, and numbers that pass this filter will be outputted onto Silo console.
             }
         }
+        
+        private static async Task FlatMapClient(IClusterClient client)
+        {
+            // The code below shows how to specify an exact grain class which implements the IFilter interface
+
+            Random random = new Random();
+            //var filterGrain = client.GetGrain<IFilter>(0, "GrainStreamProcessing.GrainImpl.LargerThanTenFilter");
+            var filterGrain = client.GetGrain<IFlatMap>(0, "GrainStreamProcessing.GrainImpl.AddMap");
+            for (int i = 0; i < 20; ++i)
+            {
+                long r = random.Next(20); // Randomly generate twenty numbers between 0 and 19.
+                var res = new TagTuple($"{r} {r} {r}");
+                Console.WriteLine(res); // Output these numbers to Client console.
+                await filterGrain.Process(res); // Send these numbers to the filter operator, and numbers that pass this filter will be outputted onto Silo console.
+            }
+        }
+        
     }
 
 
