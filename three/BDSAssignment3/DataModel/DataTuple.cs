@@ -1,5 +1,3 @@
-using System.Collections.Generic;
-
 namespace GrainStreamProcessing.Functions
 {
     public abstract class DataTuple
@@ -15,6 +13,7 @@ namespace GrainStreamProcessing.Functions
             return $"user:{UserId}, photo:{PhotoId}, lat:{Lat}, long:{Long}, time:{TimeStamp}";
         }
     }
+
     public class PhotoTuple : DataTuple
     {
         public PhotoTuple(string message)
@@ -28,6 +27,7 @@ namespace GrainStreamProcessing.Functions
             TimeStamp = long.Parse(numbers[4]);
         }
     }
+
     public class GPSTuple : DataTuple
     {
         public GPSTuple(string message)
@@ -40,7 +40,7 @@ namespace GrainStreamProcessing.Functions
             TimeStamp = long.Parse(numbers[3]);
         }
     }
-    
+
     public class TagTuple : DataTuple
     {
         public TagTuple(string message)

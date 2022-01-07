@@ -1,8 +1,9 @@
 using System.Threading.Tasks;
+using Orleans;
 
 namespace GrainStreamProcessing.GrainInterfaces
 {
-    public interface IFlatMap : Orleans.IGrainWithIntegerKey
+    public interface IFlatMap : IGrainWithIntegerKey
     {
         Task Process(object e);
     }
