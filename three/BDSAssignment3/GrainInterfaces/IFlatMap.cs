@@ -6,5 +6,6 @@ namespace GrainStreamProcessing.GrainInterfaces
     public interface IFlatMap : IGrainWithIntegerKey
     {
         Task Process(object e);
+        Task Init();
     }
 }

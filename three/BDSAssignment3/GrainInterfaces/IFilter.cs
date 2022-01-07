@@ -7,5 +7,6 @@ namespace GrainStreamProcessing.GrainInterfaces
     public interface IFilter : Orleans.IGrainWithIntegerKey
     {
         Task Process(object e);
+        Task Init();
     }
 }

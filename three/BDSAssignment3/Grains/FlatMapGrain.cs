@@ -10,43 +10,54 @@ namespace GrainStreamProcessing.GrainImpl
 {
     public abstract class FlatMapGrain<T> : Grain, IFlatMap, IFlatMapFunction<T>
     {
-        private Guid _sinkGuid;
-
         public async Task Process(object e) // Implements the Process method from IFilter
         {
             var res = Apply((T) e);
 
             var streamProvider = GetStreamProvider("SMSProvider");
             //Get the reference to a stream
-            var stream = streamProvider.GetStream<object>(_sinkGuid, "Sink");
+            var stream = streamProvider.GetStream<object>(Constants.StreamGuid, Constants.SinkNameSpace);
 
             await stream.OnNextAsync(res);
+        }
+        
+        public Task Init()
+        {
+            Console.WriteLine($"SourceGrain of stream FlatMap starts.");
+            Guid.NewGuid();
+
+            return Task.CompletedTask;
         }
 
         public abstract IList<DataTuple> Apply(T e);
 
         public override async Task OnActivateAsync()
         {
-            Console.WriteLine("OnActivateAsync in FlatMap");
-            _sinkGuid = Guid.NewGuid();
-
             var streamProvider = GetStreamProvider("SMSProvider");
-            var stream = streamProvider.GetStream<DataTuple>(this.GetPrimaryKey(), "FlatMap");
+            var stream = streamProvider.GetStream<DataTuple>(Constants.StreamGuid,Constants.FlatMapNameSpace);
+
+            // To resume stream in case of stream deactivation
+            var subscriptionHandles = await stream.GetAllSubscriptionHandles();
+            if (subscriptionHandles.Count > 0)
+            {
+                foreach (var subscriptionHandle in subscriptionHandles)
+                {
+                    await subscriptionHandle.ResumeAsync(OnNextMessage);
+                }
+            }
 
             await stream.SubscribeAsync(OnNextMessage);
         }
 
         private async Task OnNextMessage(DataTuple message, StreamSequenceToken sequenceToken)
         {
-            Console.WriteLine($"OnNextMessage in Filter: {message}");
+            Console.WriteLine($"OnNextMessage in FlatMap: {message}");
 
 
             await Process(message);
         }
     }
-
-
-    [ImplicitStreamSubscription("FlatMap")]
+    
     public class AddMap : FlatMapGrain<DataTuple>
     {
         public override IList<DataTuple> Apply(DataTuple e) // Implements the Apply method, filtering odd numbers

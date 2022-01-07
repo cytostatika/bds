@@ -38,18 +38,23 @@ namespace GrainStreamProcessing.GrainImpl
                     await subscriptionHandle.ResumeAsync(OnNextMessage);
                 }
             }
+            
+            var nextGrain =
+                GrainFactory.GetGrain<IFlatMap>(0, "GrainStreamProcessing.GrainImpl.AddMap");
+            await nextGrain.Init();
+            
             await stream.SubscribeAsync(OnNextMessage);
         }
 
         private async Task OnNextMessage(string message, StreamSequenceToken sequenceToken)
         {
-            Console.WriteLine($"Stream {_streamName} receives: {message}.");
+            //Console.WriteLine($"Stream {_streamName} receives: {message}.");
             //Add your logic here to process received data
             //Get one of the providers which we defined in our config
             var streamProvider = GetStreamProvider("SMSProvider");
             //Get the reference to a stream
 
-            var stream = streamProvider.GetStream<DataTuple>(_filterGuid, "Filter");
+            var stream = streamProvider.GetStream<DataTuple>(Constants.StreamGuid, Constants.FlatMapNameSpace);
 
             var parsedMessage = ParseStream(message, _streamName);
             
