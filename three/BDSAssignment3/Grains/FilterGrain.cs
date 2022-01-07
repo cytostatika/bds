@@ -19,9 +19,9 @@ namespace GrainStreamProcessing.GrainImpl
             {
                 var streamProvider = GetStreamProvider("SMSProvider");
                 //Get the reference to a stream
-                var stream = streamProvider.GetStream<string>(_sinkGuid, "Sink");
+                var stream = streamProvider.GetStream<object>(_sinkGuid, "Sink");
             
-                await stream.OnNextAsync(e.ToString());
+                await stream.OnNextAsync(e);
             }
         }
 
