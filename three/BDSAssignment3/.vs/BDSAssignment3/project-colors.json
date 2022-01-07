@@ -1,0 +1,36 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "128f7fed-b724-4eab-94f7-cdcd1e44b014": {
+      "ProjectGuid": "128f7fed-b724-4eab-94f7-cdcd1e44b014",
+      "DisplayName": "Client",
+      "ColorIndex": 0
+    },
+    "9a7debaf-e0d9-4fa1-8732-72244d1e4aff": {
+      "ProjectGuid": "9a7debaf-e0d9-4fa1-8732-72244d1e4aff",
+      "DisplayName": "GrainInterfaces",
+      "ColorIndex": 1
+    },
+    "fe0f6166-0896-4eea-a3db-cd454fa63c2f": {
+      "ProjectGuid": "fe0f6166-0896-4eea-a3db-cd454fa63c2f",
+      "DisplayName": "Grains",
+      "ColorIndex": 2
+    },
+    "9c328602-ec29-4e47-b07f-4c23b6ed3d3c": {
+      "ProjectGuid": "9c328602-ec29-4e47-b07f-4c23b6ed3d3c",
+      "DisplayName": "Silo",
+      "ColorIndex": 3
+    },
+    "3b465a4f-43d3-4cac-b60e-68c29f6f9969": {
+      "ProjectGuid": "3b465a4f-43d3-4cac-b60e-68c29f6f9969",
+      "DisplayName": "Model",
+      "ColorIndex": 4
+    },
+    "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3": {
+      "ProjectGuid": "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3",
+      "DisplayName": "Miscellaneous Files",
+      "ColorIndex": -1
+    }
+  },
+  "NextColorIndex": 5
+}

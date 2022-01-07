@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "7Id3hYkM/ZbH5mSENx/7I/Wxm82a7imuDVaevXF8p6fGL8K9RkoGe0VezA6rCYKmL4bbGp5AQcPUImkozjobJw==",
+  "dgSpecHash": "PJdFkcaRxP4N9ZPSj9IW/o6upxnXwenylyaQoi9LDUe9LMVfzmqloNPeyexINw6kEotItCvMYmeHgiTLKPir6Q==",
   "success": true,
-  "projectFilePath": "/Users/johanpedersen/Documents/Datalogi/BDS/Assignments/three/BDSAssignment3/DataModel/Model.csproj",
+  "projectFilePath": "C:\\Users\\APC\\Documents\\bds\\three\\BDSAssignment3\\DataModel\\Model.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

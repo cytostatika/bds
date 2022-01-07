@@ -9,5 +9,6 @@ namespace GrainStreamProcessing.Functions
         public const string SinkNameSpace = "Sink";
 
         public static Guid StreamGuid = Guid.NewGuid();
+
     }
 }

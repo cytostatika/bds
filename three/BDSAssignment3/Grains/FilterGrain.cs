@@ -11,14 +11,20 @@ namespace GrainStreamProcessing.GrainImpl
 {
     public abstract class FilterGrain<T> : Grain, IFilter, IFilterFunction<T>
     {
-        public abstract bool Apply(T e); 
+        private IStreamProvider streamProvider;
+        public abstract bool Apply(T e);
+
+        // TODO: change these to getters/setter or whwatever and change them according to the input in Init.
+        //       Also create the entire topology either through chaining of init functions or in source grain by calling Inits with correct input.
+        public abstract string MyInStream();
+        public abstract string MyOutStream();
         public async Task Process(object e) // Implements the Process method from IFilter
         {
             if (Apply((T) e))
             {
-                var streamProvider = GetStreamProvider("SMSProvider");
                 //Get the reference to a stream
-                var stream = streamProvider.GetStream<object>(Constants.StreamGuid, Constants.SinkNameSpace);
+                var outStream = MyOutStream();
+                var stream = streamProvider.GetStream<object>(Constants.StreamGuid, outStream);
             
                 await stream.OnNextAsync(e);
             }
@@ -26,15 +32,16 @@ namespace GrainStreamProcessing.GrainImpl
         public Task Init()
         {
             Console.WriteLine($"SourceGrain of stream Filter starts.");
-            Guid.NewGuid();
 
             return Task.CompletedTask;
         }
 
         public override async Task OnActivateAsync()
         {
-            var streamProvider = GetStreamProvider("SMSProvider");
-            var stream = streamProvider.GetStream<DataTuple>(Constants.StreamGuid,Constants.FilterNameSpace);
+            streamProvider = GetStreamProvider("SMSProvider");
+
+            var inStream = MyInStream();
+            var stream = streamProvider.GetStream<DataTuple>(Constants.StreamGuid, inStream);
 
             // To resume stream in case of stream deactivation
             var subscriptionHandles = await stream.GetAllSubscriptionHandles();
@@ -57,20 +64,6 @@ namespace GrainStreamProcessing.GrainImpl
         }
     }
     
-    public class LargerThanTenFilter : FilterGrain<DataTuple>
-    {
-        public override bool Apply(DataTuple e) // Implements the Apply method, filtering numbers larger than 10
-        {
-             if (e.UserId > 10)
-                {
-                    return true;
-                }
-                else
-                {
-                    return false;
-                }
-        }
-    }
     
     public class OddNumberFilter : FilterGrain<DataTuple>
     {
@@ -84,6 +77,16 @@ namespace GrainStreamProcessing.GrainImpl
             {
                 return false;
             }
+        }
+
+        public override string MyInStream()
+        {
+            return Constants.FilterNameSpace;
+        }
+
+        public override string MyOutStream()
+        {
+            return Constants.SinkNameSpace;
         }
     }
 }
