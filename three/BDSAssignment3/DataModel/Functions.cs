@@ -7,4 +7,9 @@ namespace GrainStreamProcessing.Functions
     {
         bool Apply(T e);
     }
+
+    public interface IFlatMapFunction<T>
+    {
+        IList<DataTuple> Apply(T e);
+    }
 }

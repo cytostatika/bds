@@ -1,0 +1,10 @@
+/Users/johanpedersen/Documents/Datalogi/BDS/Assignments/three/BDSAssignment3/DataModel/bin/Debug/netstandard2.1/Model.deps.json
+/Users/johanpedersen/Documents/Datalogi/BDS/Assignments/three/BDSAssignment3/DataModel/bin/Debug/netstandard2.1/Model.dll
+/Users/johanpedersen/Documents/Datalogi/BDS/Assignments/three/BDSAssignment3/DataModel/bin/Debug/netstandard2.1/Model.pdb
+/Users/johanpedersen/Documents/Datalogi/BDS/Assignments/three/BDSAssignment3/DataModel/obj/Debug/netstandard2.1/Model.csproj.AssemblyReference.cache
+/Users/johanpedersen/Documents/Datalogi/BDS/Assignments/three/BDSAssignment3/DataModel/obj/Debug/netstandard2.1/Model.GeneratedMSBuildEditorConfig.editorconfig
+/Users/johanpedersen/Documents/Datalogi/BDS/Assignments/three/BDSAssignment3/DataModel/obj/Debug/netstandard2.1/Model.AssemblyInfoInputs.cache
+/Users/johanpedersen/Documents/Datalogi/BDS/Assignments/three/BDSAssignment3/DataModel/obj/Debug/netstandard2.1/Model.AssemblyInfo.cs
+/Users/johanpedersen/Documents/Datalogi/BDS/Assignments/three/BDSAssignment3/DataModel/obj/Debug/netstandard2.1/Model.csproj.CoreCompileInputs.cache
+/Users/johanpedersen/Documents/Datalogi/BDS/Assignments/three/BDSAssignment3/DataModel/obj/Debug/netstandard2.1/Model.dll
+/Users/johanpedersen/Documents/Datalogi/BDS/Assignments/three/BDSAssignment3/DataModel/obj/Debug/netstandard2.1/Model.pdb
