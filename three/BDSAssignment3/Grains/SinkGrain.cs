@@ -23,15 +23,15 @@ namespace GrainStreamProcessing.GrainImpl
             var streamProvider = GetStreamProvider("SMSProvider");
             var stream = streamProvider.GetStream<string>(this.GetPrimaryKey(), "Sink");
             // To resume stream in case of stream deactivation
-            // var subscriptionHandles = await stream.GetAllSubscriptionHandles();
-            //
-            // if (subscriptionHandles.Count > 0)
-            // {
-            //     foreach (var subscriptionHandle in subscriptionHandles)
-            //     {
-            //         await subscriptionHandle.ResumeAsync(OnNextMessage);
-            //     }
-            // }
+            var subscriptionHandles = await stream.GetAllSubscriptionHandles();
+
+            if (subscriptionHandles.Count > 0)
+            {
+                foreach (var subscriptionHandle in subscriptionHandles)
+                {
+                    await subscriptionHandle.ResumeAsync(OnNextMessage);
+                }
+            }
 
             await stream.SubscribeAsync(OnNextMessage);
         }

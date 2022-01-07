@@ -9,10 +9,10 @@ namespace Client
 {
     public class DataDriver
     {
-        static string rootPath = Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName;
-        static string photoFilename = Path.Combine(rootPath, @"Photo");
-        static string tagFilename = Path.Combine(rootPath, @"Tag");
-        static string gpsFilename = Path.Combine(rootPath, @"GPS");
+        static string rootPath = Environment.CurrentDirectory;
+        static string photoFilename = Path.Combine(rootPath, @"Client/Photo");
+        static string tagFilename = Path.Combine(rootPath, @"Client/Tag");
+        static string gpsFilename = Path.Combine(rootPath, @"Client/GPS");
         static int cPhoto = 191737;
         static int cGPS = 3485450;
 

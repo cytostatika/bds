@@ -17,7 +17,7 @@ namespace GrainStreamProcessing.GrainImpl
         public Task Init()
         {
             Console.WriteLine($"SourceGrain of stream {_streamName} starts.");
-            Guid.NewGuid();
+            //Guid.NewGuid();
 
             return Task.CompletedTask;
         }

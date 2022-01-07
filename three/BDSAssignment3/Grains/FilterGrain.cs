@@ -11,20 +11,20 @@ namespace GrainStreamProcessing.GrainImpl
 {
     public abstract class FilterGrain<T> : Grain, IFilter, IFilterFunction<T>
     {
-        private Guid _sinkGuid;
-        public abstract bool Apply(T e); 
+
+        
+        private IStreamProvider streamProvider;
+        private Guid _outGuid;
+        public abstract bool Apply(T e);
+        public abstract string MyInStream();
+        public abstract string MyOutStream();
         public async Task Process(object e) // Implements the Process method from IFilter
-        {
-            // if (Apply((T)e)) // If the function returns true, send the element to SinkGrain
-            //     {
-            //         await this.GrainFactory.GetGrain<ISink>(0, "GrainStreamProcessing.GrainImpl.SinkGrain").Process(e);
-            //     } // Otherwise, skip it
-            //
+        { 
             if (Apply((T) e))
             {
-                var streamProvider = GetStreamProvider("SMSProvider");
                 //Get the reference to a stream
-                var stream = streamProvider.GetStream<string>(_sinkGuid, "Sink");
+                var outStream = MyOutStream();
+                var stream = streamProvider.GetStream<string>(_outGuid, outStream);
             
                 await stream.OnNextAsync(e.ToString());
             }
@@ -33,20 +33,21 @@ namespace GrainStreamProcessing.GrainImpl
         public override async Task OnActivateAsync()
         {
             Console.WriteLine("OnActivateAsync in Filter");
-            _sinkGuid = Guid.NewGuid();
+            _outGuid = Guid.NewGuid();
             
-            var streamProvider = GetStreamProvider("SMSProvider");
-            var stream = streamProvider.GetStream<DataTuple>(this.GetPrimaryKey(), "Filter");
+            streamProvider = GetStreamProvider("SMSProvider");
+            var inStream = MyInStream();
+            var stream = streamProvider.GetStream<DataTuple>(this.GetPrimaryKey(), inStream);
             // To resume stream in case of stream deactivation
-            // var subscriptionHandles = await stream.GetAllSubscriptionHandles();
-            //
-            // if (subscriptionHandles.Count > 0)
-            // {
-            //     foreach (var subscriptionHandle in subscriptionHandles)
-            //     {
-            //         await subscriptionHandle.ResumeAsync(OnNextMessage);
-            //     }
-            // }
+            var subscriptionHandles = await stream.GetAllSubscriptionHandles();
+
+            if (subscriptionHandles.Count > 0)
+            {
+                foreach (var subscriptionHandle in subscriptionHandles)
+                {
+                    await subscriptionHandle.ResumeAsync(OnNextMessage);
+                }
+            }
 
             await stream.SubscribeAsync(OnNextMessage);
         }
@@ -73,6 +74,15 @@ namespace GrainStreamProcessing.GrainImpl
                     return false;
                 }
         }
+        public override string MyInStream()
+        {
+            return "Filter";
+        }
+
+        public override string MyOutStream()
+        {
+            return "Sink";
+        }
     }
     
     [ImplicitStreamSubscription("Filter")]
@@ -88,6 +98,15 @@ namespace GrainStreamProcessing.GrainImpl
             {
                 return false;
             }
+        }
+        public override string MyInStream()
+        {
+            return "Filter";
+        }
+
+        public override string MyOutStream()
+        {
+            return "Sink";
         }
     }
 }
