@@ -1,11 +1,10 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using System;
+using System.Threading.Tasks;
+using GrainStreamProcessing.GrainImpl;
+using Microsoft.Extensions.Logging;
 using Orleans;
 using Orleans.Configuration;
 using Orleans.Hosting;
-using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
-using GrainStreamProcessing.GrainImpl;
 
 namespace GrainStreamProcessing
 {
@@ -13,8 +12,7 @@ namespace GrainStreamProcessing
     {
         public static int Main(string[] args)
         {
-			
-			return RunMainAsync().Result;
+            return RunMainAsync().Result;
         }
 
         private static async Task<int> RunMainAsync()
@@ -38,18 +36,18 @@ namespace GrainStreamProcessing
 
         private static async Task<ISiloHost> StartSilo()
         {
-			// define the cluster configuration
-			var builder = new SiloHostBuilder()
+            // define the cluster configuration
+            var builder = new SiloHostBuilder()
                 .UseLocalhostClustering()
                 .Configure<ClusterOptions>(options =>
                 {
                     options.ClusterId = "cluster";
                     options.ServiceId = "GrainStreamProcessing";
                 })
-				.ConfigureApplicationParts(parts => parts
-                .AddApplicationPart(typeof(SourceGrain).Assembly).WithReferences()
-				)
-				.ConfigureLogging(logging => logging.AddConsole())
+                .ConfigureApplicationParts(parts => parts
+                    .AddApplicationPart(typeof(SourceGrain).Assembly).WithReferences()
+                )
+                .ConfigureLogging(logging => logging.AddConsole())
                 .AddSimpleMessageStreamProvider("SMSProvider")
                 .AddMemoryGrainStorage("PubSubStore");
 

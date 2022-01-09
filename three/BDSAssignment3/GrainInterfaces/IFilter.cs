@@ -1,10 +1,9 @@
-﻿using System;
-using System.Threading.Tasks;
-using GrainStreamProcessing.Functions;
+﻿using System.Threading.Tasks;
+using Orleans;
 
 namespace GrainStreamProcessing.GrainInterfaces
 {
-    public interface IFilter : Orleans.IGrainWithIntegerKey
+    public interface IFilter : IGrainWithIntegerKey
     {
         Task Process(object e);
         Task Init();

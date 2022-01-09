@@ -9,44 +9,54 @@ namespace Client
 {
     public class DataDriver
     {
-        static string rootPath = Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName;
-        static string photoFilename = Path.Combine(rootPath, @"Photo");
-        static string tagFilename = Path.Combine(rootPath, @"Tag");
-        static string gpsFilename = Path.Combine(rootPath, @"GPS");
-        static int cPhoto = 191737;
-        static int cGPS = 3485450;
+        private static readonly string rootPath =
+            Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName;
+
+        private static readonly string photoFilename = Path.Combine(rootPath, @"Photo");
+        private static readonly string tagFilename = Path.Combine(rootPath, @"Tag");
+        private static readonly string gpsFilename = Path.Combine(rootPath, @"GPS");
+        private static readonly int cPhoto = 191737;
+        private static readonly int cGPS = 3485450;
 
         /***
          * int rate: generating rate of photo stream, rates of tag and gps streams are correspondingly decided.
          * int randSpan: time span for timestamp randomization.
          ***/
-        public static async Task Run(IAsyncStream<string> photoStream, IAsyncStream<string> tagStream, IAsyncStream<string> gpsStream, long rate, int randSpan)
+        public static async Task Run(IAsyncStream<string> photoStream, IAsyncStream<string> tagStream,
+            IAsyncStream<string> gpsStream, long rate, int randSpan)
         {
-            StreamReader photoFile = new StreamReader(photoFilename);
-            StreamReader tagFile = new StreamReader(tagFilename);
-            StreamReader gpsFile = new StreamReader(gpsFilename);
-            long ratePhoto = rate / 100;
-            long rateGPS = rate * cGPS / cPhoto / 100;
-            PhotoStreamProducer psp = new PhotoStreamProducer(photoFile, tagFile, photoStream, tagStream, (int)ratePhoto, randSpan);
-            GPSStreamProducer gsp = new GPSStreamProducer(gpsFile, gpsStream, (int)rateGPS, randSpan);
+            var photoFile = new StreamReader(photoFilename);
+            var tagFile = new StreamReader(tagFilename);
+            var gpsFile = new StreamReader(gpsFilename);
+            var ratePhoto = rate / 100;
+            var rateGPS = rate * cGPS / cPhoto / 100;
+            var psp = new PhotoStreamProducer(photoFile, tagFile, photoStream, tagStream, (int) ratePhoto, randSpan);
+            var gsp = new GPSStreamProducer(gpsFile, gpsStream, (int) rateGPS, randSpan);
             var task1 = psp.Start();
             var task2 = gsp.Start();
             await Task.WhenAll(task1, task2);
         }
+
         public static long getCurrentTimestamp()
         {
-            var timeSpan = (DateTime.UtcNow - new DateTime(1970, 1, 1, 0, 0, 0));
-            return (long)timeSpan.TotalMilliseconds;
+            var timeSpan = DateTime.UtcNow - new DateTime(1970, 1, 1, 0, 0, 0);
+            return (long) timeSpan.TotalMilliseconds;
         }
     }
+
     public class PhotoStreamProducer
     {
-        StreamReader photoFile, tagFile;
-        IAsyncStream<string> photoStream, tagStream;
-        int rate, randSpan;
-        bool endOfFile;
-        IDictionary<int, ISet<int>> tags;
-        public PhotoStreamProducer(StreamReader photoFile, StreamReader tagFile, IAsyncStream<string> photoStream, IAsyncStream<string> tagStream, int rate, int randSpan)
+        private readonly bool endOfFile;
+        private readonly StreamReader photoFile;
+        private StreamReader tagFile;
+        private readonly IAsyncStream<string> photoStream;
+        private readonly IAsyncStream<string> tagStream;
+        private readonly int rate;
+        private readonly int randSpan;
+        private readonly IDictionary<int, ISet<int>> tags;
+
+        public PhotoStreamProducer(StreamReader photoFile, StreamReader tagFile, IAsyncStream<string> photoStream,
+            IAsyncStream<string> tagStream, int rate, int randSpan)
         {
             this.photoFile = photoFile;
             this.tagFile = tagFile;
@@ -54,18 +64,15 @@ namespace Client
             this.tagStream = tagStream;
             this.rate = rate;
             this.randSpan = randSpan;
-            this.endOfFile = false;
+            endOfFile = false;
             string line;
             tags = new Dictionary<int, ISet<int>>();
             while ((line = tagFile.ReadLine()) != null)
             {
-                string[] arr = line.Split(" ");
+                var arr = line.Split(" ");
                 int pid, uid;
-                if (!Int32.TryParse(arr[0], out pid) || !Int32.TryParse(arr[1], out uid)) continue;
-                if (!tags.ContainsKey(pid))
-                {
-                    tags.Add(pid, new HashSet<int>());
-                }
+                if (!int.TryParse(arr[0], out pid) || !int.TryParse(arr[1], out uid)) continue;
+                if (!tags.ContainsKey(pid)) tags.Add(pid, new HashSet<int>());
                 tags[pid].Add(uid);
             }
         }
@@ -82,42 +89,42 @@ namespace Client
         public async Task Run()
         {
             string line;
-            Random random = new Random();
-            int count = rate / 2 + random.Next(rate+1);
-            for (int i = 0; i < count; ++i)
+            var random = new Random();
+            var count = rate / 2 + random.Next(rate + 1);
+            for (var i = 0; i < count; ++i)
             {
                 line = photoFile.ReadLine();
                 if (line == null) break;
-                long ts = DataDriver.getCurrentTimestamp() + random.Next(2 * randSpan + 1) - randSpan;
+                var ts = DataDriver.getCurrentTimestamp() + random.Next(2 * randSpan + 1) - randSpan;
                 line = line + " " + ts;
                 await photoStream.OnNextAsync(line);
                 int pid;
-                if (!Int32.TryParse(line.Split(" ")[0], out pid)) continue;
+                if (!int.TryParse(line.Split(" ")[0], out pid)) continue;
                 if (tags.ContainsKey(pid))
-                {
-                    foreach (int uid in tags[pid])
+                    foreach (var uid in tags[pid])
                     {
-                        string tagLine = pid + " " + uid + " " + ts;
+                        var tagLine = pid + " " + uid + " " + ts;
                         await tagStream.OnNextAsync(tagLine);
                     }
-                }
             }
         }
-
     }
+
     public class GPSStreamProducer
     {
-        StreamReader gpsFile;
-        IAsyncStream<string> gpsStream;
-        int rate, randSpan;
-        bool endOfFile;
+        private readonly bool endOfFile;
+        private readonly StreamReader gpsFile;
+        private readonly IAsyncStream<string> gpsStream;
+        private readonly int rate;
+        private readonly int randSpan;
+
         public GPSStreamProducer(StreamReader gpsFile, IAsyncStream<string> gpsStream, int rate, int randSpan)
         {
             this.gpsFile = gpsFile;
             this.gpsStream = gpsStream;
             this.rate = rate;
             this.randSpan = randSpan;
-            this.endOfFile = false;
+            endOfFile = false;
         }
 
         public async Task Start()
@@ -132,13 +139,13 @@ namespace Client
         public async Task Run()
         {
             string line;
-            Random random = new Random();
-            int count = rate / 2 + random.Next(rate+1);
-            for (int i = 0; i < count; ++i)
+            var random = new Random();
+            var count = rate / 2 + random.Next(rate + 1);
+            for (var i = 0; i < count; ++i)
             {
                 line = gpsFile.ReadLine();
                 if (line == null) break;
-                long ts = DataDriver.getCurrentTimestamp() + random.Next(2*randSpan+1)-randSpan;
+                var ts = DataDriver.getCurrentTimestamp() + random.Next(2 * randSpan + 1) - randSpan;
                 line = line + " " + ts;
                 await gpsStream.OnNextAsync(line);
             }

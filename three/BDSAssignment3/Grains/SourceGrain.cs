@@ -1,18 +1,15 @@
-﻿using Orleans;
-using Orleans.Providers;
-using Orleans.Streams;
-using GrainStreamProcessing.GrainInterfaces;
+﻿using System;
 using System.Threading.Tasks;
-using System;
-using System.Runtime.CompilerServices;
 using GrainStreamProcessing.Functions;
+using GrainStreamProcessing.GrainInterfaces;
+using Orleans;
+using Orleans.Streams;
 
 namespace GrainStreamProcessing.GrainImpl
 {
     public class SourceGrain : Grain, ISource
     {
         private string _streamName;
-        private Guid _filterGuid;
 
         public Task Init()
         {
@@ -21,9 +18,9 @@ namespace GrainStreamProcessing.GrainImpl
 
             return Task.CompletedTask;
         }
+
         public override async Task OnActivateAsync()
         {
-            _filterGuid = Guid.NewGuid();
             var primaryKey = this.GetPrimaryKey(out _streamName);
             var streamProvider = GetStreamProvider("SMSProvider");
             var stream = streamProvider.GetStream<string>(primaryKey, _streamName);
@@ -32,17 +29,13 @@ namespace GrainStreamProcessing.GrainImpl
             var subscriptionHandles = await stream.GetAllSubscriptionHandles();
 
             if (subscriptionHandles.Count > 0)
-            {
                 foreach (var subscriptionHandle in subscriptionHandles)
-                {
                     await subscriptionHandle.ResumeAsync(OnNextMessage);
-                }
-            }
-            
+
             var nextGrain =
-                GrainFactory.GetGrain<IFlatMap>(0, "GrainStreamProcessing.GrainImpl.AddMap");
+                GrainFactory.GetGrain<IAggregate>(0, "GrainStreamProcessing.GrainImpl.TestAggregate");
             await nextGrain.Init();
-            
+
             await stream.SubscribeAsync(OnNextMessage);
         }
 
@@ -54,21 +47,21 @@ namespace GrainStreamProcessing.GrainImpl
             var streamProvider = GetStreamProvider("SMSProvider");
             //Get the reference to a stream
 
-            var stream = streamProvider.GetStream<DataTuple>(Constants.StreamGuid, Constants.FlatMapNameSpace);
+            var stream = streamProvider.GetStream<DataTuple>(Constants.StreamGuid, Constants.AggregateNameSpace);
 
             var parsedMessage = ParseStream(message, _streamName);
-            
+
             await stream.OnNextAsync(parsedMessage);
         }
 
-            private DataTuple ParseStream(string message, string streamNameParse)
+        private DataTuple ParseStream(string message, string streamNameParse)
+        {
+            return streamNameParse switch
             {
-                return streamNameParse switch
-                {
-                    "Photo" => new PhotoTuple(message),
-                    "GPS" => new GPSTuple(message),
-                    _ => new TagTuple(message)
-                };
-            }
+                "Photo" => new PhotoTuple(message),
+                "GPS" => new GPSTuple(message),
+                _ => new TagTuple(message)
+            };
+        }
     }
 }

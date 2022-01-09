@@ -1,18 +1,18 @@
-﻿using GrainStreamProcessing.GrainInterfaces;
+﻿using System;
+using System.Threading.Tasks;
+using Client;
+using GrainStreamProcessing.Functions;
+using GrainStreamProcessing.GrainInterfaces;
 using Microsoft.Extensions.Logging;
 using Orleans;
 using Orleans.Configuration;
 using Orleans.Hosting;
-using System;
-using System.Threading.Tasks;
-using Client;
-using GrainStreamProcessing.Functions;
 
 namespace GrainStreamProcessing
 {
     public class Program
     {
-        static int Main(string[] args)
+        private static int Main(string[] args)
         {
             return RunMainAsync().Result;
         }
@@ -52,7 +52,7 @@ namespace GrainStreamProcessing
                     options.ServiceId = "GrainStreamProcessing";
                 })
                 .ConfigureApplicationParts(parts => parts
-                .AddApplicationPart(typeof(ISource).Assembly).WithReferences()
+                    .AddApplicationPart(typeof(ISource).Assembly).WithReferences()
                 )
                 .ConfigureLogging(logging => logging.AddConsole())
                 .AddSimpleMessageStreamProvider("SMSProvider")
@@ -63,8 +63,8 @@ namespace GrainStreamProcessing
             return client;
         }
 
-        
-        private static async Task StreamClient(IClusterClient client) 
+
+        private static async Task StreamClient(IClusterClient client)
         {
             // Get photo, tag and gps streams
             var streamProvider = client.GetStreamProvider("SMSProvider");
@@ -72,11 +72,11 @@ namespace GrainStreamProcessing
             var photoStream = streamProvider.GetStream<string>(guid, "Photo");
             var tagStream = streamProvider.GetStream<string>(guid, "Tag");
             var gpsStream = streamProvider.GetStream<string>(guid, "GPS");
-            
+
             var photoSource = client.GetGrain<ISource>(guid, "Photo");
             var tagSource = client.GetGrain<ISource>(guid, "Tag");
             var gpsSource = client.GetGrain<ISource>(guid, "GPS");
-            
+
             var sink = client.GetGrain<ISink>(0, "GrainStreamProcessing.GrainImpl.Sink");
 
             // Activate source grains for sink, photo, tag and gps streams by calling Init method, in order to subscribe these streams.
@@ -92,34 +92,33 @@ namespace GrainStreamProcessing
         {
             // The code below shows how to specify an exact grain class which implements the IFilter interface
 
-            Random random = new Random();
+            var random = new Random();
             //var filterGrain = client.GetGrain<IFilter>(0, "GrainStreamProcessing.GrainImpl.LargerThanTenFilter");
             var filterGrain = client.GetGrain<IFilter>(0, "GrainStreamProcessing.GrainImpl.OddNumberFilter");
-            for (int i = 0; i < 20; ++i)
+            for (var i = 0; i < 20; ++i)
             {
-               long r = random.Next(20); // Randomly generate twenty numbers between 0 and 19.
+                long r = random.Next(20); // Randomly generate twenty numbers between 0 and 19.
                 Console.WriteLine(r); // Output these numbers to Client console.
-               await filterGrain.Process(r); // Send these numbers to the filter operator, and numbers that pass this filter will be outputted onto Silo console.
+                await filterGrain
+                    .Process(r); // Send these numbers to the filter operator, and numbers that pass this filter will be outputted onto Silo console.
             }
         }
-        
+
         private static async Task FlatMapClient(IClusterClient client)
         {
             // The code below shows how to specify an exact grain class which implements the IFilter interface
 
-            Random random = new Random();
+            var random = new Random();
             //var filterGrain = client.GetGrain<IFilter>(0, "GrainStreamProcessing.GrainImpl.LargerThanTenFilter");
             var filterGrain = client.GetGrain<IFlatMap>(0, "GrainStreamProcessing.GrainImpl.AddMap");
-            for (int i = 0; i < 20; ++i)
+            for (var i = 0; i < 20; ++i)
             {
                 long r = random.Next(20); // Randomly generate twenty numbers between 0 and 19.
                 var res = new TagTuple($"{r} {r} {r}");
                 Console.WriteLine(res); // Output these numbers to Client console.
-                await filterGrain.Process(res); // Send these numbers to the filter operator, and numbers that pass this filter will be outputted onto Silo console.
+                await filterGrain
+                    .Process(res); // Send these numbers to the filter operator, and numbers that pass this filter will be outputted onto Silo console.
             }
         }
-        
     }
-
-
 }

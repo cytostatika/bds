@@ -56,7 +56,6 @@ namespace GrainStreamProcessing.GrainImpl
         {
             Console.WriteLine($"OnNextMessage in Aggregate: {message}");
 
-
             await Process(message);
         }
     }

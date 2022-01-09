@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace GrainStreamProcessing.Functions
 {
@@ -12,7 +11,7 @@ namespace GrainStreamProcessing.Functions
     {
         IList<DataTuple> Apply(T e);
     }
-    
+
     public interface IAggregateFunction<T>
     {
         IEnumerable<DataTuple> Apply(T e);

@@ -5,6 +5,7 @@ AssemblyName:GrainInterfaces
 OutputType:Library
 TargetPath:/Users/johanpedersen/Documents/Datalogi/BDS/Assignments/three/BDSAssignment3/GrainInterfaces/bin/Debug/netstandard2.1/GrainInterfaces.dll
 CodeGenOutputFile:/Users/johanpedersen/Documents/Datalogi/BDS/Assignments/three/BDSAssignment3/GrainInterfaces/obj/Debug/netstandard2.1/GrainInterfaces.orleans.g.cs
+Compile:/Users/johanpedersen/Documents/Datalogi/BDS/Assignments/three/BDSAssignment3/GrainInterfaces/IAggregate.cs
 Compile:/Users/johanpedersen/Documents/Datalogi/BDS/Assignments/three/BDSAssignment3/GrainInterfaces/IFilter.cs
 Compile:/Users/johanpedersen/Documents/Datalogi/BDS/Assignments/three/BDSAssignment3/GrainInterfaces/IFlatMap.cs
 Compile:/Users/johanpedersen/Documents/Datalogi/BDS/Assignments/three/BDSAssignment3/GrainInterfaces/ISink.cs

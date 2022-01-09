@@ -1,9 +1,9 @@
-﻿using System;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
+using Orleans;
 
 namespace GrainStreamProcessing.GrainInterfaces
 {
-    public interface ISource : Orleans.IGrainWithGuidCompoundKey
+    public interface ISource : IGrainWithGuidCompoundKey
     {
         Task Init();
     }
