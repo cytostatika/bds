@@ -30,7 +30,7 @@ namespace GrainStreamProcessing.GrainImpl
         
         public Task Init()
         {
-            Console.WriteLine($"SourceGrain of stream Filter starts.");
+            Console.WriteLine($"Sink starts.");
             Guid.NewGuid();
 
             return Task.CompletedTask;

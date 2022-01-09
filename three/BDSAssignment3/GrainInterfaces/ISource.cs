@@ -5,6 +5,6 @@ namespace GrainStreamProcessing.GrainInterfaces
 {
     public interface ISource : Orleans.IGrainWithGuidCompoundKey
     {
-        Task Init();
+        Task Init(string nextOperatorName);
     }
 }

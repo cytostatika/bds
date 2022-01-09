@@ -12,18 +12,17 @@ namespace GrainStreamProcessing.GrainImpl
     public class SourceGrain : Grain, ISource
     {
         private string _streamName;
-        private Guid _filterGuid;
+        private string nextStreamName;
 
-        public Task Init()
+        public Task Init(string streamName)
         {
             Console.WriteLine($"SourceGrain of stream {_streamName} starts.");
-            Guid.NewGuid();
+            nextStreamName = streamName;
 
             return Task.CompletedTask;
         }
         public override async Task OnActivateAsync()
         {
-            _filterGuid = Guid.NewGuid();
             var primaryKey = this.GetPrimaryKey(out _streamName);
             var streamProvider = GetStreamProvider("SMSProvider");
             var stream = streamProvider.GetStream<string>(primaryKey, _streamName);
@@ -39,9 +38,6 @@ namespace GrainStreamProcessing.GrainImpl
                 }
             }
             
-            var nextGrain =
-                GrainFactory.GetGrain<IFlatMap>(0, "GrainStreamProcessing.GrainImpl.AddMap");
-            await nextGrain.Init();
             
             await stream.SubscribeAsync(OnNextMessage);
         }
@@ -54,7 +50,7 @@ namespace GrainStreamProcessing.GrainImpl
             var streamProvider = GetStreamProvider("SMSProvider");
             //Get the reference to a stream
 
-            var stream = streamProvider.GetStream<DataTuple>(Constants.StreamGuid, Constants.FlatMapNameSpace);
+            var stream = streamProvider.GetStream<DataTuple>(Constants.StreamGuid, nextStreamName);
 
             var parsedMessage = ParseStream(message, _streamName);
             

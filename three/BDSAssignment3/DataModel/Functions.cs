@@ -12,4 +12,9 @@ namespace GrainStreamProcessing.Functions
     {
         IList<DataTuple> Apply(T e);
     }
+
+    public interface IWindowJoinFunction<T>
+    {
+        IList<string> Apply(T e); // TODO: Change string into MergeTuple
+    }
 }
