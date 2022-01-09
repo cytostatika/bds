@@ -328,34 +328,32 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\APC\\.nuget\\packages\\": {}
+    "/Users/johanpedersen/.nuget/packages/": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\APC\\Documents\\bds\\three\\BDSAssignment3\\GrainInterfaces\\GrainInterfaces.csproj",
+      "projectUniqueName": "/Users/johanpedersen/Documents/Datalogi/BDS/Assignments/three/BDSAssignment3/GrainInterfaces/GrainInterfaces.csproj",
       "projectName": "GrainInterfaces",
-      "projectPath": "C:\\Users\\APC\\Documents\\bds\\three\\BDSAssignment3\\GrainInterfaces\\GrainInterfaces.csproj",
-      "packagesPath": "C:\\Users\\APC\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\APC\\Documents\\bds\\three\\BDSAssignment3\\GrainInterfaces\\obj\\",
+      "projectPath": "/Users/johanpedersen/Documents/Datalogi/BDS/Assignments/three/BDSAssignment3/GrainInterfaces/GrainInterfaces.csproj",
+      "packagesPath": "/Users/johanpedersen/.nuget/packages/",
+      "outputPath": "/Users/johanpedersen/Documents/Datalogi/BDS/Assignments/three/BDSAssignment3/GrainInterfaces/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\APC\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "/Users/johanpedersen/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "netstandard2.1"
       ],
       "sources": {
-        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "netstandard2.1": {
           "targetAlias": "netstandard2.1",
           "projectReferences": {
-            "C:\\Users\\APC\\Documents\\bds\\three\\BDSAssignment3\\DataModel\\Model.csproj": {
-              "projectPath": "C:\\Users\\APC\\Documents\\bds\\three\\BDSAssignment3\\DataModel\\Model.csproj"
+            "/Users/johanpedersen/Documents/Datalogi/BDS/Assignments/three/BDSAssignment3/DataModel/Model.csproj": {
+              "projectPath": "/Users/johanpedersen/Documents/Datalogi/BDS/Assignments/three/BDSAssignment3/DataModel/Model.csproj"
             }
           }
         }
@@ -396,7 +394,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.100\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/6.0.101/RuntimeIdentifierGraph.json"
       }
     }
   }

@@ -1,38 +1,36 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\APC\\Documents\\bds\\three\\BDSAssignment3\\Client\\Client.csproj": {}
+    "/Users/johanpedersen/Documents/Datalogi/BDS/Assignments/three/BDSAssignment3/Client/Client.csproj": {}
   },
   "projects": {
-    "C:\\Users\\APC\\Documents\\bds\\three\\BDSAssignment3\\Client\\Client.csproj": {
+    "/Users/johanpedersen/Documents/Datalogi/BDS/Assignments/three/BDSAssignment3/Client/Client.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\APC\\Documents\\bds\\three\\BDSAssignment3\\Client\\Client.csproj",
+        "projectUniqueName": "/Users/johanpedersen/Documents/Datalogi/BDS/Assignments/three/BDSAssignment3/Client/Client.csproj",
         "projectName": "Client",
-        "projectPath": "C:\\Users\\APC\\Documents\\bds\\three\\BDSAssignment3\\Client\\Client.csproj",
-        "packagesPath": "C:\\Users\\APC\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\APC\\Documents\\bds\\three\\BDSAssignment3\\Client\\obj\\",
+        "projectPath": "/Users/johanpedersen/Documents/Datalogi/BDS/Assignments/three/BDSAssignment3/Client/Client.csproj",
+        "packagesPath": "/Users/johanpedersen/.nuget/packages/",
+        "outputPath": "/Users/johanpedersen/Documents/Datalogi/BDS/Assignments/three/BDSAssignment3/Client/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\APC\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "/Users/johanpedersen/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net5.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net5.0": {
             "targetAlias": "net5.0",
             "projectReferences": {
-              "C:\\Users\\APC\\Documents\\bds\\three\\BDSAssignment3\\DataModel\\Model.csproj": {
-                "projectPath": "C:\\Users\\APC\\Documents\\bds\\three\\BDSAssignment3\\DataModel\\Model.csproj"
+              "/Users/johanpedersen/Documents/Datalogi/BDS/Assignments/three/BDSAssignment3/DataModel/Model.csproj": {
+                "projectPath": "/Users/johanpedersen/Documents/Datalogi/BDS/Assignments/three/BDSAssignment3/DataModel/Model.csproj"
               },
-              "C:\\Users\\APC\\Documents\\bds\\three\\BDSAssignment3\\GrainInterfaces\\GrainInterfaces.csproj": {
-                "projectPath": "C:\\Users\\APC\\Documents\\bds\\three\\BDSAssignment3\\GrainInterfaces\\GrainInterfaces.csproj"
+              "/Users/johanpedersen/Documents/Datalogi/BDS/Assignments/three/BDSAssignment3/GrainInterfaces/GrainInterfaces.csproj": {
+                "projectPath": "/Users/johanpedersen/Documents/Datalogi/BDS/Assignments/three/BDSAssignment3/GrainInterfaces/GrainInterfaces.csproj"
               }
             }
           }
@@ -75,28 +73,26 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.100\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/6.0.101/RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\APC\\Documents\\bds\\three\\BDSAssignment3\\DataModel\\Model.csproj": {
+    "/Users/johanpedersen/Documents/Datalogi/BDS/Assignments/three/BDSAssignment3/DataModel/Model.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\APC\\Documents\\bds\\three\\BDSAssignment3\\DataModel\\Model.csproj",
+        "projectUniqueName": "/Users/johanpedersen/Documents/Datalogi/BDS/Assignments/three/BDSAssignment3/DataModel/Model.csproj",
         "projectName": "Model",
-        "projectPath": "C:\\Users\\APC\\Documents\\bds\\three\\BDSAssignment3\\DataModel\\Model.csproj",
-        "packagesPath": "C:\\Users\\APC\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\APC\\Documents\\bds\\three\\BDSAssignment3\\DataModel\\obj\\",
+        "projectPath": "/Users/johanpedersen/Documents/Datalogi/BDS/Assignments/three/BDSAssignment3/DataModel/Model.csproj",
+        "packagesPath": "/Users/johanpedersen/.nuget/packages/",
+        "outputPath": "/Users/johanpedersen/Documents/Datalogi/BDS/Assignments/three/BDSAssignment3/DataModel/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\APC\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "/Users/johanpedersen/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "netstandard2.1"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -129,36 +125,34 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.100\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/6.0.101/RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\APC\\Documents\\bds\\three\\BDSAssignment3\\GrainInterfaces\\GrainInterfaces.csproj": {
+    "/Users/johanpedersen/Documents/Datalogi/BDS/Assignments/three/BDSAssignment3/GrainInterfaces/GrainInterfaces.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\APC\\Documents\\bds\\three\\BDSAssignment3\\GrainInterfaces\\GrainInterfaces.csproj",
+        "projectUniqueName": "/Users/johanpedersen/Documents/Datalogi/BDS/Assignments/three/BDSAssignment3/GrainInterfaces/GrainInterfaces.csproj",
         "projectName": "GrainInterfaces",
-        "projectPath": "C:\\Users\\APC\\Documents\\bds\\three\\BDSAssignment3\\GrainInterfaces\\GrainInterfaces.csproj",
-        "packagesPath": "C:\\Users\\APC\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\APC\\Documents\\bds\\three\\BDSAssignment3\\GrainInterfaces\\obj\\",
+        "projectPath": "/Users/johanpedersen/Documents/Datalogi/BDS/Assignments/three/BDSAssignment3/GrainInterfaces/GrainInterfaces.csproj",
+        "packagesPath": "/Users/johanpedersen/.nuget/packages/",
+        "outputPath": "/Users/johanpedersen/Documents/Datalogi/BDS/Assignments/three/BDSAssignment3/GrainInterfaces/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\APC\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "/Users/johanpedersen/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "netstandard2.1"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "netstandard2.1": {
             "targetAlias": "netstandard2.1",
             "projectReferences": {
-              "C:\\Users\\APC\\Documents\\bds\\three\\BDSAssignment3\\DataModel\\Model.csproj": {
-                "projectPath": "C:\\Users\\APC\\Documents\\bds\\three\\BDSAssignment3\\DataModel\\Model.csproj"
+              "/Users/johanpedersen/Documents/Datalogi/BDS/Assignments/three/BDSAssignment3/DataModel/Model.csproj": {
+                "projectPath": "/Users/johanpedersen/Documents/Datalogi/BDS/Assignments/three/BDSAssignment3/DataModel/Model.csproj"
               }
             }
           }
@@ -199,7 +193,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.100\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/6.0.101/RuntimeIdentifierGraph.json"
         }
       }
     }
