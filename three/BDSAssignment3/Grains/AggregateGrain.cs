@@ -12,7 +12,7 @@ namespace GrainStreamProcessing.GrainImpl
     {
         private IStreamProvider streamProvider;
         
-        protected Dictionary<int, DataTuple> _tuples;
+        protected Dictionary<int, DataTuple> _tuples = new Dictionary<int, DataTuple>();
 
         public async Task Process(object e) // Implements the Process method from IFilter
         {
@@ -36,8 +36,8 @@ namespace GrainStreamProcessing.GrainImpl
 
         // TODO: change these to getters/setter or whwatever and change them according to the input in Init.
         //       Also create the entire topology either through chaining of init functions or in source grain by calling Inits with correct input.
-        public abstract string MyInStream();
-        public abstract string MyOutStream();
+        protected abstract string MyInStream();
+        protected abstract string MyOutStream();
 
         public override async Task OnActivateAsync()
         {
@@ -78,12 +78,12 @@ namespace GrainStreamProcessing.GrainImpl
             return res;
         }
 
-        public override string MyInStream()
+        protected override string MyInStream()
         {
             return Constants.AggregateNameSpace;
         }
 
-        public override string MyOutStream()
+        protected override string MyOutStream()
         {
             return Constants.SinkNameSpace;
         }
