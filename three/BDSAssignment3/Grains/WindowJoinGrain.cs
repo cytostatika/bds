@@ -12,7 +12,7 @@ namespace GrainStreamProcessing.GrainImpl
 {
     public abstract class WindowJoinGrain<T> : Grain, IWindowJoin, IWindowJoinFunction<T>
     {
-        private IStreamProvider streamProvider;
+       // private IStreamProvider streamProvider;
 
         public abstract IList<string> Apply(T e);
 
@@ -23,8 +23,9 @@ namespace GrainStreamProcessing.GrainImpl
         private string inStream2;
         private string outStream;
 
-        public async Task Process(object e) // Implements the Process method from IFilter
+        public async Task Process(object e)
         {
+            var streamProvider = GetStreamProvider("SMSProvider");
             var window = Apply((T)e);
             var stream = streamProvider.GetStream<object>(Constants.StreamGuid, outStream);
 
@@ -43,7 +44,7 @@ namespace GrainStreamProcessing.GrainImpl
                 
         public override async Task OnActivateAsync()
         {
-            streamProvider = GetStreamProvider("SMSProvider");
+            var streamProvider = GetStreamProvider("SMSProvider");
             var stream1 = streamProvider.GetStream<DataTuple>(Constants.StreamGuid, inStream1);
             await stream1.SubscribeAsync(OnNextMessage1);
             var stream2 = streamProvider.GetStream<DataTuple>(Constants.StreamGuid, inStream2);
@@ -67,8 +68,6 @@ namespace GrainStreamProcessing.GrainImpl
                 }
             }*/
 
-
-            await stream2.SubscribeAsync(OnNextMessage2);
 
         }
         private async Task OnNextMessage1(DataTuple message, StreamSequenceToken sequenceToken)

@@ -116,7 +116,7 @@ namespace GrainStreamProcessing
             var tagSource = client.GetGrain<ISource>(guid, "Tag");
             var gpsSource = client.GetGrain<ISource>(guid, "GPS");
 
-            var window = client.GetGrain<IWindowJoin>(1, "GrainStreamProcessing.GrainImpl.SimpleWindowJoin");
+            var window = client.GetGrain<IWindowJoin>(0, "GrainStreamProcessing.GrainImpl.SimpleWindowJoin");
             var sink = client.GetGrain<ISink>(0, "GrainStreamProcessing.GrainImpl.Sink");
 
             // Activate source grains for sink, photo, tag and gps streams by calling Init method, in order to subscribe these streams.
