@@ -11,6 +11,8 @@ namespace GrainStreamProcessing.GrainImpl
     public abstract class AggregateGrain<T> : Grain, IAggregate, IAggregateFunction<T>
     {
         private IStreamProvider streamProvider;
+        
+        protected Dictionary<int, DataTuple> _tuples;
 
         public async Task Process(object e) // Implements the Process method from IFilter
         {
@@ -30,7 +32,7 @@ namespace GrainStreamProcessing.GrainImpl
             return Task.CompletedTask;
         }
 
-        public abstract IEnumerable<DataTuple> Apply(T e);
+        public abstract DataTuple Apply(T e);
 
         // TODO: change these to getters/setter or whwatever and change them according to the input in Init.
         //       Also create the entire topology either through chaining of init functions or in source grain by calling Inits with correct input.
@@ -60,12 +62,19 @@ namespace GrainStreamProcessing.GrainImpl
         }
     }
 
-    public class TestAggregate : AggregateGrain<DataTuple>
+    public class AverageAggregate : AggregateGrain<DataTuple>
     {
-        public override IEnumerable<DataTuple> Apply(DataTuple e) // Implements the Apply method, filtering odd numbers
+        public override DataTuple Apply(DataTuple e) // Implements the Apply method, filtering odd numbers
         {
-            var res = new List<DataTuple> {e};
+            var res = new AggregateTuple<float>();
 
+            foreach (KeyValuePair<int, DataTuple> tuple in _tuples)
+            {
+                res.AggregateValue += tuple.Value.Long ?? 0;
+            }
+
+            res.AggregateValue /= _tuples.Count;
+            
             return res;
         }
 

@@ -52,4 +52,14 @@ namespace GrainStreamProcessing.Functions
             TimeStamp = long.Parse(numbers[2]);
         }
     }
+
+    public class AggregateTuple<T> : DataTuple
+    {
+        public T AggregateValue { get; set; }
+
+        public override string ToString()
+        {
+            return $"time: {TimeStamp}, aggregate: {AggregateValue}";
+        }
+    }
 }

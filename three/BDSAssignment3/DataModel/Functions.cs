@@ -14,6 +14,6 @@ namespace GrainStreamProcessing.Functions
 
     public interface IAggregateFunction<T>
     {
-        IEnumerable<DataTuple> Apply(T e);
+        DataTuple Apply(T e);
     }
 }

@@ -33,7 +33,7 @@ namespace GrainStreamProcessing.GrainImpl
                     await subscriptionHandle.ResumeAsync(OnNextMessage);
 
             var nextGrain =
-                GrainFactory.GetGrain<IAggregate>(0, "GrainStreamProcessing.GrainImpl.TestAggregate");
+                GrainFactory.GetGrain<IAggregate>(0, "GrainStreamProcessing.GrainImpl.AverageAggregate");
             await nextGrain.Init();
 
             await stream.SubscribeAsync(OnNextMessage);
