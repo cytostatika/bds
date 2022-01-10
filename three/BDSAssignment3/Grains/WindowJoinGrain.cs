@@ -44,6 +44,11 @@ namespace GrainStreamProcessing.GrainImpl
                 
         public override async Task OnActivateAsync()
         {
+            // Hardcoded atm for streamlining the development of the join algorithm
+            // Potential fix is to subscribe in another function (like Init perhaps)
+            inStream1 = Constants.WindowJoinOneNameSpace;
+            inStream2 = Constants.WindowJoinTwoNameSpace;
+
             var streamProvider = GetStreamProvider("SMSProvider");
             var stream1 = streamProvider.GetStream<DataTuple>(Constants.StreamGuid, inStream1);
             await stream1.SubscribeAsync(OnNextMessage1);
