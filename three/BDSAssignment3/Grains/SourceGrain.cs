@@ -10,6 +10,7 @@ namespace GrainStreamProcessing.GrainImpl
     public class SourceGrain : Grain, ISource
     {
         private string _streamName;
+        
 
         public Task Init()
         {
@@ -31,10 +32,6 @@ namespace GrainStreamProcessing.GrainImpl
             if (subscriptionHandles.Count > 0)
                 foreach (var subscriptionHandle in subscriptionHandles)
                     await subscriptionHandle.ResumeAsync(OnNextMessage);
-
-            var nextGrain =
-                GrainFactory.GetGrain<IAggregate>(0, "GrainStreamProcessing.GrainImpl.AverageAggregate");
-            await nextGrain.Init();
 
             await stream.SubscribeAsync(OnNextMessage);
         }

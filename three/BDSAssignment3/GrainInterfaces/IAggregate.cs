@@ -6,6 +6,6 @@ namespace GrainStreamProcessing.GrainInterfaces
     public interface IAggregate : IGrainWithIntegerKey
     {
         Task Process(object e);
-        Task Init();
+        Task Init(string nextStream);
     }
 }

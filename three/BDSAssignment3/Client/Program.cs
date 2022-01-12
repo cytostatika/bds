@@ -76,13 +76,16 @@ namespace GrainStreamProcessing
             var photoSource = client.GetGrain<ISource>(guid, "Photo");
             var tagSource = client.GetGrain<ISource>(guid, "Tag");
             var gpsSource = client.GetGrain<ISource>(guid, "GPS");
-
+            var aggregateGrain = client.GetGrain<IAggregate>(0, "GrainStreamProcessing.GrainImpl.AverageAggregate");
             var sink = client.GetGrain<ISink>(0, "GrainStreamProcessing.GrainImpl.Sink");
 
             // Activate source grains for sink, photo, tag and gps streams by calling Init method, in order to subscribe these streams.
             await photoSource.Init();
             await tagSource.Init();
             await gpsSource.Init();
+            
+            await aggregateGrain.Init(Constants.SinkNameSpace);
+            
             await sink.Init();
             // Feeding data to streams
             await DataDriver.Run(photoStream, tagStream, gpsStream, 1600, 0);
