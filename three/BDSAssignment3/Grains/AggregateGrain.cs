@@ -17,11 +17,11 @@ namespace GrainStreamProcessing.GrainImpl
         private const int slideSize = 3000;
         private long _curTime;
         
-        protected readonly Dictionary<Guid, DataTuple> _tuples = new Dictionary<Guid, DataTuple>();
+        protected readonly Dictionary<Guid, (string, T, long)> _tuples = new Dictionary<Guid, (string, T, long)>();
 
         public async Task Process(object e) // Implements the Process method from IFilter
         {
-            var res = Apply((T) e);
+            var res = Apply(((string,T, long)) e);
             var outStream = MyOutStream;
             //Get the reference to a stream
             var stream = streamProvider.GetStream<object>(Constants.StreamGuid, outStream);
@@ -37,7 +37,7 @@ namespace GrainStreamProcessing.GrainImpl
             return Task.CompletedTask;
         }
 
-        public abstract DataTuple Apply(T e);
+        public abstract (string,T,long) Apply((string,T,long) e);
 
         // TODO: change these to getters/setter or whwatever and change them according to the input in Init.
         //       Also create the entire topology either through chaining of init functions or in source grain by calling Inits with correct input.
@@ -49,7 +49,7 @@ namespace GrainStreamProcessing.GrainImpl
             _curTime = (long)(DateTime.UtcNow - new DateTime(1970, 1, 1, 0, 0, 0)).TotalMilliseconds;
             streamProvider = GetStreamProvider("SMSProvider");
             var inStream = MyInStream;
-            var stream = streamProvider.GetStream<DataTuple>(Constants.StreamGuid, inStream);
+            var stream = streamProvider.GetStream<(string,T,long)>(Constants.StreamGuid, inStream);
 
             // To resume stream in case of stream deactivation
             var subscriptionHandles = await stream.GetAllSubscriptionHandles();
@@ -60,7 +60,7 @@ namespace GrainStreamProcessing.GrainImpl
             await stream.SubscribeAsync(OnNextMessage);
         }
 
-        private async Task OnNextMessage(DataTuple message, StreamSequenceToken sequenceToken)
+        private async Task OnNextMessage((string,T,long) message, StreamSequenceToken sequenceToken)
         {
             Console.WriteLine($"OnNextMessage in Aggregate: {message}");
             HandleTuples(message);
@@ -68,21 +68,24 @@ namespace GrainStreamProcessing.GrainImpl
             await Process(message);
         }
 
-        private void HandleTuples(DataTuple tuple)
+        private void HandleTuples((string,T, long) tuple)
         {
+
+            (string message, T payLoad, long timeStamp) = tuple;
+            
             _tuples.Add(Guid.NewGuid(), tuple);
 
-            if (tuple.TimeStamp > _curTime + windowSize)
+            if (timeStamp > _curTime + windowSize)
             {
                 _curTime += slideSize;
             }
 
 
-            foreach (KeyValuePair<Guid, DataTuple> pair in _tuples)
+            foreach (var (key,(mes, pay, time)) in _tuples)
             {
-                if (pair.Value.TimeStamp < _curTime-windowSize)
+                if (timeStamp < _curTime-windowSize)
                 {
-                    _tuples.Remove(pair.Key);
+                    _tuples.Remove(key);
                 } 
             }
         }
@@ -90,28 +93,28 @@ namespace GrainStreamProcessing.GrainImpl
 
     public class AverageAggregate : AggregateGrain<DataTuple>
     {
-        public override DataTuple Apply(DataTuple e) // Implements the Apply method, filtering odd numbers
+        public override (string,DataTuple,long) Apply((string, DataTuple, long) e) // Implements the Apply method, filtering odd numbers
         {
             var res = new AggregateTuple<float>
             {
                 AggregateValue = 0
             };
             
-            foreach (KeyValuePair<Guid, DataTuple> tuple in _tuples)
+            foreach (var (key,(mes, pay, time)) in _tuples)
             {
-                if (e.UserId == tuple.Value.UserId)
+                if (e.Item2.UserId == pay.UserId)
                 {
-                    res.AggregateValue += tuple.Value.Long ?? 0;
+                    res.AggregateValue += pay.Long ?? 0;
                 }
             }
             
-            var matches = _tuples.Count(x => x.Value.UserId == e.UserId);
+            var matches = _tuples.Count(x => x.Value.Item2.UserId == e.Item2.UserId);
 
             res.AggregateValue /= matches;
 
-            res.TimeStamp = _tuples.Values.Min(x => x.TimeStamp);
+            var timeStamp = _tuples.Values.Min(x => x.Item3);
             
-            return res;
+            return (e.Item1, res, timeStamp);
         }
     }
 }

@@ -10,7 +10,7 @@ namespace GrainStreamProcessing.GrainImpl
     public class SourceGrain : Grain, ISource
     {
         private string _streamName;
-        
+
 
         public Task Init()
         {
@@ -44,20 +44,22 @@ namespace GrainStreamProcessing.GrainImpl
             var streamProvider = GetStreamProvider("SMSProvider");
             //Get the reference to a stream
 
-            var stream = streamProvider.GetStream<DataTuple>(Constants.StreamGuid, Constants.AggregateNameSpace);
+            var stream =
+                streamProvider.GetStream<(string, DataTuple, long)>(Constants.StreamGuid, Constants.AggregateNameSpace);
 
             var parsedMessage = ParseStream(message, _streamName);
 
             await stream.OnNextAsync(parsedMessage);
         }
 
-        private DataTuple ParseStream(string message, string streamNameParse)
+        private (string, DataTuple, long) ParseStream(string message, string streamNameParse)
         {
+            var numbers = message.Split();
             return streamNameParse switch
             {
-                "Photo" => new PhotoTuple(message),
-                "GPS" => new GPSTuple(message),
-                _ => new TagTuple(message)
+                "Photo" => ("", new PhotoTuple(numbers), long.Parse(numbers[4])),
+                "GPS" => ("", new GpsTuple(numbers), long.Parse(numbers[3])),
+                _ => ("", new TagTuple(numbers), long.Parse(numbers[2]))
             };
         }
     }

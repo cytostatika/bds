@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using Client;
 using GrainStreamProcessing.Functions;
@@ -116,8 +117,8 @@ namespace GrainStreamProcessing
             var filterGrain = client.GetGrain<IFlatMap>(0, "GrainStreamProcessing.GrainImpl.AddMap");
             for (var i = 0; i < 20; ++i)
             {
-                long r = random.Next(20); // Randomly generate twenty numbers between 0 and 19.
-                var res = new TagTuple($"{r} {r} {r}");
+                string r = random.Next(20).ToString(); // Randomly generate twenty numbers between 0 and 19.
+                var res = new TagTuple(new List<string>{r,r,r});
                 Console.WriteLine(res); // Output these numbers to Client console.
                 await filterGrain
                     .Process(res); // Send these numbers to the filter operator, and numbers that pass this filter will be outputted onto Silo console.
