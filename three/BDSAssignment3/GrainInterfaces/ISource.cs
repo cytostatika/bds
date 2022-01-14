@@ -5,6 +5,6 @@ namespace GrainStreamProcessing.GrainInterfaces
 {
     public interface ISource : IGrainWithGuidCompoundKey
     {
-        Task Init();
+        Task Init(string nextStream);
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using System.IO;
 using System.Threading.Tasks;
 using GrainStreamProcessing.Functions;
 using GrainStreamProcessing.GrainInterfaces;
@@ -10,13 +11,17 @@ namespace GrainStreamProcessing.GrainImpl
 {
     public class SinkGrain : Grain, ISink
     {
+        readonly string _projectPath = Directory.GetParent(Environment.CurrentDirectory)?.Parent?.Parent?.Parent?.FullName;
+
         public Task Process(object e)
         {
+            
+            using StreamWriter sw = File.AppendText(Path.Join(_projectPath,"Client","Log.txt"));
             if (e is IEnumerable enumerable)
                 foreach (var tup in enumerable)
-                    Console.WriteLine($"Processed in Sink: {tup}");
+                    sw.WriteLine($"Processed in Sink: {tup}");
             else
-                Console.WriteLine($"Processed in Sink: {e}");
+                sw.WriteLine($"Processed in Sink: {e}");
 
             return Task.CompletedTask;
         }
@@ -31,6 +36,7 @@ namespace GrainStreamProcessing.GrainImpl
 
         public override async Task OnActivateAsync()
         {
+             File.Create(Path.Join(_projectPath, "Client", "Log.txt")).Close();
             var streamProvider = GetStreamProvider("SMSProvider");
             var stream = streamProvider.GetStream<object>(Constants.StreamGuid, Constants.SinkNameSpace);
 

@@ -85,9 +85,9 @@ namespace GrainStreamProcessing
             var sink = client.GetGrain<ISink>(0, "GrainStreamProcessing.GrainImpl.Sink");
 
             // Activate source grains for sink, photo, tag and gps streams by calling Init method, in order to subscribe these streams.
-            await photoSource.Init();
-            await tagSource.Init();
-            await gpsSource.Init();
+            await photoSource.Init(Constants.FilterNameSpace);
+            await tagSource.Init(Constants.FilterNameSpace);
+            await gpsSource.Init(Constants.FilterNameSpace);
 
             await filterGrain.Init(Constants.SinkNameSpace);
             //await flatMapGrain.Init(Constants.SinkNameSpace);
