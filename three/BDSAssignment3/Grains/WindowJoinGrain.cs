@@ -23,12 +23,15 @@ namespace GrainStreamProcessing.GrainImpl
         private string inStream2;
         private string outStream;
 
+        public long windowSize;
+        public long startTime;
         public Dictionary<string, T> dictStream1;
         public Dictionary<string, T> dictStream2;
 
         // TODO: remove parameters, its already in state lol
         public async Task Process()
         {
+            Console.WriteLine($"Process entered for {startTime}");
             var streamProvider = GetStreamProvider("SMSProvider");
             var window = Apply();
             var stream = streamProvider.GetStream<object>(Constants.StreamGuid, outStream);
@@ -36,12 +39,14 @@ namespace GrainStreamProcessing.GrainImpl
             await stream.OnNextAsync(window);
 
         }
-        public Task Init(string in1, string in2, string out1)
+        public Task Init(string in1, string in2, string out1, long wdSize)
         {
             Console.WriteLine($"WindowGrain of streams {in1}, {in2}, and output to {out1} starts.");
             inStream1 = in1;
             inStream2 = in2;
             outStream = out1;
+            windowSize = wdSize;
+            startTime = 0;
             dictStream1 = new Dictionary<string, T>();
             dictStream2 = new Dictionary<string, T>();
             return Task.CompletedTask;
@@ -87,7 +92,7 @@ namespace GrainStreamProcessing.GrainImpl
         public abstract Task OnNextMessage2(T message, StreamSequenceToken sequenceToken);
 
 
-        public abstract void Purge(long ts, ref Dictionary<string, T> streamdict, int windowSize);
+        public abstract void Purge(long ts, ref Dictionary<string, T> streamdict);
 
 
 
@@ -95,25 +100,34 @@ namespace GrainStreamProcessing.GrainImpl
 
 
 
-
+    // Tag and GPS
     public class SimpleWindowJoin : WindowJoinGrain<DataTuple>
     {
-        public override IList<string> Apply() // Implements the Apply method, filtering odd numbers
+        public override IList<string> Apply() 
         {
+
+            Console.WriteLine($"Apply entered for {startTime}");
             var s1 = dictStream1;
             var s2 = dictStream2;
             var matches = s1.Keys.Intersect(s2.Keys);
 
             var res = new List<string>();
             foreach (var m in matches){
-                var tmp = s1[m].ToString() + s2[m].ToString();
-                Console.WriteLine($"Apply in Window: {tmp}");
+                var photo_id = s1[m].PhotoId.ToString();
+                var latitude = s2[m].Lat.ToString();
+                var longitude = s2[m].Long.ToString();
+                //var tmp = s1[m].ToString() + s2[m].ToString();
+                var tmp = $"MergeTuple: { photo_id }, { latitude}, { longitude}";
+                //Console.WriteLine($"Apply in Window: {tmp}");
                 res.Add(tmp);
             }
+            dictStream1.Clear();
+            dictStream2.Clear();
+
 
             return res;
         }
-        public override void Purge(long ts, ref Dictionary<string, DataTuple> streamdict, int windowSize)
+        public override void Purge(long ts, ref Dictionary<string, DataTuple> streamdict)
         {
             //Currently it removes for every input ts, not intended behaviour
 
@@ -135,20 +149,41 @@ namespace GrainStreamProcessing.GrainImpl
         }
         public override async Task OnNextMessage1(DataTuple message, StreamSequenceToken sequenceToken)
         {
-            //Console.WriteLine($"OnNextMessage1 in Window: {message}");
-
+            
+            //Console.WriteLine($"OnNextMessage1 in Window: {message}, {message.TimeStamp - startTime}, {startTime}");
             dictStream1[message.UserId.ToString()] = message;
-            Purge(message.TimeStamp, ref dictStream2, 2000);
-            await Process();
+            if (startTime == 0) { 
+                startTime = message.TimeStamp;
+               
+            }
+            else if(message.TimeStamp - startTime > windowSize)
+            {
+
+                await Process();
+                startTime = 0;
+            }
+            
+            //Purge(message.TimeStamp, ref dictStream2);
+            
         }
         public override async Task OnNextMessage2(DataTuple message, StreamSequenceToken sequenceToken)
         {
             //Console.WriteLine($"OnNextMessage2 in Window: {message}");
 
+            //Console.WriteLine($"OnNextMessage2 in Window: {message}, {message.TimeStamp - startTime}, {startTime}");
             dictStream2[message.UserId.ToString()] = message;
-            Purge(message.TimeStamp, ref dictStream1, 2000);
+            //Purge(message.TimeStamp, ref dictStream1);
+            if (startTime == 0)
+            {
+                startTime = message.TimeStamp;
 
-            await Process();
+            }
+            else if (message.TimeStamp - startTime > windowSize)
+            {
+                await Process();
+
+                startTime = 0;
+            }
         }
     }
 }

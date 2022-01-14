@@ -22,7 +22,7 @@ namespace GrainStreamProcessing.GrainImpl
             }
             else
             {
-                Console.WriteLine($"Processed in Sink: {e}");
+                //Console.WriteLine($"Processed in Sink: {e}");
             }
 
             return Task.CompletedTask;

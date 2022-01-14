@@ -123,7 +123,7 @@ namespace GrainStreamProcessing
             await photoSource.Init("Sink");
             await tagSource.Init(Constants.WindowJoinOneNameSpace);
             await gpsSource.Init(Constants.WindowJoinTwoNameSpace);
-            await window.Init(Constants.WindowJoinOneNameSpace, Constants.WindowJoinTwoNameSpace, "Sink");
+            await window.Init(Constants.WindowJoinOneNameSpace, Constants.WindowJoinTwoNameSpace, "Sink", 2000);
             await sink.Init();
             // Feeding data to streams
             await DataDriver.Run(photoStream, tagStream, gpsStream, 100, 0); // Very slow atm
