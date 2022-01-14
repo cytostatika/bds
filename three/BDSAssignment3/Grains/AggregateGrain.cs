@@ -81,7 +81,7 @@ namespace GrainStreamProcessing.GrainImpl
         }
     }
 
-    public class AverageAggregate : AggregateGrain<DataTuple>
+    public class AverageLongtitudeAggregate : AggregateGrain<DataTuple>
     {
         public override (string, DataTuple, long)
             Apply((string, DataTuple, long) e) // Implements the Apply method, filtering odd numbers
@@ -90,23 +90,22 @@ namespace GrainStreamProcessing.GrainImpl
             {
                 AggregateValue = 0
             };
+            var matches = 0;
 
             var eventKey = e.Item2.GetType().GetProperties().Single(x => x.Name == e.Item1).GetValue(e.Item2, null);
-
 
             foreach (var (key, (mes, pay, time)) in _tuples)
             {
                 var dictItemKey = pay.GetType().GetProperties().Single(x => x.Name == mes).GetValue(pay, null);
 
                 if (eventKey.Equals(dictItemKey))
+                {
                     res.AggregateValue += pay.Long ?? 0;
+                    matches += 1;                  
+                }
             }
 
-            var matches = _tuples.Count(x =>
-                x.Value.Item2.GetType().GetProperties().Single(y => y.Name == e.Item1).GetValue(e.Item2, null) ==
-                e.Item2.GetType().GetProperties().Single(y => y.Name == e.Item1).GetValue(e.Item2, null));
-
-            res.AggregateValue /= matches;
+            res.AggregateValue = matches == 0 ? res.AggregateValue : res.AggregateValue/matches;
 
             var timeStamp = _tuples.Values.Min(x => x.Item3);
 
