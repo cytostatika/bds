@@ -9,7 +9,8 @@ namespace GrainStreamProcessing.Functions
 
     public interface IFlatMapFunction<T>
     {
-        IList<DataTuple> Apply(T e);
+        IList<(string, T, long)> Apply((string, T, long) e);
+
     }
 
     public interface IAggregateFunction<T>

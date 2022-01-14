@@ -81,7 +81,7 @@ namespace GrainStreamProcessing.GrainImpl
         }
     }
 
-    public class AverageLongtitudeAggregate : AggregateGrain<DataTuple>
+    public class AverageLongitudeAggregate : AggregateGrain<DataTuple>
     {
         public override (string, DataTuple, long)
             Apply((string, DataTuple, long) e) // Implements the Apply method, filtering odd numbers

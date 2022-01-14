@@ -45,7 +45,7 @@ namespace GrainStreamProcessing.GrainImpl
             //Get the reference to a stream
 
             var stream =
-                streamProvider.GetStream<(string, DataTuple, long)>(Constants.StreamGuid, Constants.AggregateNameSpace);
+                streamProvider.GetStream<(string, DataTuple, long)>(Constants.StreamGuid, Constants.SinkNameSpace);
 
             var parsedMessage = ParseStream(message, _streamName);
 
