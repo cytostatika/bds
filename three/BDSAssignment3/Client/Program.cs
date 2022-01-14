@@ -84,9 +84,9 @@ namespace GrainStreamProcessing
             await photoSource.Init();
             await tagSource.Init();
             await gpsSource.Init();
-            
+
             await aggregateGrain.Init(Constants.SinkNameSpace);
-            
+
             await sink.Init();
             // Feeding data to streams
             await DataDriver.Run(photoStream, tagStream, gpsStream, 1600, 0);
@@ -117,8 +117,8 @@ namespace GrainStreamProcessing
             var filterGrain = client.GetGrain<IFlatMap>(0, "GrainStreamProcessing.GrainImpl.AddMap");
             for (var i = 0; i < 20; ++i)
             {
-                string r = random.Next(20).ToString(); // Randomly generate twenty numbers between 0 and 19.
-                var res = new TagTuple(new List<string>{r,r,r});
+                var r = random.Next(20).ToString(); // Randomly generate twenty numbers between 0 and 19.
+                var res = new TagTuple(new List<string> {r, r, r});
                 Console.WriteLine(res); // Output these numbers to Client console.
                 await filterGrain
                     .Process(res); // Send these numbers to the filter operator, and numbers that pass this filter will be outputted onto Silo console.

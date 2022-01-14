@@ -14,6 +14,6 @@ namespace GrainStreamProcessing.Functions
 
     public interface IAggregateFunction<T>
     {
-        (string,T,long) Apply((string,T,long) e);
+        (string, T, long) Apply((string, T, long) e);
     }
 }

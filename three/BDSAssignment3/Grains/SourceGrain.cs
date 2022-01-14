@@ -57,9 +57,9 @@ namespace GrainStreamProcessing.GrainImpl
             var numbers = message.Split();
             return streamNameParse switch
             {
-                "Photo" => ("", new PhotoTuple(numbers), long.Parse(numbers[4])),
-                "GPS" => ("", new GpsTuple(numbers), long.Parse(numbers[3])),
-                _ => ("", new TagTuple(numbers), long.Parse(numbers[2]))
+                "Photo" => ("UserId", new PhotoTuple(numbers), long.Parse(numbers[4])),
+                "GPS" => ("UserId", new GpsTuple(numbers), long.Parse(numbers[3])),
+                _ => ("UserId", new TagTuple(numbers), long.Parse(numbers[2]))
             };
         }
     }

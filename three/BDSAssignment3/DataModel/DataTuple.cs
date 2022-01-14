@@ -48,9 +48,23 @@ namespace GrainStreamProcessing.Functions
     public class AggregateTuple<T> : DataTuple
     {
         public T AggregateValue { get; set; }
+
         public override string ToString()
         {
             return $"aggregate: {AggregateValue}";
         }
+
+        // public dynamic AggregateValue { get; set; }
+        // private readonly Type _type;
+        // public AggregateTuple(Type type)
+        // {  
+        //     this._type = type;
+        //     AggregateValue = Activator.CreateInstance(type);
+        // }
+        //
+        // public dynamic Function()
+        // {
+        //     return Activator.CreateInstance(_type);
+        // }
     }
 }

@@ -48,12 +48,12 @@ namespace Client
     {
         private readonly bool endOfFile;
         private readonly StreamReader photoFile;
-        private StreamReader tagFile;
         private readonly IAsyncStream<string> photoStream;
-        private readonly IAsyncStream<string> tagStream;
-        private readonly int rate;
         private readonly int randSpan;
+        private readonly int rate;
         private readonly IDictionary<int, ISet<int>> tags;
+        private readonly IAsyncStream<string> tagStream;
+        private StreamReader tagFile;
 
         public PhotoStreamProducer(StreamReader photoFile, StreamReader tagFile, IAsyncStream<string> photoStream,
             IAsyncStream<string> tagStream, int rate, int randSpan)
@@ -115,8 +115,8 @@ namespace Client
         private readonly bool endOfFile;
         private readonly StreamReader gpsFile;
         private readonly IAsyncStream<string> gpsStream;
-        private readonly int rate;
         private readonly int randSpan;
+        private readonly int rate;
 
         public GPSStreamProducer(StreamReader gpsFile, IAsyncStream<string> gpsStream, int rate, int randSpan)
         {
