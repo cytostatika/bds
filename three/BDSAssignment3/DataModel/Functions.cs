@@ -15,6 +15,6 @@ namespace GrainStreamProcessing.Functions
 
     public interface IWindowJoinFunction<T>
     {
-        IList<string> Apply(T e); // TODO: Change string into MergeTuple
+        IList<string> Apply(); // TODO: change types
     }
 }

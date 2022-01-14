@@ -17,7 +17,7 @@ namespace GrainStreamProcessing.GrainImpl
             {
                 foreach (var tup in enumerable)
                 {
-                    Console.WriteLine($"Processed in Sink: {tup}");
+                    Console.WriteLine($"Processed in Sink as enumerable: {tup}");
                 }
             }
             else
