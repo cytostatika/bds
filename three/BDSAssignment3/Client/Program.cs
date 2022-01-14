@@ -77,9 +77,11 @@ namespace GrainStreamProcessing
             var photoSource = client.GetGrain<ISource>(guid, "Photo");
             var tagSource = client.GetGrain<ISource>(guid, "Tag");
             var gpsSource = client.GetGrain<ISource>(guid, "GPS");
-            var flatMapGrain = client.GetGrain<IFlatMap>(0, "GrainStreamProcessing.GrainImpl.AddMap");
 
+            var filterGrain = client.GetGrain<IFilter>(0, "GrainStreamProcessing.GrainImpl.OddNumberFilter");
+            //var flatMapGrain = client.GetGrain<IFlatMap>(0, "GrainStreamProcessing.GrainImpl.AddMap");
             // var aggregateGrain = client.GetGrain<IAggregate>(0, "GrainStreamProcessing.GrainImpl.AverageLongitudeAggregate");
+
             var sink = client.GetGrain<ISink>(0, "GrainStreamProcessing.GrainImpl.Sink");
 
             // Activate source grains for sink, photo, tag and gps streams by calling Init method, in order to subscribe these streams.
@@ -87,7 +89,8 @@ namespace GrainStreamProcessing
             await tagSource.Init();
             await gpsSource.Init();
 
-            await flatMapGrain.Init(Constants.SinkNameSpace);
+            await filterGrain.Init(Constants.SinkNameSpace);
+            //await flatMapGrain.Init(Constants.SinkNameSpace);
             //await aggregateGrain.Init(Constants.SinkNameSpace);
 
             await sink.Init();

@@ -62,7 +62,8 @@ namespace GrainStreamProcessing.GrainImpl
 
     public class AddMap : FlatMapGrain<DataTuple>
     {
-        public override IList<(string, DataTuple, long)> Apply((string, DataTuple, long) valueTuple) // Implements the Apply method, filtering odd numbers
+        public override IList<(string, DataTuple, long)>
+            Apply((string, DataTuple, long) valueTuple) // Implements the Apply method, filtering odd numbers
         {
             var res = new List<(string, DataTuple, long)> {valueTuple};
 

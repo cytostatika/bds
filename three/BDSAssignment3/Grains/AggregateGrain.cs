@@ -101,11 +101,11 @@ namespace GrainStreamProcessing.GrainImpl
                 if (eventKey.Equals(dictItemKey))
                 {
                     res.AggregateValue += pay.Long ?? 0;
-                    matches += 1;                  
+                    matches += 1;
                 }
             }
 
-            res.AggregateValue = matches == 0 ? res.AggregateValue : res.AggregateValue/matches;
+            res.AggregateValue = matches == 0 ? res.AggregateValue : res.AggregateValue / matches;
 
             var timeStamp = _tuples.Values.Min(x => x.Item3);
 
