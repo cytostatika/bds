@@ -10,6 +10,7 @@ Compile:C:\Users\APC\Documents\bds\three\BDSAssignment3\Grains\FilterGrain.cs
 Compile:C:\Users\APC\Documents\bds\three\BDSAssignment3\Grains\FlatMapGrain.cs
 Compile:C:\Users\APC\Documents\bds\three\BDSAssignment3\Grains\SinkGrain.cs
 Compile:C:\Users\APC\Documents\bds\three\BDSAssignment3\Grains\SourceGrain.cs
+Compile:C:\Users\APC\Documents\bds\three\BDSAssignment3\Grains\WindowJoinGrain.cs
 Reference:C:\Users\APC\Documents\bds\three\BDSAssignment3\GrainInterfaces\bin\Debug\netstandard2.1\GrainInterfaces.dll
 Reference:C:\Users\APC\.nuget\packages\microsoft.extensions.logging.abstractions\3.1.0\lib\netstandard2.0\Microsoft.Extensions.Logging.Abstractions.dll
 Reference:C:\Program Files\dotnet\packs\NETStandard.Library.Ref\2.1.0\ref\netstandard2.1\Microsoft.Win32.Primitives.dll

@@ -44,6 +44,18 @@ namespace GrainStreamProcessing.Functions
             UserId = int.Parse(numbers[1]);
         }
     }
+    public class MergeTuple : DataTuple // Just a single type of mergetuple for showcase - Rest are trivial
+    {
+        public MergeTuple(TagTuple tag, GpsTuple gps)
+        {
+            PhotoId = tag.PhotoId;
+            UserId = gps.UserId;
+            Lat = gps.Lat;
+            Long = gps.Long;
+        }
+
+
+    }
 
     public class AggregateTuple<T> : DataTuple
     {

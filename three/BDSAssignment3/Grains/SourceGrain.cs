@@ -10,13 +10,13 @@ namespace GrainStreamProcessing.GrainImpl
     public class SourceGrain : Grain, ISource
     {
         private string _streamName;
+        private string _outStream;
 
-
-        public Task Init()
+        public Task Init(string nextStream)
         {
             Console.WriteLine($"SourceGrain of stream {_streamName} starts.");
             Guid.NewGuid();
-
+            _outStream = nextStream;
             return Task.CompletedTask;
         }
 
@@ -45,7 +45,7 @@ namespace GrainStreamProcessing.GrainImpl
             //Get the reference to a stream
 
             var stream =
-                streamProvider.GetStream<(string, DataTuple, long)>(Constants.StreamGuid, Constants.FilterNameSpace);
+                streamProvider.GetStream<(string, DataTuple, long)>(Constants.StreamGuid, _outStream);
 
             var parsedMessage = ParseStream(message, _streamName);
 

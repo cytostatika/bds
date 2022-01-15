@@ -27,7 +27,7 @@ namespace GrainStreamProcessing.GrainImpl
 
         public Task Init(string nextStream)
         {
-            Console.WriteLine("SourceGrain of stream FlatMap starts.");
+            Console.WriteLine("SourceGrain of stream Filter starts.");
             Guid.NewGuid();
             MyOutStream = nextStream;
             return Task.CompletedTask;
@@ -52,7 +52,7 @@ namespace GrainStreamProcessing.GrainImpl
 
         private async Task OnNextMessage((string, T, long) message, StreamSequenceToken sequenceToken)
         {
-            Console.WriteLine($"OnNextMessage in FlatMap: {message}");
+            //Console.WriteLine($"OnNextMessage in Filter: {message}");
 
             await Process(message);
         }
