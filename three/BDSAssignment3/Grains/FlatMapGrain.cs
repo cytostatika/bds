@@ -1,8 +1,10 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using GrainStreamProcessing.Functions;
 using GrainStreamProcessing.GrainInterfaces;
+using GrainStreamProcessing.Model;
 using Orleans;
 using Orleans.Streams;
 
@@ -67,7 +69,7 @@ namespace GrainStreamProcessing.GrainImpl
         {
             var res = new List<(string, DataTuple, long)> {valueTuple};
 
-            foreach (var dataTuple in res) dataTuple.Item2.UserId += 10;
+            foreach (var dataTuple in res) dataTuple.Item2.UserId.ToList().ForEach(x => x += 10);
             return res;
         }
     }

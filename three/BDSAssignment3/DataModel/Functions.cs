@@ -16,8 +16,9 @@ namespace GrainStreamProcessing.Functions
     {
         (string, T, long) Apply((string, T, long) e);
     }
+
     public interface IWindowJoinFunction<T>
     {
-        IList<(string, T, long)> Apply(); 
+        IList<(string, T, long)> Apply();
     }
 }

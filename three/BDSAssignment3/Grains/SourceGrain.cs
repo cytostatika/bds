@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 using GrainStreamProcessing.Functions;
 using GrainStreamProcessing.GrainInterfaces;
+using GrainStreamProcessing.Model;
 using Orleans;
 using Orleans.Streams;
 
@@ -9,8 +10,8 @@ namespace GrainStreamProcessing.GrainImpl
 {
     public class SourceGrain : Grain, ISource
     {
-        private string _streamName;
         private string _outStream;
+        private string _streamName;
 
         public Task Init(string nextStream)
         {

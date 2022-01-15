@@ -11,12 +11,12 @@ namespace GrainStreamProcessing.GrainImpl
 {
     public class SinkGrain : Grain, ISink
     {
-        readonly string _projectPath = Directory.GetParent(Environment.CurrentDirectory)?.Parent?.Parent?.Parent?.FullName;
+        private readonly string _projectPath =
+            Directory.GetParent(Environment.CurrentDirectory)?.Parent?.Parent?.Parent?.FullName;
 
         public Task Process(object e)
         {
-
-            using StreamWriter sw = File.AppendText(Path.Join(_projectPath, "Client", "Log.txt"));
+            using var sw = File.AppendText(Path.Join(_projectPath, "Client", "Log.txt"));
             if (e is IEnumerable enumerable)
                 foreach (var tup in enumerable)
                     sw.WriteLine($"Processed in Sink as enumerable: {tup}");

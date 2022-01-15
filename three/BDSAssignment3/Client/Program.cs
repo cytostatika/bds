@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using Client;
 using GrainStreamProcessing.Functions;
 using GrainStreamProcessing.GrainInterfaces;
+using GrainStreamProcessing.Model;
 using Microsoft.Extensions.Logging;
 using Orleans;
 using Orleans.Configuration;
@@ -78,22 +79,23 @@ namespace GrainStreamProcessing
             var tagSource = client.GetGrain<ISource>(guid, "Tag");
             var gpsSource = client.GetGrain<ISource>(guid, "GPS");
 
-            var filterGrain = client.GetGrain<IFilter>(0, "GrainStreamProcessing.GrainImpl.OddNumberFilter");
+            //var filterGrain = client.GetGrain<IFilter>(0, "GrainStreamProcessing.GrainImpl.OddNumberFilter");
             //var flatMapGrain = client.GetGrain<IFlatMap>(0, "GrainStreamProcessing.GrainImpl.AddMap");
-            // var aggregateGrain = client.GetGrain<IAggregate>(0, "GrainStreamProcessing.GrainImpl.AverageLongitudeAggregate");
+            //var aggregateGrain = client.GetGrain<IAggregate>(0, "GrainStreamProcessing.GrainImpl.AverageLongitudeAggregate");
             var joinGrain = client.GetGrain<IWindowJoin>(0, "GrainStreamProcessing.GrainImpl.SimpleWindowJoin");
             var sink = client.GetGrain<ISink>(0, "GrainStreamProcessing.GrainImpl.Sink");
 
             // Activate source grains for sink, photo, tag and gps streams by calling Init method, in order to subscribe these streams.
-            await photoSource.Init(Constants.FilterNameSpace);
-            await tagSource.Init(Constants.WindowJoinOneNameSpace);
+            await photoSource.Init(Constants.WindowJoinOneNameSpace);
+            //await tagSource.Init(Constants.WindowJoinOneNameSpace);
             await gpsSource.Init(Constants.WindowJoinTwoNameSpace);
 
-           
-            await filterGrain.Init(Constants.SinkNameSpace);
+
+            //await filterGrain.Init(Constants.SinkNameSpace);
             //await flatMapGrain.Init(Constants.SinkNameSpace);
             //await aggregateGrain.Init(Constants.SinkNameSpace);
-            await joinGrain.Init(Constants.WindowJoinOneNameSpace, Constants.WindowJoinTwoNameSpace, Constants.SinkNameSpace, 2000);
+            await joinGrain.Init(Constants.WindowJoinOneNameSpace, Constants.WindowJoinTwoNameSpace,
+                Constants.SinkNameSpace, 2000);
 
             await sink.Init();
             // Feeding data to streams

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using GrainStreamProcessing.Functions;
 using GrainStreamProcessing.GrainInterfaces;
+using GrainStreamProcessing.Model;
 using Orleans;
 using Orleans.Streams;
 
@@ -100,8 +101,8 @@ namespace GrainStreamProcessing.GrainImpl
 
                 if (eventKey.Equals(dictItemKey))
                 {
-                    res.AggregateValue += pay.Long ?? 0;
-                    matches += 1;
+                    res.AggregateValue += pay.Long.Sum();
+                    matches += pay.Long.Count;
                 }
             }
 

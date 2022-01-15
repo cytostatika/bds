@@ -1,7 +1,9 @@
 ﻿using System;
+using System.Linq;
 using System.Threading.Tasks;
 using GrainStreamProcessing.Functions;
 using GrainStreamProcessing.GrainInterfaces;
+using GrainStreamProcessing.Model;
 using Orleans;
 using Orleans.Streams;
 
@@ -62,9 +64,7 @@ namespace GrainStreamProcessing.GrainImpl
     {
         public override bool Apply((string, DataTuple, long) e) // Implements the Apply method, filtering odd numbers
         {
-            if (e.Item2.UserId % 2 == 1)
-                return true;
-            return false;
+            return e.Item2.UserId.Any(x => x % 2 == 1);
         }
     }
 }
