@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 
 namespace GrainStreamProcessing.Functions
 {
@@ -46,15 +47,30 @@ namespace GrainStreamProcessing.Functions
     }
     public class MergeTuple : DataTuple // Just a single type of mergetuple for showcase - Rest are trivial
     {
-        public MergeTuple(TagTuple tag, GpsTuple gps)
+
+        public new IList<int> PhotoId { get; set; }
+        public new IList<int> UserId { get; set; }
+        public new IList<float> Lat { get; set; }
+        public new IList<float> Long { get; set; }
+
+        
+        public MergeTuple(DataTuple tag, DataTuple gps)
         {
-            PhotoId = tag.PhotoId;
-            UserId = gps.UserId;
-            Lat = gps.Lat;
-            Long = gps.Long;
+            var a = new List<DataTuple> {tag, gps};
+
+            PhotoId = new List<int>();
+            UserId = new List<int>();
+            Lat = new List<float>();
+            Long = new List<float>();
+
+            foreach (var x in a)
+            {
+                if (x.PhotoId != null && !PhotoId.Contains((int) x.PhotoId)) PhotoId.Add((int) x.PhotoId);
+                if (!UserId.Contains( x.UserId)) UserId.Add( x.UserId);
+                if (x.Lat != null && !Lat.Contains((float) x.Lat)) Lat.Add((float) x.Lat);
+                if (x.Long != null && !Long.Contains((float) x.Long)) Long.Add((float) x.Long);
+            }
         }
-
-
     }
 
     public class AggregateTuple<T> : DataTuple
