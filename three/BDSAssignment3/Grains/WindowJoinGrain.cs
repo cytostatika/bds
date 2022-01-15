@@ -18,8 +18,8 @@ namespace GrainStreamProcessing.GrainImpl
 
         // TODO: change these to getters/setter or whwatever and change them according to the input in Init.
         //       Also create the entire topology either through chaining of init functions or in source grain by calling Inits with correct input.
-        private string inStream1 { get; } = Constants.WindowJoinOneNameSpace;
-        private string inStream2 { get; } = Constants.WindowJoinTwoNameSpace;
+        private string inStream1= Constants.WindowJoinOneNameSpace;
+        private string inStream2= Constants.WindowJoinTwoNameSpace;
         private string outStream { get; set; }
 
         public long windowSize;
@@ -30,7 +30,6 @@ namespace GrainStreamProcessing.GrainImpl
         // TODO: remove parameters, its already in state lol
         public async Task Process()
         {
-            Console.WriteLine($"Process entered for {startTime}");
             var streamProvider = GetStreamProvider("SMSProvider");
             var window = Apply();
             var stream = streamProvider.GetStream<object>(Constants.StreamGuid, outStream);
@@ -40,9 +39,6 @@ namespace GrainStreamProcessing.GrainImpl
         }
         public Task Init(string in1, string in2, string out1, long wdSize)
         {
-            Console.WriteLine($"WindowGrain of streams {in1}, {in2}, and output to {out1} starts.");
-            //inStream1 = in1;
-            //inStream2 = in2;
             outStream = out1;
             windowSize = wdSize;
             startTime = 0;
@@ -59,7 +55,7 @@ namespace GrainStreamProcessing.GrainImpl
             await stream1.SubscribeAsync(OnNextMessage1);
             var stream2 = streamProvider.GetStream<(string, DataTuple, long)>(Constants.StreamGuid, inStream2);
             await stream2.SubscribeAsync(OnNextMessage2);
-            /*
+            
             // To resume stream in case of stream deactivation
             var subscriptionHandles = await stream1.GetAllSubscriptionHandles();
             if (subscriptionHandles.Count > 0)
@@ -76,7 +72,7 @@ namespace GrainStreamProcessing.GrainImpl
                 {
                     await subscriptionHandle.ResumeAsync(OnNextMessage2);
                 }
-            }*/
+            }
 
 
         }
@@ -99,8 +95,6 @@ namespace GrainStreamProcessing.GrainImpl
     {
         public override IList<(string, MergeTuple, long)> Apply()
         {
-
-//            Console.WriteLine($"Apply entered for {startTime}");
             var s1 = dictStream1;
             var s2 = dictStream2;
             var matches = s1.Keys.Intersect(s2.Keys);
@@ -108,7 +102,6 @@ namespace GrainStreamProcessing.GrainImpl
             var res = new List<(string, MergeTuple, long)>();
             foreach (var m in matches)
             {
-                Console.WriteLine(m);
                 var tag = (TagTuple)s1[m];
                 var gps = (GpsTuple)s2[m];
 
@@ -182,6 +175,8 @@ namespace GrainStreamProcessing.GrainImpl
                 await Process();
                 startTime = 0;
             }
+
+            //Purge(message.TimeStamp, ref dictStream1);
         }
     }
 }

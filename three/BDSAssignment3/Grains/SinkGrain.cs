@@ -19,7 +19,7 @@ namespace GrainStreamProcessing.GrainImpl
             using StreamWriter sw = File.AppendText(Path.Join(_projectPath, "Client", "Log.txt"));
             if (e is IEnumerable enumerable)
                 foreach (var tup in enumerable)
-                    sw.WriteLine($"Processed in Sink: {tup}");
+                    sw.WriteLine($"Processed in Sink as enumerable: {tup}");
             else
                 sw.WriteLine($"Processed in Sink: {e}");
 
