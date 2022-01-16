@@ -15,7 +15,7 @@ namespace GrainStreamProcessing.GrainImpl
 
         public Task Init()
         {
-            Console.WriteLine("SourceGrain of stream Filter starts.");
+            Console.WriteLine("SourceGrain of stream Sink starts.");
             Guid.NewGuid();
 
             return Task.CompletedTask;
@@ -43,6 +43,7 @@ namespace GrainStreamProcessing.GrainImpl
 
             await stream.SubscribeAsync(OnNextMessage);
         }
+
         public override Task Process(object e)
         {
             if (e is IEnumerable enumerable)
@@ -52,9 +53,9 @@ namespace GrainStreamProcessing.GrainImpl
                 Console.WriteLine($"Processed in Sink: {e}");
 
             return Task.CompletedTask;
-        }    
+        }
     }
-    
+
     public class FileSink : SinkGrain
     {
         private readonly string _projectPath =
@@ -74,6 +75,7 @@ namespace GrainStreamProcessing.GrainImpl
 
             await stream.SubscribeAsync(OnNextMessage);
         }
+
         public override Task Process(object e)
         {
             using var sw = File.AppendText(Path.Join(_projectPath, "Client", "Log.txt"));
@@ -85,7 +87,5 @@ namespace GrainStreamProcessing.GrainImpl
 
             return Task.CompletedTask;
         }
-        
     }
-    
 }

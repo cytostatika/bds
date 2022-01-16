@@ -14,9 +14,9 @@ namespace GrainStreamProcessing.GrainImpl
     {
         private const int windowSize = 6;
         private const int slideSize = 1;
-        private int _tupleNumber = 0;
 
         protected readonly Dictionary<int, (string, T, long)> _tuples = new Dictionary<int, (string, T, long)>();
+        private int _tupleNumber;
         private IStreamProvider streamProvider;
 
         // TODO: change these to getters/setter or whwatever and change them according to the input in Init.
@@ -69,10 +69,7 @@ namespace GrainStreamProcessing.GrainImpl
         {
             _tuples.Add(_tupleNumber++, tuple);
 
-            if (_tuples.Count > windowSize)
-            {
-                _tuples.Remove(_tuples.Keys.Min());
-            }
+            if (_tuples.Count > windowSize) _tuples.Remove(_tuples.Keys.Min());
         }
     }
 
@@ -95,7 +92,7 @@ namespace GrainStreamProcessing.GrainImpl
                 var dictItemKey = pay.GetType().GetProperties().Single(x => x.Name == mes).GetValue(pay, null);
 
                 if (!eventKey.ToString().Equals(dictItemKey.ToString())) continue;
-                
+
                 res.AggregateValue += pay.Long.Sum();
                 matches += pay.Long.Count;
             }

@@ -11,13 +11,12 @@ namespace GrainStreamProcessing.GrainImpl
 {
     public abstract class WindowJoinGrain<T> : Grain, IWindowJoin, IWindowJoinFunction<T>
     {
-        public Dictionary<string, DataTuple> dictStream1;
-        public Dictionary<string, DataTuple> dictStream2;
-
         // TODO: change these to getters/setter or whwatever and change them according to the input in Init.
         //       Also create the entire topology either through chaining of init functions or in source grain by calling Inits with correct input.
         private readonly string inStream1 = Constants.WindowJoinOneNameSpace;
         private readonly string inStream2 = Constants.WindowJoinTwoNameSpace;
+        public Dictionary<string, DataTuple> dictStream1;
+        public Dictionary<string, DataTuple> dictStream2;
         public long startTime;
 
         public long windowSize;
@@ -42,6 +41,10 @@ namespace GrainStreamProcessing.GrainImpl
             dictStream2 = new Dictionary<string, DataTuple>();
             return Task.CompletedTask;
         }
+
+        public abstract Task OnNextMessage1((string, DataTuple, long) message, StreamSequenceToken sequenceToken);
+
+        public abstract Task OnNextMessage2((string, DataTuple, long) message, StreamSequenceToken sequenceToken);
         // private IStreamProvider streamProvider;
 
         public abstract IList<(string, T, long)> Apply();
@@ -65,10 +68,6 @@ namespace GrainStreamProcessing.GrainImpl
                     await subscriptionHandle.ResumeAsync(OnNextMessage2);
         }
 
-        public abstract Task OnNextMessage1((string, DataTuple, long) message, StreamSequenceToken sequenceToken);
-
-        public abstract Task OnNextMessage2((string, DataTuple, long) message, StreamSequenceToken sequenceToken);
-
 
         //public abstract void Purge(long ts, ref Dictionary<string, T> streamdict);
     }
@@ -89,21 +88,19 @@ namespace GrainStreamProcessing.GrainImpl
                 var tag = s1[m];
                 var gps = s2[m];
 
-
                 res.Add(("UserId", new MergeTuple(tag, gps, "UserId"), startTime));
             }
 
             dictStream1.Clear();
             dictStream2.Clear();
 
-
             return res;
         }
-        
+
         public override async Task OnNextMessage1((string, DataTuple, long) message, StreamSequenceToken sequenceToken)
         {
             var payload = message.Item2;
-            var key = payload.UserId.ToString();
+            var key = payload.UserId.First().ToString();
             var ts = message.Item3;
             dictStream1[key] = payload;
             if (startTime == 0)
@@ -115,14 +112,12 @@ namespace GrainStreamProcessing.GrainImpl
                 await Process();
                 startTime = 0;
             }
-
-            //Purge(message.TimeStamp, ref dictStream2);
         }
 
         public override async Task OnNextMessage2((string, DataTuple, long) message, StreamSequenceToken sequenceToken)
         {
             var payload = message.Item2;
-            var key = payload.UserId.ToString();
+            var key = payload.UserId.First().ToString();
             var ts = message.Item3;
             dictStream2[key] = payload;
             if (startTime == 0)

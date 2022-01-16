@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Security.Cryptography.X509Certificates;
 using System.Threading.Tasks;
 using GrainStreamProcessing.Functions;
 using GrainStreamProcessing.GrainInterfaces;
@@ -70,11 +69,8 @@ namespace GrainStreamProcessing.GrainImpl
         {
             var res = new List<(string, DataTuple, long)> {valueTuple};
 
-            foreach (var x in res)
-            {
-                x.Item2.UserId = x.Item2.UserId.Select(y => y + 10).ToList();
-            }
-            
+            foreach (var x in res) x.Item2.UserId = x.Item2.UserId.Select(y => y + 10).ToList();
+
             return res;
         }
     }
