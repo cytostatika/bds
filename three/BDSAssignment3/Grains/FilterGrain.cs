@@ -79,31 +79,31 @@ namespace GrainStreamProcessing.GrainImpl
         }
     }
 
-    public class OddNumberFilter : FilterGrain<(string, DataTuple, long)>
+    public class SmallUserFilter : FilterGrain<(string, DataTuple, long)>
     {
-        public override bool Apply((string, DataTuple, long) e) // Implements the Apply method, filtering odd numbers
+        public override bool Apply((string, DataTuple, long) e) // Implements the Apply method, filtering numbers < 10
         {
-            return e.Item2.UserId.Any(x => x % 2 == 1);
+            return e.Item2.UserId.Any(x => x >= 10);
         }
 
         protected override bool
-            ApplySingleItem((string, DataTuple, long) e) // Implements the Apply method, filtering odd numbers
+            ApplySingleItem((string, DataTuple, long) e) // Implements the Apply method, filtering numbers < 10
         {
-            return e.Item2.UserId.Any(x => x % 2 == 1);
+            return e.Item2.UserId.Any(x => x >= 1);
         }
     }
 
-    public class OddNumberListFilter : FilterGrain<List<(string, DataTuple, long)>>
+    public class SmallUserListFilter : FilterGrain<List<(string, DataTuple, long)>>
     {
         public override bool Apply(List<(string, DataTuple, long)> e)
         {
-            return e.Select(tup => tup.Item2.UserId.Any(x => x % 2 == 1)).FirstOrDefault();
+            return e.Select(tup => tup.Item2.UserId.Any(x => x >= 10)).FirstOrDefault();
         }
 
         protected override bool
-            ApplySingleItem((string, DataTuple, long) e) // Implements the Apply method, filtering odd numbers
+            ApplySingleItem((string, DataTuple, long) e) // Implements the Apply method, filtering numbers < 10
         {
-            return e.Item2.UserId.Any(x => x % 2 == 1);
+            return e.Item2.UserId.Any(x => x >= 10);
         }
     }
 }

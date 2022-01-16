@@ -59,25 +59,25 @@ namespace GrainStreamProcessing.GrainImpl
         }
     }
 
-    public class AddListMap : FlatMapGrain<List<(string, DataTuple, long)>>
+    public class AddLongListMap : FlatMapGrain<List<(string, DataTuple, long)>>
     {
         public override List<(string, DataTuple, long)>
             Apply(List<(string, DataTuple, long)> valueTuple)
         {
             foreach (var (_, dataTuple, _) in valueTuple)
-                dataTuple.UserId = dataTuple.UserId.Select(y => y + 10).ToList();
+                dataTuple.Long = dataTuple.Long.Select(y => y + 10).ToList();
 
             return valueTuple;
         }
     }
 
-    public class AddMap : FlatMapGrain<(string, DataTuple, long)>
+    public class AddLongMap : FlatMapGrain<(string, DataTuple, long)>
     {
         public override List<(string, DataTuple, long)> Apply((string, DataTuple, long) e)
         {
             var res = new List<(string, DataTuple, long)> {e};
 
-            foreach (var (_, dataTuple, _) in res) dataTuple.UserId = dataTuple.UserId.Select(y => y + 10).ToList();
+            foreach (var (_, dataTuple, _) in res) dataTuple.Long = dataTuple.Long.Select(y => y + 10).ToList();
 
 
             return res;

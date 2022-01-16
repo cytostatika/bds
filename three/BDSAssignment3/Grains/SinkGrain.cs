@@ -48,9 +48,9 @@ namespace GrainStreamProcessing.GrainImpl
         {
             if (e is IEnumerable enumerable)
                 foreach (var tup in enumerable)
-                    Console.WriteLine($"Processed in Sink as enumerable: {tup}");
+                    Console.WriteLine(tup);
             else
-                Console.WriteLine($"Processed in Sink: {e}");
+                Console.WriteLine(e);
 
             return Task.CompletedTask;
         }
@@ -81,9 +81,9 @@ namespace GrainStreamProcessing.GrainImpl
             using var sw = File.AppendText(Path.Join(_projectPath, "Client", "Log.txt"));
             if (e is IEnumerable enumerable)
                 foreach (var tup in enumerable)
-                    sw.WriteLine($"Processed in Sink as enumerable: {tup}");
+                    sw.WriteLine(tup);
             else
-                sw.WriteLine($"Processed in Sink: {e}");
+                sw.WriteLine(e);
 
             return Task.CompletedTask;
         }

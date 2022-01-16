@@ -77,8 +77,8 @@ namespace GrainStreamProcessing
             var tagSource = client.GetGrain<ISource>(guid, "Tag");
             var gpsSource = client.GetGrain<ISource>(guid, "GPS");
 
-            var filterGrain = client.GetGrain<IFilter>(0, "GrainStreamProcessing.GrainImpl.OddNumberListFilter");
-            var flatMapGrain = client.GetGrain<IFlatMap>(0, "GrainStreamProcessing.GrainImpl.AddListMap");
+            var filterGrain = client.GetGrain<IFilter>(0, "GrainStreamProcessing.GrainImpl.SmallUserListFilter");
+            var flatMapGrain = client.GetGrain<IFlatMap>(0, "GrainStreamProcessing.GrainImpl.AddLongListMap");
             var aggregateGrain =
                 client.GetGrain<IAggregate>(0, "GrainStreamProcessing.GrainImpl.AverageLongitudeAggregate");
             var joinGrain = client.GetGrain<IWindowJoin>(0, "GrainStreamProcessing.GrainImpl.SimpleWindowJoin");
@@ -107,7 +107,7 @@ namespace GrainStreamProcessing
         {
             var random = new Random();
             //var filterGrain = client.GetGrain<IFilter>(0, "GrainStreamProcessing.GrainImpl.LargerThanTenFilter");
-            var filterGrain = client.GetGrain<IFilter>(0, "GrainStreamProcessing.GrainImpl.OddNumberFilter");
+            var filterGrain = client.GetGrain<IFilter>(0, "GrainStreamProcessing.GrainImpl.SmallUserFilter");
             var sinkGrain = client.GetGrain<ISink>(0, "GrainStreamProcessing.GrainImpl.ConsoleSink");
 
             await filterGrain.Init(Constants.SinkNameSpace);
@@ -124,7 +124,7 @@ namespace GrainStreamProcessing
         private static async Task FlatMapClient(IClusterClient client)
         {
             var random = new Random();
-            var flatMapGrain = client.GetGrain<IFlatMap>(0, "GrainStreamProcessing.GrainImpl.AddMap");
+            var flatMapGrain = client.GetGrain<IFlatMap>(0, "GrainStreamProcessing.GrainImpl.AddLongMap");
             var sinkGrain = client.GetGrain<ISink>(0, "GrainStreamProcessing.GrainImpl.ConsoleSink");
             await flatMapGrain.Init(Constants.SinkNameSpace);
             await sinkGrain.Init();
