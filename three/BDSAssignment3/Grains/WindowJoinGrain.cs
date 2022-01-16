@@ -129,8 +129,6 @@ namespace GrainStreamProcessing.GrainImpl
                 await Process();
                 startTime = 0;
             }
-
-            //Purge(message.TimeStamp, ref dictStream1);
         }
     }
 }

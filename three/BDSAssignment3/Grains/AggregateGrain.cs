@@ -71,6 +71,16 @@ namespace GrainStreamProcessing.GrainImpl
 
             if (_tuples.Count > windowSize) _tuples.Remove(_tuples.Keys.Min());
         }
+        // protected void HandleTuples(IList<(string, T, long)> tuples)
+        // {
+        //     foreach (var tup in tuples)
+        //     {
+        //         _tuples.Add(_tupleNumber++, tup);
+        //
+        //         if (_tuples.Count > windowSize) _tuples.Remove(_tuples.Keys.Min());
+        //     }
+        //
+        // }
     }
 
     public class AverageLongitudeAggregate : AggregateGrain<DataTuple>
@@ -85,11 +95,11 @@ namespace GrainStreamProcessing.GrainImpl
             };
             var matches = 0;
 
-            var eventKey = e.Item2.GetType().GetProperties().Single(x => x.Name == e.Item1).GetValue(e.Item2, null);
+            var eventKey = e.Item2.GetType().GetProperties().First(x => x.Name == e.Item1).GetValue(e.Item2, null);
 
             foreach (var (key, (mes, pay, time)) in _tuples)
             {
-                var dictItemKey = pay.GetType().GetProperties().Single(x => x.Name == mes).GetValue(pay, null);
+                var dictItemKey = pay.GetType().GetProperties().First(x => x.Name == mes).GetValue(pay, null);
 
                 if (!eventKey.ToString().Equals(dictItemKey.ToString())) continue;
 

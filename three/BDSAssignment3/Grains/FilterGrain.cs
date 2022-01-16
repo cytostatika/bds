@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using GrainStreamProcessing.Functions;
@@ -17,13 +19,29 @@ namespace GrainStreamProcessing.GrainImpl
 
         public async Task Process(object e) // Implements the Process method from IFilter
         {
-            if (Apply(((string, T, long)) e))
+            var list = e as IEnumerable;
+            if (list != null)
             {
-                //Get the reference to a stream
-                var outStream = MyOutStream;
-                var stream = streamProvider.GetStream<object>(Constants.StreamGuid, outStream);
+                foreach (var tuple in list)
+                {
+                    if (!Apply(((string, T, long)) e)) continue;
+                    //Get the reference to a stream
+                    var outStream = MyOutStream;
+                    var stream = streamProvider.GetStream<object>(Constants.StreamGuid, outStream);
 
-                await stream.OnNextAsync(e);
+                    await stream.OnNextAsync(e);
+                }
+            }
+            else
+            {
+                if (Apply(((string, T, long)) e))
+                {
+                    //Get the reference to a stream
+                    var outStream = MyOutStream;
+                    var stream = streamProvider.GetStream<object>(Constants.StreamGuid, outStream);
+
+                    await stream.OnNextAsync(e);
+                }    
             }
         }
 
@@ -36,6 +54,7 @@ namespace GrainStreamProcessing.GrainImpl
         }
 
         public abstract bool Apply((string, T, long) e);
+        public abstract bool Apply(List<(string, T, long)> e);
 
         public override async Task OnActivateAsync()
         {
@@ -55,7 +74,6 @@ namespace GrainStreamProcessing.GrainImpl
         private async Task OnNextMessage((string, T, long) message, StreamSequenceToken sequenceToken)
         {
             //Console.WriteLine($"OnNextMessage in Filter: {message}");
-
             await Process(message);
         }
     }
@@ -65,6 +83,11 @@ namespace GrainStreamProcessing.GrainImpl
         public override bool Apply((string, DataTuple, long) e) // Implements the Apply method, filtering odd numbers
         {
             return e.Item2.UserId.Any(x => x % 2 == 1);
+        }
+
+        public override bool Apply(List<(string, DataTuple, long)> e)
+        {
+            throw new NotImplementedException();
         }
     }
 }

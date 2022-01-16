@@ -38,6 +38,7 @@ namespace GrainStreamProcessing.GrainImpl
         }
 
         public abstract IList<(string, T, long)> Apply((string, T, long) e);
+        public abstract IList<(string, T, long)> Apply(IList<(string, T, long)> e);
 
         public override async Task OnActivateAsync()
         {
@@ -72,6 +73,13 @@ namespace GrainStreamProcessing.GrainImpl
             foreach (var x in res) x.Item2.UserId = x.Item2.UserId.Select(y => y + 10).ToList();
 
             return res;
+        }
+
+        public override IList<(string, DataTuple, long)> Apply(IList<(string, DataTuple, long)> e)
+        {
+            foreach (var x in e) x.Item2.UserId = x.Item2.UserId.Select(y => y + 10).ToList();
+
+            return e;
         }
     }
 }
