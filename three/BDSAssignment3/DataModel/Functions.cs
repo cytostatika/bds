@@ -15,7 +15,7 @@ namespace GrainStreamProcessing.Functions
 
     public interface IAggregateFunction<T>
     {
-        (string, T, long) Apply((string, T, long) e);
+        (string, DataTuple, long) Apply(T e);
     }
 
     public interface IWindowJoinFunction<T>

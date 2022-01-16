@@ -15,7 +15,7 @@ namespace GrainStreamProcessing.GrainImpl
         private const int WindowSize = 6;
         private const int SlideSize = 1;
 
-        protected readonly Dictionary<int, (string, T, long)> Tuples = new Dictionary<int, (string, T, long)>();
+        protected readonly Dictionary<int, T> Tuples = new Dictionary<int, T>();
         private IStreamProvider _streamProvider;
         private int _tupleNumber;
 
@@ -24,7 +24,7 @@ namespace GrainStreamProcessing.GrainImpl
 
         public async Task Process(object e) // Implements the Process
         {
-            var res = Apply(((string, T, long)) e);
+            var res = Apply((T) e);
             var outStream = MyOutStream;
             //Get the reference to a stream
             var stream = _streamProvider.GetStream<object>(Constants.StreamGuid, outStream);
@@ -40,13 +40,13 @@ namespace GrainStreamProcessing.GrainImpl
             return Task.CompletedTask;
         }
 
-        public abstract (string, T, long) Apply((string, T, long) e);
+        public abstract (string, DataTuple, long) Apply(T e);
 
         public override async Task OnActivateAsync()
         {
             _streamProvider = GetStreamProvider("SMSProvider");
             var inStream = MyInStream;
-            var stream = _streamProvider.GetStream<(string, T, long)>(Constants.StreamGuid, inStream);
+            var stream = _streamProvider.GetStream<T>(Constants.StreamGuid, inStream);
 
             // To resume stream in case of stream deactivation
             var subscriptionHandles = await stream.GetAllSubscriptionHandles();
@@ -57,13 +57,13 @@ namespace GrainStreamProcessing.GrainImpl
             await stream.SubscribeAsync(OnNextMessage);
         }
 
-        private async Task OnNextMessage((string, T, long) message, StreamSequenceToken sequenceToken)
+        private async Task OnNextMessage(T message, StreamSequenceToken sequenceToken)
         {
             //Console.WriteLine($"OnNextMessage in Aggregate: {message}");
             await Process(message);
         }
 
-        protected void HandleTuples((string, T, long) tuple)
+        protected void HandleTuples(T tuple)
         {
             Tuples.Add(_tupleNumber++, tuple);
 
@@ -73,7 +73,7 @@ namespace GrainStreamProcessing.GrainImpl
         }
     }
 
-    public class AverageLongitudeAggregate : AggregateGrain<DataTuple>
+    public class AverageLongitudeAggregate : AggregateGrain<(string, DataTuple, long)>
     {
         public override (string, DataTuple, long) Apply((string, DataTuple, long) e)
         {
