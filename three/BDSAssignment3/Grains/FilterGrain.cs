@@ -19,12 +19,11 @@ namespace GrainStreamProcessing.GrainImpl
 
         public async Task Process(object e) // Implements the Process method from IFilter
         {
-            var list = e as IList;
-            if (list != null)
+            if (e is IList list)
             {
                 foreach (var tup in list)
                 {
-                    if (!ApplyOne(((string, DataTuple, long)) tup)) continue;
+                    if (!ApplySingleItem(((string, DataTuple, long)) tup)) continue;
                     //Get the reference to a stream
                     var outStream = MyOutStream;
                     var stream = streamProvider.GetStream<object>(Constants.StreamGuid, outStream);
@@ -55,8 +54,8 @@ namespace GrainStreamProcessing.GrainImpl
 
         public abstract bool Apply(T e);
 
-        public abstract bool
-            ApplyOne((string, DataTuple, long) e); // Implements the Apply method, filtering odd numbers
+        protected abstract bool
+            ApplySingleItem((string, DataTuple, long) e); // Implements the Apply method, filtering odd numbers
 
         public override async Task OnActivateAsync()
         {
@@ -87,7 +86,8 @@ namespace GrainStreamProcessing.GrainImpl
             return e.Item2.UserId.Any(x => x % 2 == 1);
         }
 
-        public override bool ApplyOne((string, DataTuple, long) e) // Implements the Apply method, filtering odd numbers
+        protected override bool
+            ApplySingleItem((string, DataTuple, long) e) // Implements the Apply method, filtering odd numbers
         {
             return e.Item2.UserId.Any(x => x % 2 == 1);
         }
@@ -97,11 +97,11 @@ namespace GrainStreamProcessing.GrainImpl
     {
         public override bool Apply(List<(string, DataTuple, long)> e)
         {
-            foreach (var tup in e) return tup.Item2.UserId.Any(x => x % 2 == 1);
-            return false;
+            return e.Select(tup => tup.Item2.UserId.Any(x => x % 2 == 1)).FirstOrDefault();
         }
 
-        public override bool ApplyOne((string, DataTuple, long) e) // Implements the Apply method, filtering odd numbers
+        protected override bool
+            ApplySingleItem((string, DataTuple, long) e) // Implements the Apply method, filtering odd numbers
         {
             return e.Item2.UserId.Any(x => x % 2 == 1);
         }

@@ -11,34 +11,31 @@ namespace GrainStreamProcessing.GrainImpl
 {
     public abstract class WindowJoinGrain<T> : Grain, IWindowJoin, IWindowJoinFunction<T>
     {
-        // TODO: change these to getters/setter or whwatever and change them according to the input in Init.
-        //       Also create the entire topology either through chaining of init functions or in source grain by calling Inits with correct input.
         private readonly string inStream1 = Constants.WindowJoinOneNameSpace;
         private readonly string inStream2 = Constants.WindowJoinTwoNameSpace;
-        public Dictionary<string, DataTuple> dictStream1;
-        public Dictionary<string, DataTuple> dictStream2;
-        public long startTime;
-
-        public long windowSize;
-        private string outStream { get; set; }
+        protected Dictionary<string, DataTuple> DictStream1;
+        protected Dictionary<string, DataTuple> DictStream2;
+        protected long StartTime;
+        protected long WindowSize;
+        private string OutStream { get; set; }
 
         // TODO: remove parameters, its already in state lol
         public async Task Process()
         {
             var streamProvider = GetStreamProvider("SMSProvider");
             var window = Apply();
-            var stream = streamProvider.GetStream<object>(Constants.StreamGuid, outStream);
+            var stream = streamProvider.GetStream<object>(Constants.StreamGuid, OutStream);
 
             await stream.OnNextAsync(window);
         }
 
         public Task Init(string in1, string in2, string out1, long wdSize)
         {
-            outStream = out1;
-            windowSize = wdSize;
-            startTime = 0;
-            dictStream1 = new Dictionary<string, DataTuple>();
-            dictStream2 = new Dictionary<string, DataTuple>();
+            OutStream = out1;
+            WindowSize = wdSize;
+            StartTime = 0;
+            DictStream1 = new Dictionary<string, DataTuple>();
+            DictStream2 = new Dictionary<string, DataTuple>();
             return Task.CompletedTask;
         }
 
@@ -67,32 +64,28 @@ namespace GrainStreamProcessing.GrainImpl
                 foreach (var subscriptionHandle in subscriptionHandles2)
                     await subscriptionHandle.ResumeAsync(OnNextMessage2);
         }
-
-
-        //public abstract void Purge(long ts, ref Dictionary<string, T> streamdict);
     }
 
 
-    // Tag as stream 1 and GPS as stream 2 - UserID is key
     public class SimpleWindowJoin : WindowJoinGrain<DataTuple>
     {
         public override List<(string, DataTuple, long)> Apply()
         {
-            var s1 = dictStream1;
-            var s2 = dictStream2;
+            var s1 = DictStream1;
+            var s2 = DictStream2;
             var matches = s1.Keys.Intersect(s2.Keys);
 
             var res = new List<(string, DataTuple, long)>();
             foreach (var m in matches)
             {
-                var tag = s1[m];
-                var gps = s2[m];
+                var tuple1 = s1[m];
+                var tuple2 = s2[m];
 
-                res.Add(("UserId", new MergeTuple(tag, gps, "UserId"), startTime));
+                res.Add(("UserId", new MergeTuple(tuple1, tuple2, "UserId"), StartTime));
             }
 
-            dictStream1.Clear();
-            dictStream2.Clear();
+            DictStream1.Clear();
+            DictStream2.Clear();
 
             return res;
         }
@@ -100,19 +93,18 @@ namespace GrainStreamProcessing.GrainImpl
         public override async Task OnNextMessage1((string, DataTuple, long) message, StreamSequenceToken sequenceToken)
         {
             //Console.WriteLine("OnNextMessage1");
-
             var payload = message.Item2;
             var key = payload.UserId.First().ToString();
             var ts = message.Item3;
-            dictStream1[key] = payload;
-            if (startTime == 0)
+            DictStream1[key] = payload;
+            if (StartTime == 0)
             {
-                startTime = ts;
+                StartTime = ts;
             }
-            else if (ts - startTime > windowSize)
+            else if (ts - StartTime > WindowSize)
             {
                 await Process();
-                startTime = 0;
+                StartTime = 0;
             }
         }
 
@@ -122,15 +114,15 @@ namespace GrainStreamProcessing.GrainImpl
             var payload = message.Item2;
             var key = payload.UserId.First().ToString();
             var ts = message.Item3;
-            dictStream2[key] = payload;
-            if (startTime == 0)
+            DictStream2[key] = payload;
+            if (StartTime == 0)
             {
-                startTime = ts;
+                StartTime = ts;
             }
-            else if (ts - startTime > windowSize)
+            else if (ts - StartTime > WindowSize)
             {
                 await Process();
-                startTime = 0;
+                StartTime = 0;
             }
         }
     }

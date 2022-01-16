@@ -12,24 +12,22 @@ namespace GrainStreamProcessing.GrainImpl
 {
     public abstract class AggregateGrain<T> : Grain, IAggregate, IAggregateFunction<T>
     {
-        private const int windowSize = 6;
-        private const int slideSize = 1;
+        private const int WindowSize = 6;
+        private const int SlideSize = 1;
 
-        protected readonly Dictionary<int, (string, T, long)> _tuples = new Dictionary<int, (string, T, long)>();
+        protected readonly Dictionary<int, (string, T, long)> Tuples = new Dictionary<int, (string, T, long)>();
+        private IStreamProvider _streamProvider;
         private int _tupleNumber;
-        private IStreamProvider streamProvider;
 
-        // TODO: change these to getters/setter or whwatever and change them according to the input in Init.
-        //       Also create the entire topology either through chaining of init functions or in source grain by calling Inits with correct input.
         private string MyInStream { get; } = Constants.AggregateNameSpace;
         private string MyOutStream { get; set; }
 
-        public async Task Process(object e) // Implements the Process method from IFilter
+        public async Task Process(object e) // Implements the Process
         {
             var res = Apply(((string, T, long)) e);
             var outStream = MyOutStream;
             //Get the reference to a stream
-            var stream = streamProvider.GetStream<object>(Constants.StreamGuid, outStream);
+            var stream = _streamProvider.GetStream<object>(Constants.StreamGuid, outStream);
 
             await stream.OnNextAsync(res);
         }
@@ -46,9 +44,9 @@ namespace GrainStreamProcessing.GrainImpl
 
         public override async Task OnActivateAsync()
         {
-            streamProvider = GetStreamProvider("SMSProvider");
+            _streamProvider = GetStreamProvider("SMSProvider");
             var inStream = MyInStream;
-            var stream = streamProvider.GetStream<(string, T, long)>(Constants.StreamGuid, inStream);
+            var stream = _streamProvider.GetStream<(string, T, long)>(Constants.StreamGuid, inStream);
 
             // To resume stream in case of stream deactivation
             var subscriptionHandles = await stream.GetAllSubscriptionHandles();
@@ -67,9 +65,11 @@ namespace GrainStreamProcessing.GrainImpl
 
         protected void HandleTuples((string, T, long) tuple)
         {
-            _tuples.Add(_tupleNumber++, tuple);
+            Tuples.Add(_tupleNumber++, tuple);
 
-            if (_tuples.Count > windowSize) _tuples.Remove(_tuples.Keys.Min());
+            if (Tuples.Count <= WindowSize) return;
+
+            for (var i = 0; i < SlideSize; i++) Tuples.Remove(Tuples.Keys.Min());
         }
     }
 
@@ -87,7 +87,7 @@ namespace GrainStreamProcessing.GrainImpl
 
             var eventKey = e.Item2.GetType().GetProperties().First(x => x.Name == e.Item1).GetValue(e.Item2, null);
 
-            foreach (var (key, (mes, pay, time)) in _tuples)
+            foreach (var (key, (mes, pay, time)) in Tuples)
             {
                 var dictItemKey = pay.GetType().GetProperties().First(x => x.Name == mes).GetValue(pay, null);
 
@@ -99,7 +99,7 @@ namespace GrainStreamProcessing.GrainImpl
 
             res.AggregateValue = matches == 0 ? res.AggregateValue : res.AggregateValue / matches;
 
-            var timeStamp = _tuples.Values.Min(x => x.Item3);
+            var timeStamp = Tuples.Values.Min(x => x.Item3);
 
             return (e.Item1, res, timeStamp);
         }

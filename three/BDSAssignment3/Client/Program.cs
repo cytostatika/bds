@@ -44,8 +44,7 @@ namespace GrainStreamProcessing
 
         private static async Task<IClusterClient> ConnectClient()
         {
-            IClusterClient client;
-            client = new ClientBuilder()
+            var client = new ClientBuilder()
                 .UseLocalhostClustering()
                 .Configure<ClusterOptions>(options =>
                 {
@@ -90,7 +89,7 @@ namespace GrainStreamProcessing
             await tagSource.Init(Constants.WindowJoinOneNameSpace);
             await gpsSource.Init(Constants.WindowJoinTwoNameSpace);
 
-
+            // operators are in the order of the topology
             await joinGrain.Init(Constants.WindowJoinOneNameSpace, Constants.WindowJoinTwoNameSpace,
                 Constants.FlatMapNameSpace, 2000);
             await flatMapGrain.Init(Constants.FilterNameSpace);
@@ -106,8 +105,6 @@ namespace GrainStreamProcessing
 
         private static async Task FilterClient(IClusterClient client)
         {
-            // The code below shows how to specify an exact grain class which implements the IFilter interface
-
             var random = new Random();
             //var filterGrain = client.GetGrain<IFilter>(0, "GrainStreamProcessing.GrainImpl.LargerThanTenFilter");
             var filterGrain = client.GetGrain<IFilter>(0, "GrainStreamProcessing.GrainImpl.OddNumberFilter");
@@ -126,8 +123,6 @@ namespace GrainStreamProcessing
 
         private static async Task FlatMapClient(IClusterClient client)
         {
-            // The code below shows how to specify an exact grain class which implements the IFilter interface
-
             var random = new Random();
             var flatMapGrain = client.GetGrain<IFlatMap>(0, "GrainStreamProcessing.GrainImpl.AddMap");
             var sinkGrain = client.GetGrain<ISink>(0, "GrainStreamProcessing.GrainImpl.ConsoleSink");
@@ -139,13 +134,12 @@ namespace GrainStreamProcessing
                 var res = CreateTestTuple(random, 0);
                 Console.WriteLine(res); // Output these numbers to Client console.
                 await flatMapGrain
-                    .Process(res); // Send these numbers to the filter operator, and numbers that pass this filter will be outputted onto Silo console.
+                    .Process(res); // Send these numbers to the flatmap operator, and numbers that pass this filter will be outputted onto Silo console.
             }
         }
 
         private static async Task AggregateClient(IClusterClient client)
         {
-            // The code below shows how to specify an exact grain class which implements the IFilter interface
             var random = new Random();
             var aggregateGrain =
                 client.GetGrain<IAggregate>(0, "GrainStreamProcessing.GrainImpl.AverageLongitudeAggregate");

@@ -12,19 +12,17 @@ namespace GrainStreamProcessing.GrainImpl
 {
     public abstract class FlatMapGrain<T> : Grain, IFlatMap, IFlatMapFunction<T>
     {
-        private IStreamProvider streamProvider;
+        private IStreamProvider _streamProvider;
 
-        // TODO: change these to getters/setter or whwatever and change them according to the input in Init.
-        //       Also create the entire topology either through chaining of init functions or in source grain by calling Inits with correct input.
         private string MyInStream { get; } = Constants.FlatMapNameSpace;
         private string MyOutStream { get; set; }
 
-        public async Task Process(object e) // Implements the Process method from IFilter
+        public async Task Process(object e) // Implements the Process method
         {
             var res = Apply((T) e);
             var outStream = MyOutStream;
             //Get the reference to a stream
-            var stream = streamProvider.GetStream<object>(Constants.StreamGuid, outStream);
+            var stream = _streamProvider.GetStream<object>(Constants.StreamGuid, outStream);
 
             await stream.OnNextAsync(res);
         }
@@ -37,14 +35,13 @@ namespace GrainStreamProcessing.GrainImpl
             return Task.CompletedTask;
         }
 
-        // public abstract List<(string, T, long)> Apply((string, T, long) e);
         public abstract List<(string, DataTuple, long)> Apply(T e);
 
         public override async Task OnActivateAsync()
         {
-            streamProvider = GetStreamProvider("SMSProvider");
+            _streamProvider = GetStreamProvider("SMSProvider");
             var inStream = MyInStream;
-            var stream = streamProvider.GetStream<T>(Constants.StreamGuid, inStream);
+            var stream = _streamProvider.GetStream<T>(Constants.StreamGuid, inStream);
 
             // To resume stream in case of stream deactivation
             var subscriptionHandles = await stream.GetAllSubscriptionHandles();
@@ -65,12 +62,10 @@ namespace GrainStreamProcessing.GrainImpl
     public class AddListMap : FlatMapGrain<List<(string, DataTuple, long)>>
     {
         public override List<(string, DataTuple, long)>
-            Apply(List<(string, DataTuple, long)> valueTuple) // Implements the Apply method, filtering odd numbers
+            Apply(List<(string, DataTuple, long)> valueTuple)
         {
-            // var res = new List<(string, DataTuple, long)> {valueTuple};
-            //
-            // foreach (var x in res) x.Item2.UserId = x.Item2.UserId.Select(y => y + 10).ToList();
-            //
+            foreach (var (_, dataTuple, _) in valueTuple)
+                dataTuple.UserId = dataTuple.UserId.Select(y => y + 10).ToList();
 
             return valueTuple;
         }
@@ -82,7 +77,7 @@ namespace GrainStreamProcessing.GrainImpl
         {
             var res = new List<(string, DataTuple, long)> {e};
 
-            foreach (var x in res) x.Item2.UserId = x.Item2.UserId.Select(y => y + 10).ToList();
+            foreach (var (_, dataTuple, _) in res) dataTuple.UserId = dataTuple.UserId.Select(y => y + 10).ToList();
 
 
             return res;
