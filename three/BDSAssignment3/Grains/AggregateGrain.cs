@@ -61,7 +61,7 @@ namespace GrainStreamProcessing.GrainImpl
 
         private async Task OnNextMessage((string, T, long) message, StreamSequenceToken sequenceToken)
         {
-            Console.WriteLine($"OnNextMessage in Aggregate: {message}");
+            //Console.WriteLine($"OnNextMessage in Aggregate: {message}");
             await Process(message);
         }
 
@@ -71,16 +71,6 @@ namespace GrainStreamProcessing.GrainImpl
 
             if (_tuples.Count > windowSize) _tuples.Remove(_tuples.Keys.Min());
         }
-        // protected void HandleTuples(List<(string, T, long)> tuples)
-        // {
-        //     foreach (var tup in tuples)
-        //     {
-        //         _tuples.Add(_tupleNumber++, tup);
-        //
-        //         if (_tuples.Count > windowSize) _tuples.Remove(_tuples.Keys.Min());
-        //     }
-        //
-        // }
     }
 
     public class AverageLongitudeAggregate : AggregateGrain<DataTuple>

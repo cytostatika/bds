@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using GrainStreamProcessing.Functions;
@@ -27,7 +26,7 @@ namespace GrainStreamProcessing.GrainImpl
         public async Task Process()
         {
             var streamProvider = GetStreamProvider("SMSProvider");
-            List<ValueTuple<string, T,long>> window = Apply();
+            var window = Apply();
             var stream = streamProvider.GetStream<object>(Constants.StreamGuid, outStream);
 
             await stream.OnNextAsync(window);

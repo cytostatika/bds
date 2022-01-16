@@ -39,6 +39,7 @@ namespace GrainStreamProcessing.GrainImpl
 
         // public abstract List<(string, T, long)> Apply((string, T, long) e);
         public abstract List<(string, DataTuple, long)> Apply(T e);
+
         public override async Task OnActivateAsync()
         {
             streamProvider = GetStreamProvider("SMSProvider");
@@ -56,12 +57,9 @@ namespace GrainStreamProcessing.GrainImpl
 
         private async Task OnNextMessage(T message, StreamSequenceToken sequenceToken)
         {
-            Console.WriteLine($"OnNextMessage in FlatMap: {message}");
-
+            //Console.WriteLine($"OnNextMessage in FlatMap: {message}");
             await Process(message);
         }
-
-
     }
 
     public class AddListMap : FlatMapGrain<List<(string, DataTuple, long)>>
@@ -73,7 +71,7 @@ namespace GrainStreamProcessing.GrainImpl
             //
             // foreach (var x in res) x.Item2.UserId = x.Item2.UserId.Select(y => y + 10).ToList();
             //
-            
+
             return valueTuple;
         }
     }
@@ -83,10 +81,10 @@ namespace GrainStreamProcessing.GrainImpl
         public override List<(string, DataTuple, long)> Apply((string, DataTuple, long) e)
         {
             var res = new List<(string, DataTuple, long)> {e};
-        
+
             foreach (var x in res) x.Item2.UserId = x.Item2.UserId.Select(y => y + 10).ToList();
-        
-            
+
+
             return res;
         }
     }

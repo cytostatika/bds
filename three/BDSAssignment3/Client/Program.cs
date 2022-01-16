@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Threading.Tasks;
 using Client;
 using GrainStreamProcessing.Functions;
@@ -79,23 +78,25 @@ namespace GrainStreamProcessing
             var tagSource = client.GetGrain<ISource>(guid, "Tag");
             var gpsSource = client.GetGrain<ISource>(guid, "GPS");
 
-            var filterGrain = client.GetGrain<IFilter>(0, "GrainStreamProcessing.GrainImpl.OddNumberFilter");
+            var filterGrain = client.GetGrain<IFilter>(0, "GrainStreamProcessing.GrainImpl.OddNumberListFilter");
             var flatMapGrain = client.GetGrain<IFlatMap>(0, "GrainStreamProcessing.GrainImpl.AddListMap");
-            var aggregateGrain = client.GetGrain<IAggregate>(0, "GrainStreamProcessing.GrainImpl.AverageLongitudeAggregate");
+            var aggregateGrain =
+                client.GetGrain<IAggregate>(0, "GrainStreamProcessing.GrainImpl.AverageLongitudeAggregate");
             var joinGrain = client.GetGrain<IWindowJoin>(0, "GrainStreamProcessing.GrainImpl.SimpleWindowJoin");
             var sink = client.GetGrain<ISink>(0, "GrainStreamProcessing.GrainImpl.FileSink");
 
             // Activate source grains for sink, photo, tag and gps streams by calling Init method, in order to subscribe these streams.
             await photoSource.Init(Constants.WindowJoinOneNameSpace);
-            //await tagSource.Init(Constants.WindowJoinOneNameSpace);
+            await tagSource.Init(Constants.WindowJoinOneNameSpace);
             await gpsSource.Init(Constants.WindowJoinTwoNameSpace);
 
 
-            await joinGrain.Init(Constants.WindowJoinOneNameSpace, Constants.WindowJoinTwoNameSpace,Constants.FilterNameSpace, 2000);
-            //await flatMapGrain.Init(Constants.SinkNameSpace);
+            await joinGrain.Init(Constants.WindowJoinOneNameSpace, Constants.WindowJoinTwoNameSpace,
+                Constants.FlatMapNameSpace, 2000);
+            await flatMapGrain.Init(Constants.FilterNameSpace);
             await filterGrain.Init(Constants.AggregateNameSpace);
 
-            //await aggregateGrain.Init(Constants.SinkNameSpace);
+            await aggregateGrain.Init(Constants.SinkNameSpace);
 
 
             await sink.Init();
@@ -187,7 +188,7 @@ namespace GrainStreamProcessing
         {
             var r = rand.Next(20).ToString(); // Randomly generate twenty numbers between 0 and 19.
             var ts = DataDriver.getCurrentTimestamp() + rand.Next(2 * randSpan + 1) - randSpan;
-            return ("UserId", new PhotoTuple(new string[] {r, r, r, r}), ts);
+            return ("UserId", new PhotoTuple(new[] {r, r, r, r}), ts);
         }
     }
 }
