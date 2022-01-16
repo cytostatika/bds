@@ -80,21 +80,23 @@ namespace GrainStreamProcessing
             var gpsSource = client.GetGrain<ISource>(guid, "GPS");
 
             var filterGrain = client.GetGrain<IFilter>(0, "GrainStreamProcessing.GrainImpl.OddNumberFilter");
-            var flatMapGrain = client.GetGrain<IFlatMap>(0, "GrainStreamProcessing.GrainImpl.AddMap");
+            var flatMapGrain = client.GetGrain<IFlatMap>(0, "GrainStreamProcessing.GrainImpl.AddListMap");
             var aggregateGrain = client.GetGrain<IAggregate>(0, "GrainStreamProcessing.GrainImpl.AverageLongitudeAggregate");
             var joinGrain = client.GetGrain<IWindowJoin>(0, "GrainStreamProcessing.GrainImpl.SimpleWindowJoin");
             var sink = client.GetGrain<ISink>(0, "GrainStreamProcessing.GrainImpl.FileSink");
 
             // Activate source grains for sink, photo, tag and gps streams by calling Init method, in order to subscribe these streams.
-            await photoSource.Init(Constants.FlatMapNameSpace);
-            await tagSource.Init(Constants.FlatMapNameSpace);
+            await photoSource.Init(Constants.WindowJoinOneNameSpace);
+            //await tagSource.Init(Constants.WindowJoinOneNameSpace);
             await gpsSource.Init(Constants.WindowJoinTwoNameSpace);
-            await aggregateGrain.Init(Constants.FilterNameSpace);
 
 
-            await filterGrain.Init(Constants.WindowJoinOneNameSpace);
-            await joinGrain.Init(Constants.WindowJoinOneNameSpace, Constants.WindowJoinTwoNameSpace,Constants.AggregateNameSpace, 2000);
-            await flatMapGrain.Init(Constants.SinkNameSpace);
+            await joinGrain.Init(Constants.WindowJoinOneNameSpace, Constants.WindowJoinTwoNameSpace,Constants.FilterNameSpace, 2000);
+            //await flatMapGrain.Init(Constants.SinkNameSpace);
+            await filterGrain.Init(Constants.AggregateNameSpace);
+
+            //await aggregateGrain.Init(Constants.SinkNameSpace);
+
 
             await sink.Init();
             // Feeding data to streams
@@ -185,7 +187,7 @@ namespace GrainStreamProcessing
         {
             var r = rand.Next(20).ToString(); // Randomly generate twenty numbers between 0 and 19.
             var ts = DataDriver.getCurrentTimestamp() + rand.Next(2 * randSpan + 1) - randSpan;
-            return ("UserId", new PhotoTuple(new List<string> {r, r, r, r}), ts);
+            return ("UserId", new PhotoTuple(new string[] {r, r, r, r}), ts);
         }
     }
 }

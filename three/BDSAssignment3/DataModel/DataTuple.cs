@@ -5,10 +5,10 @@ namespace GrainStreamProcessing.Model
 {
     public abstract class DataTuple
     {
-        public IList<int> PhotoId { get; set; } = new List<int>();
-        public IList<int> UserId { get; set; } = new List<int>();
-        public IList<float> Lat { get; set; } = new List<float>();
-        public IList<float> Long { get; set; } = new List<float>();
+        public List<int> PhotoId { get; set; } = new List<int>();
+        public List<int> UserId { get; set; } = new List<int>();
+        public List<float> Lat { get; set; } = new List<float>();
+        public List<float> Long { get; set; } = new List<float>();
 
         public override string ToString()
         {
@@ -19,7 +19,7 @@ namespace GrainStreamProcessing.Model
 
     public class PhotoTuple : DataTuple
     {
-        public PhotoTuple(IList<string> numbers)
+        public PhotoTuple(string[] numbers)
         {
             PhotoId.Add(int.Parse(numbers[0]));
             UserId.Add(int.Parse(numbers[1]));
@@ -30,7 +30,7 @@ namespace GrainStreamProcessing.Model
 
     public class GpsTuple : DataTuple
     {
-        public GpsTuple(IList<string> numbers)
+        public GpsTuple(string[] numbers)
         {
             UserId.Add(int.Parse(numbers[0]));
             Lat.Add(float.Parse(numbers[1]));
@@ -40,7 +40,7 @@ namespace GrainStreamProcessing.Model
 
     public class TagTuple : DataTuple
     {
-        public TagTuple(IList<string> numbers)
+        public TagTuple(string[] numbers)
         {
             PhotoId.Add(int.Parse(numbers[0]));
             UserId.Add(int.Parse(numbers[1]));

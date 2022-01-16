@@ -10,12 +10,12 @@
 #pragma warning disable 1998
 using global::Orleans;
 
-[assembly: global::Orleans.Metadata.FeaturePopulatorAttribute(typeof(OrleansGeneratedCode.OrleansCodeGen4f06b87eb2FeaturePopulator))]
+[assembly: global::Orleans.Metadata.FeaturePopulatorAttribute(typeof(OrleansGeneratedCode.OrleansCodeGeneedb22f30dFeaturePopulator))]
 [assembly: global::Orleans.CodeGeneration.OrleansCodeGenerationTargetAttribute("Grains, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null"), global::Orleans.CodeGeneration.OrleansCodeGenerationTargetAttribute("Microsoft.Extensions.Logging.Abstractions, Version=3.1.0.0, Culture=neutral, PublicKey=0024000004800000940000000602000000240000525341310004000001000100f33a29044fa9d740c9b3213a93e57c84b472c84e0b8a0e1ae48e67a9f8f6de9d5f7f3d52ac23e48ac51801f1dc950abe901da34d2a9e3baadb141a17c77ef3c565dd5ee5054b91cf63bb3c6ab83f72ab3aafe93d0fc3c2348b764fafb0b1c0733de51459aeab46580384bf9d74c4e28164b7cde247f891ba07891c9d872ad2bb")]
 namespace OrleansGeneratedCode
 {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("OrleansCodeGen", "2.0.0.0")]
-    internal sealed class OrleansCodeGen4f06b87eb2FeaturePopulator : global::Orleans.Metadata.IFeaturePopulator<global::Orleans.Metadata.GrainInterfaceFeature>, global::Orleans.Metadata.IFeaturePopulator<global::Orleans.Metadata.GrainClassFeature>, global::Orleans.Metadata.IFeaturePopulator<global::Orleans.Serialization.SerializerFeature>
+    internal sealed class OrleansCodeGeneedb22f30dFeaturePopulator : global::Orleans.Metadata.IFeaturePopulator<global::Orleans.Metadata.GrainInterfaceFeature>, global::Orleans.Metadata.IFeaturePopulator<global::Orleans.Metadata.GrainClassFeature>, global::Orleans.Metadata.IFeaturePopulator<global::Orleans.Serialization.SerializerFeature>
     {
         public void Populate(global::Orleans.Metadata.GrainInterfaceFeature feature)
         {
@@ -28,6 +28,7 @@ namespace OrleansGeneratedCode
             feature.Classes.Add(new global::Orleans.Metadata.GrainClassMetadata(typeof(global::GrainStreamProcessing.GrainImpl.FilterGrain<>)));
             feature.Classes.Add(new global::Orleans.Metadata.GrainClassMetadata(typeof(global::GrainStreamProcessing.GrainImpl.OddNumberFilter)));
             feature.Classes.Add(new global::Orleans.Metadata.GrainClassMetadata(typeof(global::GrainStreamProcessing.GrainImpl.FlatMapGrain<>)));
+            feature.Classes.Add(new global::Orleans.Metadata.GrainClassMetadata(typeof(global::GrainStreamProcessing.GrainImpl.AddListMap)));
             feature.Classes.Add(new global::Orleans.Metadata.GrainClassMetadata(typeof(global::GrainStreamProcessing.GrainImpl.AddMap)));
             feature.Classes.Add(new global::Orleans.Metadata.GrainClassMetadata(typeof(global::GrainStreamProcessing.GrainImpl.SinkGrain)));
             feature.Classes.Add(new global::Orleans.Metadata.GrainClassMetadata(typeof(global::GrainStreamProcessing.GrainImpl.ConsoleSink)));
@@ -44,6 +45,7 @@ namespace OrleansGeneratedCode
             feature.AddKnownType("GrainStreamProcessing.GrainImpl.FilterGrain`1,Grains", "GrainStreamProcessing.GrainImpl.FilterGrain`1'1");
             feature.AddKnownType("GrainStreamProcessing.GrainImpl.OddNumberFilter,Grains", "GrainStreamProcessing.GrainImpl.OddNumberFilter");
             feature.AddKnownType("GrainStreamProcessing.GrainImpl.FlatMapGrain`1,Grains", "GrainStreamProcessing.GrainImpl.FlatMapGrain`1'1");
+            feature.AddKnownType("GrainStreamProcessing.GrainImpl.AddListMap,Grains", "GrainStreamProcessing.GrainImpl.AddListMap");
             feature.AddKnownType("GrainStreamProcessing.GrainImpl.AddMap,Grains", "GrainStreamProcessing.GrainImpl.AddMap");
             feature.AddKnownType("GrainStreamProcessing.GrainImpl.SinkGrain,Grains", "GrainStreamProcessing.GrainImpl.SinkGrain");
             feature.AddKnownType("GrainStreamProcessing.GrainImpl.ConsoleSink,Grains", "GrainStreamProcessing.GrainImpl.ConsoleSink");

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using GrainStreamProcessing.Functions;
@@ -26,7 +27,7 @@ namespace GrainStreamProcessing.GrainImpl
         public async Task Process()
         {
             var streamProvider = GetStreamProvider("SMSProvider");
-            var window = Apply();
+            List<ValueTuple<string, T,long>> window = Apply();
             var stream = streamProvider.GetStream<object>(Constants.StreamGuid, outStream);
 
             await stream.OnNextAsync(window);
@@ -47,7 +48,7 @@ namespace GrainStreamProcessing.GrainImpl
         public abstract Task OnNextMessage2((string, DataTuple, long) message, StreamSequenceToken sequenceToken);
         // private IStreamProvider streamProvider;
 
-        public abstract IList<(string, T, long)> Apply();
+        public abstract List<(string, T, long)> Apply();
 
         public override async Task OnActivateAsync()
         {
@@ -74,15 +75,15 @@ namespace GrainStreamProcessing.GrainImpl
 
 
     // Tag as stream 1 and GPS as stream 2 - UserID is key
-    public class SimpleWindowJoin : WindowJoinGrain<MergeTuple>
+    public class SimpleWindowJoin : WindowJoinGrain<DataTuple>
     {
-        public override IList<(string, MergeTuple, long)> Apply()
+        public override List<(string, DataTuple, long)> Apply()
         {
             var s1 = dictStream1;
             var s2 = dictStream2;
             var matches = s1.Keys.Intersect(s2.Keys);
 
-            var res = new List<(string, MergeTuple, long)>();
+            var res = new List<(string, DataTuple, long)>();
             foreach (var m in matches)
             {
                 var tag = s1[m];
@@ -99,6 +100,8 @@ namespace GrainStreamProcessing.GrainImpl
 
         public override async Task OnNextMessage1((string, DataTuple, long) message, StreamSequenceToken sequenceToken)
         {
+            //Console.WriteLine("OnNextMessage1");
+
             var payload = message.Item2;
             var key = payload.UserId.First().ToString();
             var ts = message.Item3;
@@ -116,6 +119,7 @@ namespace GrainStreamProcessing.GrainImpl
 
         public override async Task OnNextMessage2((string, DataTuple, long) message, StreamSequenceToken sequenceToken)
         {
+            //Console.WriteLine("OnNextMessage2");
             var payload = message.Item2;
             var key = payload.UserId.First().ToString();
             var ts = message.Item3;

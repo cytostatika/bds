@@ -1,17 +1,16 @@
 ﻿using System.Collections.Generic;
+using GrainStreamProcessing.Model;
 
 namespace GrainStreamProcessing.Functions
 {
-    public interface IFilterFunction<T>
+    public interface IFilterFunction<in T>
     {
-        bool Apply((string, T, long) e);
+        bool Apply(T e);
     }
 
-    public interface IFlatMapFunction<T>
+    public interface IFlatMapFunction<in T>
     {
-        IList<(string, T, long)> Apply((string, T, long) e);
-        IList<(string, T, long)> Apply(IList<(string, T, long)> e);
-
+        List<(string, DataTuple, long)> Apply(T e);
     }
 
     public interface IAggregateFunction<T>
@@ -21,6 +20,6 @@ namespace GrainStreamProcessing.Functions
 
     public interface IWindowJoinFunction<T>
     {
-        IList<(string, T, long)> Apply();
+        List<(string, T, long)> Apply();
     }
 }

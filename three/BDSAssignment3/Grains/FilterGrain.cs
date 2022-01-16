@@ -19,29 +19,13 @@ namespace GrainStreamProcessing.GrainImpl
 
         public async Task Process(object e) // Implements the Process method from IFilter
         {
-            var list = e as IEnumerable;
-            if (list != null)
+            if (Apply((T) e))
             {
-                foreach (var tuple in list)
-                {
-                    if (!Apply(((string, T, long)) e)) continue;
-                    //Get the reference to a stream
-                    var outStream = MyOutStream;
-                    var stream = streamProvider.GetStream<object>(Constants.StreamGuid, outStream);
+                //Get the reference to a stream
+                var outStream = MyOutStream;
+                var stream = streamProvider.GetStream<object>(Constants.StreamGuid, outStream);
 
-                    await stream.OnNextAsync(e);
-                }
-            }
-            else
-            {
-                if (Apply(((string, T, long)) e))
-                {
-                    //Get the reference to a stream
-                    var outStream = MyOutStream;
-                    var stream = streamProvider.GetStream<object>(Constants.StreamGuid, outStream);
-
-                    await stream.OnNextAsync(e);
-                }    
+                await stream.OnNextAsync(e);
             }
         }
 
@@ -53,14 +37,13 @@ namespace GrainStreamProcessing.GrainImpl
             return Task.CompletedTask;
         }
 
-        public abstract bool Apply((string, T, long) e);
-        public abstract bool Apply(List<(string, T, long)> e);
+        public abstract bool Apply(T e);
 
         public override async Task OnActivateAsync()
         {
             streamProvider = GetStreamProvider("SMSProvider");
             var inStream = MyInStream;
-            var stream = streamProvider.GetStream<(string, T, long)>(Constants.StreamGuid, inStream);
+            var stream = streamProvider.GetStream<T>(Constants.StreamGuid, inStream);
 
             // To resume stream in case of stream deactivation
             var subscriptionHandles = await stream.GetAllSubscriptionHandles();
@@ -71,23 +54,36 @@ namespace GrainStreamProcessing.GrainImpl
             await stream.SubscribeAsync(OnNextMessage);
         }
 
-        private async Task OnNextMessage((string, T, long) message, StreamSequenceToken sequenceToken)
+        private async Task OnNextMessage(T message, StreamSequenceToken sequenceToken)
         {
-            //Console.WriteLine($"OnNextMessage in Filter: {message}");
+            Console.WriteLine($"OnNextMessage in Filter: {message}");
             await Process(message);
         }
     }
 
-    public class OddNumberFilter : FilterGrain<DataTuple>
+    public class OddNumberFilter : FilterGrain<(string, DataTuple, long)>
     {
         public override bool Apply((string, DataTuple, long) e) // Implements the Apply method, filtering odd numbers
         {
             return e.Item2.UserId.Any(x => x % 2 == 1);
         }
-
+    }
+    
+    public class OddNumberListFilter : FilterGrain<List<(string, DataTuple, long)>>
+    {
         public override bool Apply(List<(string, DataTuple, long)> e)
         {
-            throw new NotImplementedException();
+            foreach (var tup in e)
+            {
+                if (tup.Item2.UserId.All(x => x % 2 == 1))
+                {
+                    yield return true;
+                }
+                else
+                {
+                    yield return false;
+                }
+            }
         }
     }
 }
