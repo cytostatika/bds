@@ -99,28 +99,7 @@ namespace GrainStreamProcessing.GrainImpl
 
             return res;
         }
-
-        /*
-        public override void Purge(long ts, ref Dictionary<string, DataTuple> streamdict)
-        {
-            //Currently it removes for every input ts, not intended behaviour
-
-            if (streamdict.Count != 0)
-            {
-
-                if (streamdict.First().Value.TimeStamp < ts - windowSize)
-                {
-                    foreach (var sd in streamdict)
-                    {
-
-                        if (sd.Value.TimeStamp < ts - windowSize)
-                        {
-                            streamdict.Remove(sd.Key);
-                        }
-                    }
-                }
-            }
-        }*/
+        
         public override async Task OnNextMessage1((string, DataTuple, long) message, StreamSequenceToken sequenceToken)
         {
             var payload = message.Item2;

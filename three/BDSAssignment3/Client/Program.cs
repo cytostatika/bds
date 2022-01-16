@@ -23,13 +23,13 @@ namespace GrainStreamProcessing
         {
             try
             {
-                using (var client = await ConnectClient())
-                {
-                    //await SampleClient(client);
-                    //await FlatMapClient(client);
-                    await StreamClient(client);
-                    Console.ReadKey();
-                }
+                using var client = await ConnectClient();
+                //await FilterClient(client);
+                //await FlatMapClient(client);
+                //await AggregateClient(client);
+                //await JoinClient(client);
+                await StreamClient(client);
+                Console.ReadKey();
 
                 return 0;
             }
@@ -81,40 +81,43 @@ namespace GrainStreamProcessing
 
             //var filterGrain = client.GetGrain<IFilter>(0, "GrainStreamProcessing.GrainImpl.OddNumberFilter");
             //var flatMapGrain = client.GetGrain<IFlatMap>(0, "GrainStreamProcessing.GrainImpl.AddMap");
-            //var aggregateGrain = client.GetGrain<IAggregate>(0, "GrainStreamProcessing.GrainImpl.AverageLongitudeAggregate");
-            var joinGrain = client.GetGrain<IWindowJoin>(0, "GrainStreamProcessing.GrainImpl.SimpleWindowJoin");
-            var sink = client.GetGrain<ISink>(0, "GrainStreamProcessing.GrainImpl.Sink");
+            var aggregateGrain = client.GetGrain<IAggregate>(0, "GrainStreamProcessing.GrainImpl.AverageLongitudeAggregate");
+            //var joinGrain = client.GetGrain<IWindowJoin>(0, "GrainStreamProcessing.GrainImpl.SimpleWindowJoin");
+            var sink = client.GetGrain<ISink>(0, "GrainStreamProcessing.GrainImpl.FileSink");
 
             // Activate source grains for sink, photo, tag and gps streams by calling Init method, in order to subscribe these streams.
-            await photoSource.Init(Constants.WindowJoinOneNameSpace);
+            await photoSource.Init(Constants.AggregateNameSpace);
             //await tagSource.Init(Constants.WindowJoinOneNameSpace);
-            await gpsSource.Init(Constants.WindowJoinTwoNameSpace);
+            //await gpsSource.Init(Constants.WindowJoinTwoNameSpace);
 
 
             //await filterGrain.Init(Constants.SinkNameSpace);
             //await flatMapGrain.Init(Constants.SinkNameSpace);
-            //await aggregateGrain.Init(Constants.SinkNameSpace);
-            await joinGrain.Init(Constants.WindowJoinOneNameSpace, Constants.WindowJoinTwoNameSpace,
-                Constants.SinkNameSpace, 2000);
+            await aggregateGrain.Init(Constants.SinkNameSpace);
+            //await joinGrain.Init(Constants.WindowJoinOneNameSpace, Constants.WindowJoinTwoNameSpace,Constants.SinkNameSpace, 2000);
 
             await sink.Init();
             // Feeding data to streams
             await DataDriver.Run(photoStream, tagStream, gpsStream, 1600, 0);
         }
 
-        private static async Task SampleClient(IClusterClient client)
+        private static async Task FilterClient(IClusterClient client)
         {
             // The code below shows how to specify an exact grain class which implements the IFilter interface
 
             var random = new Random();
             //var filterGrain = client.GetGrain<IFilter>(0, "GrainStreamProcessing.GrainImpl.LargerThanTenFilter");
             var filterGrain = client.GetGrain<IFilter>(0, "GrainStreamProcessing.GrainImpl.OddNumberFilter");
+            var sinkGrain = client.GetGrain<ISink>(0, "GrainStreamProcessing.GrainImpl.ConsoleSink");
+
+            await filterGrain.Init(Constants.SinkNameSpace);
+            await sinkGrain.Init();
             for (var i = 0; i < 20; ++i)
             {
-                long r = random.Next(20); // Randomly generate twenty numbers between 0 and 19.
-                Console.WriteLine(r); // Output these numbers to Client console.
+                var res = CreateTestTuple(random, 0);
+                Console.WriteLine(res); // Output these numbers to Client console.
                 await filterGrain
-                    .Process(r); // Send these numbers to the filter operator, and numbers that pass this filter will be outputted onto Silo console.
+                    .Process(res); // Send these numbers to the filter operator, and numbers that pass this filter will be outputted onto Silo console.
             }
         }
 
@@ -123,16 +126,60 @@ namespace GrainStreamProcessing
             // The code below shows how to specify an exact grain class which implements the IFilter interface
 
             var random = new Random();
-            //var filterGrain = client.GetGrain<IFilter>(0, "GrainStreamProcessing.GrainImpl.LargerThanTenFilter");
-            var filterGrain = client.GetGrain<IFlatMap>(0, "GrainStreamProcessing.GrainImpl.AddMap");
+            var flatMapGrain = client.GetGrain<IFlatMap>(0, "GrainStreamProcessing.GrainImpl.AddMap");
+            var sinkGrain = client.GetGrain<ISink>(0, "GrainStreamProcessing.GrainImpl.ConsoleSink");
+            await flatMapGrain.Init(Constants.SinkNameSpace);
+            await sinkGrain.Init();
+            
             for (var i = 0; i < 20; ++i)
             {
-                var r = random.Next(20).ToString(); // Randomly generate twenty numbers between 0 and 19.
-                var res = new TagTuple(new List<string> {r, r, r});
+                var res = CreateTestTuple(random, 0);
                 Console.WriteLine(res); // Output these numbers to Client console.
-                await filterGrain
+                await flatMapGrain
                     .Process(res); // Send these numbers to the filter operator, and numbers that pass this filter will be outputted onto Silo console.
             }
+        }
+        
+        private static async Task AggregateClient(IClusterClient client)
+        {
+            // The code below shows how to specify an exact grain class which implements the IFilter interface
+            var random = new Random();
+            var aggregateGrain = client.GetGrain<IAggregate>(0, "GrainStreamProcessing.GrainImpl.AverageLongitudeAggregate");
+            var sinkGrain = client.GetGrain<ISink>(0, "GrainStreamProcessing.GrainImpl.ConsoleSink");
+            await aggregateGrain.Init(Constants.SinkNameSpace);
+            await sinkGrain.Init();            for (var i = 0; i < 20; ++i)
+            {
+                var res = CreateTestTuple(random, 0);
+                res.Item2.UserId[0] = 10;
+                Console.WriteLine(res); // Output these numbers to Client console.
+                await aggregateGrain
+                    .Process(res); // Send these numbers to the aggregate operator
+            }
+        }
+        
+        // private static async Task JoinClient(IClusterClient client)
+        // {
+        //     // The code below shows how to specify an exact grain class which implements the IFilter interface
+        //
+        //     // The code below shows how to specify an exact grain class which implements the IFilter interface
+        //     var random = new Random();
+        //     var joinGrain = client.GetGrain<IWindowJoin>(0, "GrainStreamProcessing.GrainImpl.SimpleWindowJoin");
+        //     var sinkGrain = client.GetGrain<ISink>(0, "GrainStreamProcessing.GrainImpl.ConsoleSink");
+        //     
+        //     await joinGrain.Init(Constants.WindowJoinOneNameSpace, Constants.WindowJoinTwoNameSpace,Constants.SinkNameSpace, 2000);
+        //     await sinkGrain.Init();            for (var i = 0; i < 20; ++i)
+        //     {
+        //         var res = CreateTestTuple(random, 0);
+        //         Console.WriteLine(res); // Output these numbers to Client console.
+        //         await joinGrain.Process(res);
+        //     }
+        // }
+        
+        private static (string, DataTuple, long) CreateTestTuple(Random rand, int randSpan)
+        {
+            var r = rand.Next(20).ToString(); // Randomly generate twenty numbers between 0 and 19.
+            var ts = DataDriver.getCurrentTimestamp() + rand.Next(2 * randSpan + 1) - randSpan;
+            return ("UserId",(DataTuple)new PhotoTuple(new List<string> {r, r, r, r}),ts);
         }
     }
 }

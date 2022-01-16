@@ -9,22 +9,9 @@ using Orleans.Streams;
 
 namespace GrainStreamProcessing.GrainImpl
 {
-    public class SinkGrain : Grain, ISink
+    public abstract class SinkGrain : Grain, ISink
     {
-        private readonly string _projectPath =
-            Directory.GetParent(Environment.CurrentDirectory)?.Parent?.Parent?.Parent?.FullName;
-
-        public Task Process(object e)
-        {
-            using var sw = File.AppendText(Path.Join(_projectPath, "Client", "Log.txt"));
-            if (e is IEnumerable enumerable)
-                foreach (var tup in enumerable)
-                    sw.WriteLine($"Processed in Sink as enumerable: {tup}");
-            else
-                sw.WriteLine($"Processed in Sink: {e}");
-
-            return Task.CompletedTask;
-        }
+        public abstract Task Process(object e);
 
         public Task Init()
         {
@@ -33,6 +20,45 @@ namespace GrainStreamProcessing.GrainImpl
 
             return Task.CompletedTask;
         }
+
+        protected Task OnNextMessage(object message, StreamSequenceToken sequenceToken)
+        {
+            Process(message);
+            return Task.CompletedTask;
+        }
+    }
+
+    public class ConsoleSink : SinkGrain
+    {
+        public override async Task OnActivateAsync()
+        {
+            var streamProvider = GetStreamProvider("SMSProvider");
+            var stream = streamProvider.GetStream<object>(Constants.StreamGuid, Constants.SinkNameSpace);
+
+            // To resume stream in case of stream deactivation
+            var subscriptionHandles = await stream.GetAllSubscriptionHandles();
+            if (subscriptionHandles.Count > 0)
+                foreach (var subscriptionHandle in subscriptionHandles)
+                    await subscriptionHandle.ResumeAsync(OnNextMessage);
+
+            await stream.SubscribeAsync(OnNextMessage);
+        }
+        public override Task Process(object e)
+        {
+            if (e is IEnumerable enumerable)
+                foreach (var tup in enumerable)
+                    Console.WriteLine($"Processed in Sink as enumerable: {tup}");
+            else
+                Console.WriteLine($"Processed in Sink: {e}");
+
+            return Task.CompletedTask;
+        }    
+    }
+    
+    public class FileSink : SinkGrain
+    {
+        private readonly string _projectPath =
+            Directory.GetParent(Environment.CurrentDirectory)?.Parent?.Parent?.Parent?.FullName;
 
         public override async Task OnActivateAsync()
         {
@@ -48,11 +74,18 @@ namespace GrainStreamProcessing.GrainImpl
 
             await stream.SubscribeAsync(OnNextMessage);
         }
-
-        private Task OnNextMessage(object message, StreamSequenceToken sequenceToken)
+        public override Task Process(object e)
         {
-            Process(message);
+            using var sw = File.AppendText(Path.Join(_projectPath, "Client", "Log.txt"));
+            if (e is IEnumerable enumerable)
+                foreach (var tup in enumerable)
+                    sw.WriteLine($"Processed in Sink as enumerable: {tup}");
+            else
+                sw.WriteLine($"Processed in Sink: {e}");
+
             return Task.CompletedTask;
         }
+        
     }
+    
 }

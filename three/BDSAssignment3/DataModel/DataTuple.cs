@@ -19,7 +19,7 @@ namespace GrainStreamProcessing.Model
 
     public class PhotoTuple : DataTuple
     {
-        public PhotoTuple(IReadOnlyList<string> numbers)
+        public PhotoTuple(IList<string> numbers)
         {
             PhotoId.Add(int.Parse(numbers[0]));
             UserId.Add(int.Parse(numbers[1]));
@@ -30,7 +30,7 @@ namespace GrainStreamProcessing.Model
 
     public class GpsTuple : DataTuple
     {
-        public GpsTuple(IReadOnlyList<string> numbers)
+        public GpsTuple(IList<string> numbers)
         {
             UserId.Add(int.Parse(numbers[0]));
             Lat.Add(float.Parse(numbers[1]));
@@ -40,7 +40,7 @@ namespace GrainStreamProcessing.Model
 
     public class TagTuple : DataTuple
     {
-        public TagTuple(IReadOnlyList<string> numbers)
+        public TagTuple(IList<string> numbers)
         {
             PhotoId.Add(int.Parse(numbers[0]));
             UserId.Add(int.Parse(numbers[1]));
@@ -82,18 +82,5 @@ namespace GrainStreamProcessing.Model
         {
             return $"aggregate: {AggregateValue}";
         }
-
-        // public dynamic AggregateValue { get; set; }
-        // private readonly Type _type;
-        // public AggregateTuple(Type type)
-        // {  
-        //     this._type = type;
-        //     AggregateValue = Activator.CreateInstance(type);
-        // }
-        //
-        // public dynamic Function()
-        // {
-        //     return Activator.CreateInstance(_type);
-        // }
     }
 }

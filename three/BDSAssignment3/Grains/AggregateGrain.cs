@@ -12,11 +12,11 @@ namespace GrainStreamProcessing.GrainImpl
 {
     public abstract class AggregateGrain<T> : Grain, IAggregate, IAggregateFunction<T>
     {
-        private const int windowSize = 6000;
-        private const int slideSize = 3000;
+        private const int windowSize = 6;
+        private const int slideSize = 1;
+        private int _tupleNumber = 0;
 
-        protected readonly Dictionary<Guid, (string, T, long)> _tuples = new Dictionary<Guid, (string, T, long)>();
-        private long _curTime;
+        protected readonly Dictionary<int, (string, T, long)> _tuples = new Dictionary<int, (string, T, long)>();
         private IStreamProvider streamProvider;
 
         // TODO: change these to getters/setter or whwatever and change them according to the input in Init.
@@ -46,7 +46,6 @@ namespace GrainStreamProcessing.GrainImpl
 
         public override async Task OnActivateAsync()
         {
-            _curTime = (long) (DateTime.UtcNow - new DateTime(1970, 1, 1, 0, 0, 0)).TotalMilliseconds;
             streamProvider = GetStreamProvider("SMSProvider");
             var inStream = MyInStream;
             var stream = streamProvider.GetStream<(string, T, long)>(Constants.StreamGuid, inStream);
@@ -62,31 +61,27 @@ namespace GrainStreamProcessing.GrainImpl
 
         private async Task OnNextMessage((string, T, long) message, StreamSequenceToken sequenceToken)
         {
-            Console.WriteLine($"OnNextMessage in Aggregate: {message}");
-            HandleTuples(message);
-
+            //Console.WriteLine($"OnNextMessage in Aggregate: {message}");
             await Process(message);
         }
 
-        private void HandleTuples((string, T, long) tuple)
+        protected void HandleTuples((string, T, long) tuple)
         {
-            var (message, payLoad, timeStamp) = tuple;
+            _tuples.Add(_tupleNumber++, tuple);
 
-            _tuples.Add(Guid.NewGuid(), tuple);
-
-            if (timeStamp > _curTime + windowSize) _curTime += slideSize;
-
-            foreach (var (key, (mes, pay, time)) in _tuples)
-                if (timeStamp < _curTime - windowSize)
-                    _tuples.Remove(key);
+            if (_tuples.Count > windowSize)
+            {
+                _tuples.Remove(_tuples.Keys.Min());
+            }
         }
     }
 
     public class AverageLongitudeAggregate : AggregateGrain<DataTuple>
     {
-        public override (string, DataTuple, long)
-            Apply((string, DataTuple, long) e) // Implements the Apply method, filtering odd numbers
+        public override (string, DataTuple, long) Apply((string, DataTuple, long) e)
         {
+            HandleTuples(e);
+
             var res = new AggregateTuple<float>
             {
                 AggregateValue = 0
@@ -99,11 +94,10 @@ namespace GrainStreamProcessing.GrainImpl
             {
                 var dictItemKey = pay.GetType().GetProperties().Single(x => x.Name == mes).GetValue(pay, null);
 
-                if (eventKey.Equals(dictItemKey))
-                {
-                    res.AggregateValue += pay.Long.Sum();
-                    matches += pay.Long.Count;
-                }
+                if (!eventKey.ToString().Equals(dictItemKey.ToString())) continue;
+                
+                res.AggregateValue += pay.Long.Sum();
+                matches += pay.Long.Count;
             }
 
             res.AggregateValue = matches == 0 ? res.AggregateValue : res.AggregateValue / matches;
