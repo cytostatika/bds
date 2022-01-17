@@ -89,7 +89,7 @@ namespace GrainStreamProcessing.GrainImpl
         protected override bool
             ApplySingleItem((string, DataTuple, long) e) // Implements the Apply method, filtering numbers < 10
         {
-            return e.Item2.UserId.Any(x => x >= 1);
+            return e.Item2.UserId.Any(x => x >= 10);
         }
     }
 
