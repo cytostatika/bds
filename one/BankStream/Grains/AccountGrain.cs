@@ -1,44 +1,48 @@
-using System;
-using System.Threading.Tasks;
 using GrainInterfaces;
 using Orleans;
 
-namespace Grains
+namespace Grains;
+
+[Serializable]
+public class Balance
 {
-    [Serializable]
-    public class Balance
+    public uint Value { get; set; } = 1000;
+}
+
+public class AccountGrain : Grain, IAccountGrain
+{
+    private readonly Balance _balance;
+
+    public AccountGrain()
     {
-        public uint Value { get; set; } = 1000;
+        _balance = new Balance();
     }
 
-    public class AccountGrain : Grain, IAccountGrain
+    public Task Deposit(uint amount)
     {
-        private readonly Balance _balance;
+        _balance.Value += amount;
+        return Task.CompletedTask;
+    }
 
-        public AccountGrain()
-        {
-            _balance = new Balance();
-        }
+    public Task Withdraw(uint amount)
+    {
+        if (_balance.Value < amount)
+            throw new InvalidOperationException(
+                $"Withdrawing {amount} credits from account \"{this.GetPrimaryKeyString()}\" would overdraw it."
+                + $" This account has {_balance.Value} credits.");
 
-        public Task Deposit(uint amount)
-        {
-            _balance.Value += amount;
-            return Task.CompletedTask;
-        }
+        //_balance.Value -= amount;
+        return Task.CompletedTask;
+    }
 
-        public Task Withdraw(uint amount)
-        {
-            if (_balance.Value < amount)
-                throw new InvalidOperationException(
-                    $"Withdrawing {amount} credits from account \"{this.GetPrimaryKeyString()}\" would overdraw it."
-                    + $" This account has {_balance.Value} credits.");
-            _balance.Value -= amount;
-            return Task.CompletedTask;
-        }
+    public Task CommitWithdraw(uint amount)
+    {
+        _balance.Value -= amount;
+        return Task.CompletedTask;
+    }
 
-        public Task<uint> GetBalance()
-        {
-            return Task.FromResult(_balance.Value);
-        }
+    public Task<uint> GetBalance()
+    {
+        return Task.FromResult(_balance.Value);
     }
 }

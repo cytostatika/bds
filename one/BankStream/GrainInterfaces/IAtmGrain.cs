@@ -1,10 +1,9 @@
-using System.Threading.Tasks;
 using Orleans;
 
-namespace GrainInterfaces
+namespace GrainInterfaces;
+
+public interface IAtmGrain : IGrainWithIntegerKey
 {
-    public interface IAtmGrain : IGrainWithIntegerKey
-    {
-        Task Transfer(IAccountGrain fromAccount, IAccountGrain toAccount, uint amountToTransfer);
-    }
+    Task Transfer(IAccountGrain fromAccount, IAccountGrain fromSecondAccount, IAccountGrain toAccount,
+        uint amountToTransfer);
 }

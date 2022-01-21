@@ -1,31 +1,45 @@
-using System.Threading.Tasks;
 using Common;
 using GrainInterfaces;
 using Orleans;
-using Orleans.Concurrency;
 using Orleans.Streams;
 
-namespace Grains
+namespace Grains;
+
+[ImplicitStreamSubscription(Constants.WithdrawStreamName)]
+public class WithdrawalConsumerGrain : Grain, IConsumerGrain
 {
-    [ImplicitStreamSubscription(Constants.WithdrawStreamName)]
-    [StatelessWorker]
-    public class WithdrawalConsumerGrain : Grain, IConsumerGrain
+    public override async Task OnActivateAsync()
     {
-        public override async Task OnActivateAsync()
+        var guid = this.GetPrimaryKey();
+
+        //Get one of the providers which we defined in config
+        var streamProvider = GetStreamProvider(Constants.StreamProvider);
+
+        //Get the reference to withdraw stream
+        var stream = streamProvider.GetStream<List<AccountUpdate>>(guid, Constants.WithdrawStreamName);
+
+        await stream.SubscribeAsync(OnNextMessage);
+    }
+
+    private async Task OnNextMessage(List<AccountUpdate> data, StreamSequenceToken token)
+    {
+        var updates = new Dictionary<string, uint>();
+        foreach (var dat in data)
         {
-            var guid = this.GetPrimaryKey();
+            var withdrawGrain = GrainFactory.GetGrain<IAccountGrain>(dat.AccountId);
+            if (!updates.TryAdd(dat.AccountId, dat.Amount)) updates[withdrawGrain.GetPrimaryKeyString()] += dat.Amount;
+        }
 
-            //Get one of the providers which we defined in config
-            var streamProvider = GetStreamProvider(Constants.StreamProvider);
+        foreach (var key in updates.Keys)
+        {
+            var withdrawGrain = GrainFactory.GetGrain<IAccountGrain>(key);
+            await withdrawGrain.Withdraw(updates[key]);
+        }
 
-            //Get the reference to withdraw stream
-            var stream = streamProvider.GetStream<AccountUpdate>(guid, Constants.WithdrawStreamName);
-            //Set our OnNext method to the lambda which simply prints the data. This doesn't make new subscriptions, because we are using implicit subscriptions via [ImplicitStreamSubscription].
-            await stream.SubscribeAsync(async (data, token) =>
-            {
-                var withdrawGrain = GrainFactory.GetGrain<IAccountGrain>(data.AccountId);
-                await withdrawGrain.Withdraw(data.Amount);
-            });
+        foreach (var dat in data)
+        {
+            var withdrawGrain = GrainFactory.GetGrain<IAccountGrain>(dat.AccountId);
+            await withdrawGrain.CommitWithdraw(dat.Amount);
         }
     }
 }

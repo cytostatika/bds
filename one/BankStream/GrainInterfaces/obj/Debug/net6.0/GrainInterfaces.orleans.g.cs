@@ -32,6 +32,9 @@ namespace GrainInterfaces
                         case (int)0xB24BF30:
                             await casted.Withdraw((uint)arguments[0]);
                             return null;
+                        case (int)0x4A48FFF5:
+                            await casted.CommitWithdraw((uint)arguments[0]);
+                            return null;
                         case (int)0x6DD3B148:
                             await casted.Deposit((uint)arguments[0]);
                             return null;
@@ -85,6 +88,8 @@ namespace GrainInterfaces
                     {
                         case (int)0xB24BF30:
                             return "Withdraw";
+                        case (int)0x4A48FFF5:
+                            return "CommitWithdraw";
                         case (int)0x6DD3B148:
                             return "Deposit";
                         case (int)0x299BA77A:
@@ -107,6 +112,11 @@ namespace GrainInterfaces
         global::System.Threading.Tasks.Task global::GrainInterfaces.IAccountGrain.Withdraw(uint amount0)
         {
             return base.InvokeMethodAsync<object>((int)0xB24BF30, new object[]{amount0});
+        }
+
+        global::System.Threading.Tasks.Task global::GrainInterfaces.IAccountGrain.CommitWithdraw(uint amount0)
+        {
+            return base.InvokeMethodAsync<object>((int)0x4A48FFF5, new object[]{amount0});
         }
 
         global::System.Threading.Tasks.Task global::GrainInterfaces.IAccountGrain.Deposit(uint amount0)
@@ -135,8 +145,8 @@ namespace GrainInterfaces
                     var casted = ((global::GrainInterfaces.IAtmGrain)grain);
                     switch (methodId)
                     {
-                        case (int)0x7234586F:
-                            await casted.Transfer((global::GrainInterfaces.IAccountGrain)arguments[0], (global::GrainInterfaces.IAccountGrain)arguments[1], (uint)arguments[2]);
+                        case (int)0x2C1FC594:
+                            await casted.Transfer((global::GrainInterfaces.IAccountGrain)arguments[0], (global::GrainInterfaces.IAccountGrain)arguments[1], (global::GrainInterfaces.IAccountGrain)arguments[2], (uint)arguments[3]);
                             return null;
                         default:
                             ThrowMethodNotImplemented(interfaceId, methodId);
@@ -184,7 +194,7 @@ namespace GrainInterfaces
                 {
                     switch (methodId)
                     {
-                        case (int)0x7234586F:
+                        case (int)0x2C1FC594:
                             return "Transfer";
                         default:
                             ThrowMethodNotImplemented(interfaceId, methodId);
@@ -201,9 +211,9 @@ namespace GrainInterfaces
             void ThrowMethodNotImplemented(int i, int m) => throw new global::System.NotImplementedException($"InterfaceId: 0x{i:X}, MethodId: 0x{m:X}");
         }
 
-        global::System.Threading.Tasks.Task global::GrainInterfaces.IAtmGrain.Transfer(global::GrainInterfaces.IAccountGrain fromAccount0, global::GrainInterfaces.IAccountGrain toAccount1, uint amountToTransfer2)
+        global::System.Threading.Tasks.Task global::GrainInterfaces.IAtmGrain.Transfer(global::GrainInterfaces.IAccountGrain fromAccount0, global::GrainInterfaces.IAccountGrain fromSecondAccount1, global::GrainInterfaces.IAccountGrain toAccount2, uint amountToTransfer3)
         {
-            return base.InvokeMethodAsync<object>((int)0x7234586F, new object[]{fromAccount0 is global::Orleans.Grain ? fromAccount0.AsReference<global::GrainInterfaces.IAccountGrain>() : fromAccount0, toAccount1 is global::Orleans.Grain ? toAccount1.AsReference<global::GrainInterfaces.IAccountGrain>() : toAccount1, amountToTransfer2});
+            return base.InvokeMethodAsync<object>((int)0x2C1FC594, new object[]{fromAccount0 is global::Orleans.Grain ? fromAccount0.AsReference<global::GrainInterfaces.IAccountGrain>() : fromAccount0, fromSecondAccount1 is global::Orleans.Grain ? fromSecondAccount1.AsReference<global::GrainInterfaces.IAccountGrain>() : fromSecondAccount1, toAccount2 is global::Orleans.Grain ? toAccount2.AsReference<global::GrainInterfaces.IAccountGrain>() : toAccount2, amountToTransfer3});
         }
     }
 
