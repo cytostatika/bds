@@ -144,8 +144,7 @@ namespace Concurrency
             //Console.WriteLine($"Actor { myActorID}: continuing execution of batch {context.bid}");
             // STEP 1: block the call until it is its turn to execute
             
-            if (localSchedule.ContainsKey(context.bid))
-                {
+            if (localSchedule.ContainsKey(context.bid)){
                 var lastbid = localSchedule[context.bid].Item2;
                 await lastBidWaitMsg[lastbid].Task;
                 //lastBidWaitMsg.Remove(lastbid);
